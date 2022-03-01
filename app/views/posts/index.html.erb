@@ -1,2 +1,13 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>yen!</h1>
+<em>お金をもっとハッピーに。</em>
+<em>かんたん支出管理アプリ</em>
+<p>
+  <% if user_signed_in? %>
+    <%= current_user.nickname %>さん、ログインありがとうございます！
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to '新規登録', new_user_registration_path %>
+    <%= link_to 'ログイン', new_user_session_path %>
+  <% end %>
+</p>
+
