@@ -36,3 +36,17 @@
     </div>
   <% end %>
 </div>
+<div>
+  <p>（今月の）支出記録：<%= @posts.length %>件</p>
+    <ul>
+      <% @posts.each do |post| %>
+        <% if post.select_yen %>
+          <li><em>Good yen!</em></li>
+        <% end %>
+          <li><%= post.date_of_post %></li>
+          <li><%= post.memo1 %></li>
+          <li><%= post.memo2 %></li>
+          <li>¥<%= post.price %></li>
+      <% end %>
+    </ul>  
+</div>

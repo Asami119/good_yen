@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @posts = Post.where(user_id: current_user.id).order(date_of_post: 'DESC')
   end
 
   def create
