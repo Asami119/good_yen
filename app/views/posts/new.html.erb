@@ -1,0 +1,49 @@
+<%= render 'shared/header' %>
+<div>
+  <%= form_with model: @post, url: posts_path, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <div>
+      <%= f.label :date_of_post, '日付' %>
+      <span>必須</span>
+      <%= f.date_field :date_of_post %>
+    </div>
+    <div>
+      <%= f.label :price, '支出金額' %>
+      <span>必須</span><br /><span>半角で入力してください</span>
+      <%= f.text_field :price %><span>yen!（円）</span>
+    </div>
+    <div>
+      Good yen?：いいお金の使い方でしたか？
+      <span>必須</span><br />
+        <%= f.radio_button :select_yen, true %>
+        <%= f.label :select_yen, 'はい！', value: true %>
+        <%= f.radio_button :select_yen, false %>
+        <%= f.label :select_yen, 'あと一歩', value: false %>
+    </div>
+    <div>
+      <%= f.label :memo1, 'メモ①' %>
+      <%= f.text_field :memo1, placeholder:'入力は任意です' %>
+    </div>
+    <div>
+      <%= f.label :memo2, 'メモ②' %>
+      <%= f.text_field :memo2, placeholder:'入力は任意です' %>
+    </div>
+    <div>
+      <%= f.submit '記録する' %>
+    </div>
+  <% end %>
+</div>
+<div>
+  <p>（今月の）支出記録：<%= @posts.length %>件</p>
+    <ul>
+      <% @posts.each do |post| %>
+        <% if post.select_yen %>
+          <li><em>Good yen!</em></li>
+        <% end %>
+          <li><%= post.date_of_post %></li>
+          <li><%= post.memo1 %></li>
+          <li><%= post.memo2 %></li>
+          <li>¥<%= post.price %></li>
+      <% end %>
+    </ul>  
+</div>

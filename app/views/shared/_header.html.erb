@@ -1,0 +1,18 @@
+<header>
+  <%= link_to image_tag('yen-logo.png'), '/' %>
+  <h1>yen!</h1>
+  <em>お金をもっとハッピーに。</em>
+  <em>かんたん支出管理アプリ</em>
+  <div>
+    <ul>
+      <% if user_signed_in? %>
+        <li><%= current_user.nickname %>さん、ログインありがとうございます！</li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to '新規登録', new_user_registration_path %></li>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <% end %>
+      <li><%= link_to '記録する', new_post_path %></li>
+    </ul>
+  </div>
+</header>
