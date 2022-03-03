@@ -4,8 +4,8 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.date :date_of_post,  null: false
       t.boolean :select_yen, null: false, default: false
       t.integer :price,      null: false
-      t.string :memo_1
-      t.string :memo_2
+      t.string :memo1
+      t.string :memo2
       t.references :user,    null: false, foreign_key: true
       t.timestamps
     end

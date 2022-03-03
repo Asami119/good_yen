@@ -17,6 +17,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:date_of_post, :select_yen, :price, :memo_1, :memo_2).merge(user_id: current_user.id)
+    params.require(:post).permit(:date_of_post, :select_yen, :price, :memo1, :memo2).merge(user_id: current_user.id)
   end
 end

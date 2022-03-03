@@ -19,8 +19,8 @@
 | date_of_post       | date        | null: false                    |
 | select_yen         | boolean     | null: false                    |
 | price              | integer     | null: false                    |
-| memo_1             | string      | null: true                     |
-| memo_2             | string      | null: true                     |
+| memo1              | string      | null: true                     |
+| memo2              | string      | null: true                     |
 | user               | references  | null: false, foreign_key: true |
 
 ### Association

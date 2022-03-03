@@ -17,12 +17,12 @@ RSpec.describe Post, type: :model do
       end
 
       it 'メモ①が空でも保存できる' do
-        @post.memo_1 = ''
+        @post.memo1 = ''
         expect(@post).to be_valid
       end
 
       it 'メモ②が空でも保存できる' do
-        @post.memo_2 = ''
+        @post.memo2 = ''
         expect(@post).to be_valid
       end
     end
