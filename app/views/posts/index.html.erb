@@ -11,4 +11,38 @@
     <%= link_to 'ログイン', new_user_session_path %>
   <% end %>
 </p>
-
+<div>
+  <% if user_signed_in? %>
+    <%= form_with model: @post, url: posts_path, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+      <div>
+        <%= f.label :date_of_post, '日付' %>
+        <span>必須</span>
+        <%= f.date_field :date_of_post %>
+      </div>
+      <div>
+        <%= f.label :price, '支出金額' %>
+        <span>必須</span><br /><span>半角で入力してください</span>
+        <%= f.text_field :price %><span>yen!（円）</span>
+      </div>
+      <div>
+        Good yen?：いいお金の使い方でしたか？
+        <span>必須</span><br />
+          <%= f.radio_button :select_yen, true %>
+          <%= f.label :select_yen, 'はい！', value: true %>
+          <%= f.radio_button :select_yen, false %>
+          <%= f.label :select_yen, 'あと一歩', value: false %>
+      </div>
+      <div>
+        <%= f.label :memo_1, 'メモ①' %>
+        <%= f.text_field :memo_1, placeholder:'入力は任意です' %>
+      </div>
+      <div>
+        <%= f.label :memo_2, 'メモ②' %>
+        <%= f.text_field :memo_2, placeholder:'入力は任意です' %>
+      </div>
+      <div>
+        <%= f.submit '記録する' %>
+      </div>
+    <% end %>
+  <% end %>
