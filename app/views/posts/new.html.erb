@@ -1,7 +1,4 @@
-<%= link_to image_tag('yen-logo.png'), '/' %>
-<h1>yen!</h1>
-<em>お金をもっとハッピーに。</em>
-<em>かんたん支出管理アプリ</em>
+<%= render 'shared/header' %>
 <div>
   <%= form_with model: @post, url: posts_path, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
