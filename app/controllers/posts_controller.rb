@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
+  before_action :set_post, only: [:edit, :update]
+  before_action :move_to_index, only: :edit
 
   def index
   end
@@ -18,9 +20,30 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to new_post_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:date_of_post, :select_yen, :price, :memo1, :memo2).merge(user_id: current_user.id)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def move_to_index
+    unless current_user.id == @post.user_id
+      redirect_to root_path
+    end
   end
 end
