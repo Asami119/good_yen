@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :set_post, only: [:edit, :update]
-  before_action :move_to_index, only: :edit
+  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :destroy]
 
   def index
   end
@@ -29,6 +29,11 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to new_post_path
   end
 
   private
