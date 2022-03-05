@@ -3,7 +3,7 @@
 <%= render partial: 'form', locals: { post: @post } %>
 
 <div>
-  <p>（今月の）支出記録：<%= @posts.length %>件</p>
+  <p>今月の支出記録：<%= @posts.length %>件</p>
     <ul>
       <% @posts.each do |post| %>
         <li><%= link_to '編集', edit_post_path(post.id) %></li>

@@ -1,8 +1,13 @@
 <header>
   <%= link_to image_tag('yen-logo.png'), '/' %>
   <h1>yen!</h1>
-  <em>お金をもっとハッピーに。</em>
-  <em>かんたん支出管理アプリ</em>
+  <h2>お金をもっとハッピーに。</h2>
+  <h3>かんたん支出管理アプリ</h3>
+  <h3>
+    <ul>
+      <li><%= link_to '振り返る', search_posts_path %></li>
+    </ul>
+  </h3>
   <div>
     <ul>
       <% if user_signed_in? %>
