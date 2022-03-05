@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @posts = Post.where(user_id: current_user.id).order(date_of_post: 'DESC')
+    @posts = current_user.posts.order(date_of_post: 'DESC')
   end
 
   def create
@@ -34,6 +34,11 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to new_post_path
+  end
+
+  def search
+    @q = current_user.posts.ransack(params[:q])
+    @posts = @q.result.order(date_of_post: 'DESC')
   end
 
   private
