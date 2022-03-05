@@ -37,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   def search
+    set_memo_search
     @q = current_user.posts.ransack(params[:q])
     @posts = @q.result.order(date_of_post: 'DESC')
   end
@@ -53,5 +54,16 @@ class PostsController < ApplicationController
 
   def move_to_index
     redirect_to root_path unless current_user.id == @post.user_id
+  end
+
+  def set_memo_search
+    if params[:q]&.dig(:memo1)
+      squished_keywords = params[:q][:memo1].squish
+      params[:q][:memo1_cont_any] = squished_keywords.split('')
+    end
+    if params[:q]&.dig(:memo2)
+      squished_keywords = params[:q][:memo2].squish
+      params[:q][:memo2_cont_any] = squished_keywords.split('')
+    end
   end
 end

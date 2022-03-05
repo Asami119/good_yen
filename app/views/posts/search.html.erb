@@ -28,14 +28,14 @@
       <%= f.label :select_yen_eq, 'あと一歩', value: false %>
     </div>
     <div>
-      <%= f.label :memo1_cont, 'メモ①' %>
+      <%= f.label :memo1, 'メモ①' %>
       <br>
-      <%= f.search_field :memo1_cont, placeholder: 'メモ①' %>
+      <%= f.search_field :memo1, placeholder: 'メモ①', value: params[:q]&.dig(:memo1) %>
     </div>
     <div>
-      <%= f.label :memo2_cont, 'メモ②' %>
+      <%= f.label :memo2, 'メモ②' %>
       <br>
-      <%= f.search_field :memo2_cont, placeholder: 'メモ②' %>
+      <%= f.search_field :memo2, placeholder: 'メモ②', value: params[:q]&.dig(:memo2) %>
     </div>
     <%= f.submit '検索' %>
   <% end %>
