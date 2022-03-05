@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @posts = current_user.posts.order(date_of_post: 'DESC')
+    @posts = Post.search_month(current_user.id)
   end
 
   def create
