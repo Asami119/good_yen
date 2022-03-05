@@ -8,7 +8,6 @@ class Post < ApplicationRecord
   def self.search_month(current_user_id)
     Post.where(
       user_id: current_user_id
-    ).where(date_of_post: Date.today.beginning_of_month..Date.today.end_of_month
-    ).order(date_of_post: 'DESC')
+    ).where(date_of_post: Date.today.beginning_of_month..Date.today.end_of_month).order(date_of_post: 'DESC')
   end
 end

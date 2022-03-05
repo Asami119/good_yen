@@ -61,9 +61,9 @@ class PostsController < ApplicationController
       squished_keywords = params[:q][:memo1].squish
       params[:q][:memo1_cont_any] = squished_keywords.split('')
     end
-    if params[:q]&.dig(:memo2)
-      squished_keywords = params[:q][:memo2].squish
-      params[:q][:memo2_cont_any] = squished_keywords.split('')
-    end
+    return true if params[:q]&.dig(:memo2).blank?
+
+    squished_keywords = params[:q][:memo2].squish
+    params[:q][:memo2_cont_any] = squished_keywords.split('')
   end
 end
