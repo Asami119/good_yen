@@ -41,6 +41,37 @@
   <% end %>
 </div>
 <%# /検索フォーム %>
+<%# ドーナツグラフ %>
+<div>
+  <% unless @price_for_graph[:'good yen!'] == 0 && @price_for_graph[:'あと一歩'] == 0 %>
+    <%= pie_chart @price_for_graph, options = {
+      donut: true,
+      width: '400px',
+      height: '400px',
+      colors: ["#DDFFBA", "#FFFFBB"],
+      thousands: ",", 
+      suffix: "円",
+      library: {
+        title: {
+          text: "Good yen!<br>#{@price_true_percent}%",
+          align: 'center',
+          verticalAlign: 'middle'
+        },
+        plotOptions: {
+          pie: {
+            dataLabels: {
+              enabled: false
+            },
+            innerSize: '50%',
+          }
+        }
+      }
+    } %>
+  <% else %>
+    <h3><%= current_user.nickname %>さんの支出記録はまだありません。</h3>
+  <% end %>
+</div>
+<%# /ドーナツグラフ %>
 <%# 結果一覧 %>
 <div>
   <p>検索結果：<%= @posts.length %>件</p>
