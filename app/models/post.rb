@@ -16,6 +16,6 @@ class Post < ApplicationRecord
     price_false = posts.where(select_yen: false).sum(:price)
     total_price = (price_true + price_false).to_f
     price_true_percent = (price_true / total_price * 100).floor(1)
-    return price_for_graph = {'good yen!': price_true, 'あと一歩': price_false}, price_true_percent
+    [{ 'good yen!': price_true, 'あと一歩': price_false }, price_true_percent]
   end
 end
