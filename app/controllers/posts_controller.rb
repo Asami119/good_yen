@@ -40,7 +40,12 @@ class PostsController < ApplicationController
     set_memo_search
     @q = current_user.posts.ransack(params[:q])
     @posts = @q.result.order(date_of_post: 'DESC')
-    @price_for_graph, @price_true_percent = Post.calc_for_graph(@posts)
+    @price_for_graph, @price_true_percent = Post.calc_for_donut_graph(@posts)
+    @price_month, @price_year = Post.calc_for_column_graph(@posts)
+
+    unless @price_year == 0
+      @price_month_average = Post.calc_price_month_average(@price_month, @price_year)
+    end
   end
 
   private
