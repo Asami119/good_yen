@@ -41,6 +41,52 @@
   <% end %>
 </div>
 <%# /検索フォーム %>
+<%# ドーナツグラフ %>
+<div>
+  <% unless @price_for_graph[:'good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
+    <%= pie_chart @price_for_graph, options = {
+      donut: true,
+      width: '400px',
+      height: '400px',
+      colors: ["#DDFFBA", "#FFFFBB"],
+      thousands: ",", 
+      suffix: "円",
+      library: {
+        title: {
+          text: "Good yen!<br>#{@price_true_percent}%",
+          align: 'center',
+          verticalAlign: 'middle'
+        },
+        plotOptions: {
+          pie: {
+            dataLabels: {
+              enabled: false
+            },
+            innerSize: '50%',
+          }
+        }
+      }
+    } %>
+  <% else %>
+    <h3>該当する支出記録はありません。</h3>
+  <% end %>
+  <%# /ドーナツグラフ %>
+  <%# 積み上げ棒グラフ %>
+  <% unless @price_year.zero? %>
+    <%= column_chart  @price_month, options = {
+      stacked: true,
+      width: '800px',
+      colors: ["#DDFFBA", "#FFFFBB"],
+      thousands: ",", 
+      suffix: "円"
+    } %>
+    <div>
+      <h4><%= Date.today.year %>年・支出金額の累計：<%= @price_year.to_s(:delimited) %>円</h4>
+      <h4>支出金額の月平均：<%= @price_month_average.to_s(:delimited) %>円</h4>
+    </div>
+  <% end %>
+  <%# /積み上げ棒グラフ %>
+</div>
 <%# 結果一覧 %>
 <div>
   <p>検索結果：<%= @posts.length %>件</p>
