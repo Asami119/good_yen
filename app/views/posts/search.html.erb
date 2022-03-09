@@ -43,7 +43,7 @@
 <%# /検索フォーム %>
 <%# ドーナツグラフ %>
 <div>
-  <% unless @price_for_graph[:'good yen!'] == 0 && @price_for_graph[:'あと一歩'] == 0 %>
+  <% unless @price_for_graph[:'good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
     <%= pie_chart @price_for_graph, options = {
       donut: true,
       width: '400px',
@@ -72,7 +72,7 @@
   <% end %>
   <%# /ドーナツグラフ %>
   <%# 積み上げ棒グラフ %>
-  <% unless @price_year == 0 %>
+  <% unless @price_year.zero? %>
     <%= column_chart  @price_month, options = {
       stacked: true,
       width: '800px',
