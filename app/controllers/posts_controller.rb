@@ -43,9 +43,7 @@ class PostsController < ApplicationController
     @price_for_graph, @price_true_percent = Post.calc_for_donut_graph(@posts)
     @price_month, @price_year = Post.calc_for_column_graph(@posts)
 
-    unless @price_year == 0
-      @price_month_average = Post.calc_price_month_average(@price_month, @price_year)
-    end
+    @price_month_average = Post.calc_price_month_average(@price_month, @price_year) unless @price_year == 0
   end
 
   private

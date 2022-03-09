@@ -30,7 +30,7 @@ class Post < ApplicationRecord
     data_Jan = data_year.where(date_of_post: "#{year}-01-01".."#{year}-01-31")
     price_Jan_true = data_Jan.where(select_yen: true).sum(:price)
     price_Jan_false = data_Jan.where(select_yen: false).sum(:price)
-    
+
     # 2月
     first_Feb = Date.new(year, 2, 1)
     data_Feb = data_year.where(date_of_post: first_Feb..first_Feb.end_of_month)
@@ -89,8 +89,12 @@ class Post < ApplicationRecord
 
     [
       [
-        { name: 'Good yen!', data: [['1月', price_Jan_true],['2月', price_Feb_true],['3月', price_Mar_true],['4月', price_Apr_true],['5月', price_May_true],['6月', price_Jun_true],['7月', price_Jul_true],['8月', price_Aug_true],['9月', price_Sep_true],['10月', price_Oct_true],['11月', price_Nov_true],['12月', price_Dec_true]]},
-        { name: 'あと一歩', data: [['1月', price_Jan_false],['2月', price_Feb_false],['3月', price_Mar_false],['4月', price_Apr_false],['5月', price_May_false],['6月', price_Jun_false],['7月', price_Jul_false],['8月', price_Aug_false],['9月', price_Sep_false],['10月', price_Oct_false],['11月', price_Nov_false],['12月', price_Dec_false]]}
+        { name: 'Good yen!',
+          data: [['1月', price_Jan_true], ['2月', price_Feb_true], ['3月', price_Mar_true], ['4月', price_Apr_true], ['5月', price_May_true],
+                 ['6月', price_Jun_true], ['7月', price_Jul_true], ['8月', price_Aug_true], ['9月', price_Sep_true], ['10月', price_Oct_true], ['11月', price_Nov_true], ['12月', price_Dec_true]] },
+        { name: 'あと一歩',
+          data: [['1月', price_Jan_false], ['2月', price_Feb_false], ['3月', price_Mar_false], ['4月', price_Apr_false],
+                 ['5月', price_May_false], ['6月', price_Jun_false], ['7月', price_Jul_false], ['8月', price_Aug_false], ['9月', price_Sep_false], ['10月', price_Oct_false], ['11月', price_Nov_false], ['12月', price_Dec_false]] }
       ],
       price_year
     ]
@@ -100,21 +104,19 @@ class Post < ApplicationRecord
     array_true = []
     array_false = []
     count_month = 0
-    
+
     price_month[0][:data].each do |data|
       array_true << data[1]
     end
-    
+
     price_month[1][:data].each do |data|
       array_false << data[1]
     end
-    
+
     array_true.zip(array_false) do |t, f|
-      unless t == 0 && f == 0
-        count_month += 1
-      end
+      count_month += 1 unless t == 0 && f == 0
     end
-    
-    return (price_year / count_month)
+
+    (price_year / count_month)
   end
 end
