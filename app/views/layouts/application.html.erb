@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GoodYen</title>
+    <meta charset="UTF-8">
+    <title>yen! | かんたん支出管理</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/4b4956428d.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
+    <header>
+      <div class="heading">
+        <h1 class="title"><a href="/">yen!</a></h1>
+      </div>
+      <div class="navbar">
+        <ul class="nav-lists">
+          <li><%= link_to '記録する', new_post_path, class: "left-button" %></li>
+          <li><%= link_to '振り返る', search_posts_path, class: "left-button"  %></li>
+        </ul>
+        <ul class="nav-lists">
+          <% if user_signed_in? %>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "button-session" %></li>
+          <% else %>
+            <li><%= link_to 'ログイン', new_user_session_path, class: "button-session" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </header>
     <%= yield %>
+    <footer>
+      <p>
+        <b>yen! </b> by <a href="#">(＊検討・link:Twi/Git)Asami119</a>
+      </p>
+    </footer>
   </body>
 </html>

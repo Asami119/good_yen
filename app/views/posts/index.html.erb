@@ -1,1 +1,137 @@
-<%= render 'shared/header' %>
+<div class="contents">
+  <% if user_signed_in? %>
+    <div><%= current_user.nickname %>さん、ログインありがとうございます！</div>
+  <% end %>
+  <div class="first-view">
+    <%= image_tag 'yen-logo.png', alt: "yen!アイコン", class: "yen-logo" %>
+    <div class="first-messages">
+      <h1>お金を、<br>もっと豊かに！</h1>
+      <p>
+        yen!（エン）は、手軽に家計簿をつけたい方向けの、<span class="under-line">かんたん支出管理</span>サービスです。
+        <br>支出を前向きにとらえ、<span class="under-line">豊かに実ったお金</span>にしていく仕組みが特徴です。
+      </p>
+      <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-registration" %>
+    </div>
+  </div>
+  <%# ここがおすすめ %>
+  <div class="content">
+    <div class="heading-name">
+      <h2>ここがおすすめ</h2>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+      <li class="message">
+        <h3 class="message-topic">
+          <i class="fa-solid fa-face-smile-wink point" alt="ウインクのマーク"></i>
+          パッ! と支出記録
+        </h3>
+        <div>
+          必須項目はたったの3つ。シンプルな画面で、日々の支出をかんたんに記録できます。
+        </div>
+      </li>
+      <li class="message">
+        <h3 class="message-topic">
+          <i class="fa-solid fa-hashtag point" alt="ハッシュのマーク"></i>
+          手軽に振り返り＆シェア
+        </h3>
+        <div>
+          グラフ機能で支出を見える化。画面をスクリーンショットして、SNSで共有しましょう！
+        </div>
+      </li>
+      <li class="message">
+        <h3 class="message-topic">
+          <i class="fa-solid fa-coins point" alt="コインのマーク"></i>
+          「楽しい」から「もっと」が始まる
+        </h3>
+        <div>
+          使い方を見直してみたり、収入や貯蓄とのバランスを考えたり。<br>データの「エクスポート機能」を利用して、より発展的な支出の分析も可能です。<br><span class="under-line">大事な「お金」を考える、はじめの一歩に！</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <%# よくある質問 %>
+  <div class="content">
+    <div class="heading-name">
+      <h2>よくある質問</h2>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+      <li class="message">
+        <h3 class="message-topic">
+          <i class="fa-solid fa-check point" alt="チェック"></i>
+          無料で利用できますか？
+        </h3>
+        <div>
+          はい。すべての機能を「無料」でご利用いただけます。
+        </div>
+      </li>
+      <li class="message">
+        <h3 class="message-topic">
+          <i class="fa-solid fa-check point" alt="チェック"></i>
+          登録情報（ニックネーム・メールアドレス・パスワード）を変更したいのですが
+        </h3>
+        <div>
+          <a href="#" class="page-link">こちらのページ</a>から、変更をお願い致します。
+        </div>
+      </li>
+      <li class="message">
+        <h3 class="message-topic">
+          <i class="fa-solid fa-check point" alt="チェック"></i>
+          データのエクスポートは、どのような手順で行えばいいですか？
+        </h3>
+        <div>
+          ＊検討
+        </div>
+      </li>
+      <li class="message">
+        <h3 class="message-topic">
+          <i class="fa-solid fa-check point" alt="チェック"></i>
+          退会したいのですが
+        </h3>
+        <div>
+          <a href="#" class="page-link">こちらのページ</a>から、手続きをお願い致します。
+        </div>
+      </li>
+    </ul>
+  </div>
+  <%# お問い合わせ %>
+  <div class="content">
+    <div class="heading-name">
+      <h2>お問い合わせ</h2>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+      <li class="message">
+        <h3 class="message-topic">
+          <i class="fa-solid fa-envelope point" alt="アドレスのマーク"></i></i>
+          ご意見・お問い合わせは、<a href="#" class="page-link">こちらのページ</a>から、お気軽にどうぞ！
+        </h3>
+      </li>
+    </ul>
+  </div>
+</div>
+<%# 使用予定のアイコン %>
+<i class="fa-solid fa-heart" alt="ハートマーク"></i>
+<i class="fa-solid fa-trash-can"></i>
+<i class="fa-solid fa-trash"></i>
+<i class="fa-solid fa-angle-up"></i>
+<i class="fa-solid fa-angle-down"></i>
+<i class="fa-solid fa-angle-left"></i>
+<i class="fa-solid fa-angle-right"></i>
+<i class="fa-solid fa-angles-left"></i>
+<i class="fa-solid fa-angles-right"></i>
+<i class="fa-solid fa-money-check-pen"></i>
+<i class="fa-solid fa-pen-to-square"></i>
+<i class="fa-solid fa-pen"></i>
+<i class="fa-brands fa-twitter"></i>
+<i class="fa-brands fa-facebook-f"></i>
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-facebook-square"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-instagram-square"></i>
+<i class="fa-brands fa-line"></i>
+<i class="fa-solid fa-file-arrow-down"></i>
+<i class="fa-solid fa-magnifying-glass"></i>
+<i class="fa-solid fa-arrow-down-short-wide"></i>
+<i class="fa-solid fa-arrow-up-short-wide"></i>
+<%# /使用予定のアイコン %>
