@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>yen! | かんたん支出管理</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,34 +12,28 @@
   </head>
 
   <body>
-    <header class="header">
-      <div class="header__bar row">
-        <%= link_to image_tag('yen-logo.png', class:"yen-icon"), '/' %>
-        <h1 class="grid-6"><a href="/">yen!</a></h1>
-        <% if user_signed_in? %>
-          <div class="user_nav grid-6">
-            <span>
-              <ul class="user__info">
-                <li>
-                  <%= link_to "記録する", new_post_path, class: "post" %>
-                  <%= link_to "振り返る", new_user_registration_path, class: "post" %>
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                </li>
-              </ul>
-            </span>
-            <%= current_user.nickname %>さん、ログインありがとうございます！
-          </div>
-        <% else %>
-          <div class="grid-6">
-            <%= link_to "ログイン", new_user_session_path, class: "post" %>
-          </div>
-        <% end %>          
+    <header>
+      <div class="heading">
+        <h1 class="title"><a href="/">yen!</a></h1>
+      </div>
+      <div class="navbar">
+        <ul class="nav-lists">
+          <li><%= link_to '記録する', new_post_path, class: "left-button" %></li>
+          <li><%= link_to '振り返る', search_posts_path, class: "left-button"  %></li>
+        </ul>
+        <ul class="nav-lists">
+          <% if user_signed_in? %>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "button-session" %></li>
+          <% else %>
+            <li><%= link_to 'ログイン', new_user_session_path, class: "button-session" %></li>
+          <% end %>
+        </ul>
       </div>
     </header>
     <%= yield %>
     <footer>
       <p>
-        <b>yen! </b> by (link:Twi/Git)Asami119
+        <b>yen! </b> by <a href="#">(＊検討・link:Twi/Git)Asami119</a>
       </p>
     </footer>
   </body>
