@@ -26,7 +26,7 @@
 }
 
 .div-button-registration {
-  margin: 50px auto 90px;
+  margin: 50px auto;
 }
 
 .under-line {
@@ -37,6 +37,10 @@
 .heading-name {
   text-align: center;
   margin: 0 auto;
+}
+
+.h2-heading-name {
+  margin-top: 150px;
 }
 
 .heading-name-line {
