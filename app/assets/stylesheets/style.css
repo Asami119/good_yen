@@ -6,7 +6,7 @@ html {
 body {
   color: #333;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 120px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -35,11 +35,12 @@ header {
   position: fixed;
   background: linear-gradient(to right, #FFFFCC, #FFFFBB, #DDFFBA);
   border-radius: 10px;
+  font-size: 1.2rem;
 }
 
 .heading {
   width: 15%;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 .navbar {
@@ -69,4 +70,5 @@ footer {
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
   text-align: center;
   border-radius: 10px;
+  font-size: 1.2rem;
 }
