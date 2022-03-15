@@ -1,34 +1,34 @@
 <div>
   <%= form_with model: post, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
-    <div>
+    <div class="post-content">
       <%= f.label :date_of_post, '日付' %>
-      <span>必須</span>
-      <%= f.date_field :date_of_post %>
+      <span class="indispensable">必須</span><br>
+      <%= f.date_field :date_of_post, value: Date.today %>
     </div>
-    <div>
+    <div class="post-content">
       <%= f.label :price, '支出金額' %>
-      <span>必須</span><br /><span>半角で入力してください</span>
-      <%= f.text_field :price %><span>yen!（円）</span>
+      <span class="indispensable">必須</span><br>
+      <%= f.text_field :price, placeholder:'半角数字のみ' %> 円
     </div>
-    <div>
-      Good yen?：いいお金の使い方でしたか？
-      <span>必須</span><br />
+    <div class="post-content">
+      <b>Good yen?（いいお金の使い方でしたか？）</b>
+      <span class="indispensable">必須</span><br />
         <%= f.radio_button :select_yen, true %>
         <%= f.label :select_yen, 'はい！', value: true %>
         <%= f.radio_button :select_yen, false %>
         <%= f.label :select_yen, 'あと一歩', value: false %>
     </div>
-    <div>
-      <%= f.label :memo1, 'メモ①' %>
+    <div class="post-content">
+      <%= f.label :memo1, 'メモ①' %><br>
       <%= f.text_field :memo1, placeholder:'入力は任意です' %>
     </div>
-    <div>
-      <%= f.label :memo2, 'メモ②' %>
+    <div class="post-content">
+      <%= f.label :memo2, 'メモ②' %><br>
       <%= f.text_field :memo2, placeholder:'入力は任意です' %>
     </div>
     <div>
-      <%= f.submit '記録する' %>
+      <%= f.submit '記録する', class: "submit-button" %>
     </div>
   <% end %>
 </div>

@@ -1,20 +1,51 @@
-<%= render 'shared/header' %>
-<h3>支出を記録しましょう！</h3>
-<%= render partial: 'form', locals: { post: @post } %>
-
-<div>
-  <p>今月の支出記録：<%= @posts.length %>件</p>
-    <ul>
+<div class="contents">
+  <h2>
+    <i class="fa-solid fa-coins fa-lg fa-fw point" alt="コインのマーク"></i>
+    支出を記録しましょう！
+  </h2>
+  <div class="content">
+    <div class="heading-name">
+      <h2 class="h2-heading-name set-margin">送信フォーム</h2>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+    <%= render partial: 'form', locals: { post: @post } %>
+  </div>
+  <div class="content">
+    <div class="heading-name">
+      <h2 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの<%= Date.today.month %>月の支出</h2>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+    <div class="posts-list">
+      <%= @posts.length %>件 | 累計：円 | 1日平均:円
       <% @posts.each do |post| %>
-        <li><%= link_to '編集', edit_post_path(post.id) %></li>
-        <li><%= link_to '削除', post_path(post.id), method: :delete %></li>
-        <% if post.select_yen %>
-          <li><em>Good yen!</em></li>
-        <% end %>
-          <li><%= post.date_of_post %></li>
-          <li><%= post.memo1 %></li>
-          <li><%= post.memo2 %></li>
-          <li>¥<%= post.price %></li>
+        <table>
+          <tr>
+            <td class="set-width-logo">
+              <% if post.select_yen %>
+                <%= image_tag 'yen-logo.png', alt: "yen!アイコン", class: "yen-logo-list" %>
+              <% end %>
+            </td>
+            <td class="nowrap"><%= post.date_of_post %></td>
+            <td><%= post.memo1 %></td>
+            <td><%= post.memo2 %></td>
+            <td class="nowrap price"><%= post.price.to_s(:delimited) %>円</td>
+            <td class="set-width">
+              <%= link_to edit_post_path(post.id) do %>
+                <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
+              <% end %>
+            </td>
+            <td class="set-width">
+              <%= link_to  post_path(post.id), method: :delete do %>
+                <i class="fa-solid fa-trash fa-lg fa-fw" alt="削除のマーク"></i>
+              <% end %>
+            </td>
+          </tr>
+        </table>
       <% end %>
-    </ul>  
+    </div>
+  </div>
 </div>

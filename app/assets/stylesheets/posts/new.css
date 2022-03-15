@@ -1,0 +1,61 @@
+.indispensable {
+  background-color: #DDFFBA;
+  margin-left: 5px;
+  padding: 3px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.post-content {
+  margin-top: 10px;
+}
+
+.submit-button {
+  margin-top: 8px;
+  width: 80px;
+}
+
+.set-margin {
+  margin-top: 50px;
+}
+
+.posts-list {
+  margin: 50px auto;
+}
+
+.yen-logo-list {
+  height: 50px;
+}
+
+table {
+  width: 75vw;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  margin: 0 auto;
+}
+
+tr {
+  border-bottom: solid 1px #808080;
+}
+
+td {
+  height: 60px;
+}
+
+.set-width {
+  width: 30px;
+}
+
+.set-width-logo {
+  width: 60px;
+}
+
+.nowrap {
+  white-space: nowrap; /* 勝手に折り返さない */
+}
+
+.price {
+  text-align: right;
+}

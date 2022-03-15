@@ -1,8 +1,12 @@
 /* リセットCSS */
-body {
+html {
   font-size: 18px;
+}
+
+body {
   color: #333;
   margin: 0 auto;
+  padding-top: 120px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -23,18 +27,20 @@ a {
 /* ヘッダー */
 header {
   top: 0;
-  height: 80px;
-  width: 100%;
+  left: 0;
+  height: 90px;
+  width: 100vw;
   display: flex;
   padding: 10px, 0;
   position: fixed;
   background: linear-gradient(to right, #FFFFCC, #FFFFBB, #DDFFBA);
   border-radius: 10px;
+  font-size: 1.2rem;
 }
 
 .heading {
   width: 15%;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 .navbar {
@@ -59,8 +65,23 @@ li{
 
 /* フッター */
 footer {
-  height: 60px;
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
   text-align: center;
   border-radius: 10px;
+  font-size: 1.2rem;
+  height: 90px;
+  width: 100vw;
+}
+
+.yen-info {
+  padding-top: 15px;
+}
+
+.footer-nav-lists {
+  display: flex;
+  justify-content: center;
+}
+
+.info-link {
+  margin-right: 30px;
 }

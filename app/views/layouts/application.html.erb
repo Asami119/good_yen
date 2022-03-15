@@ -18,8 +18,14 @@
       </div>
       <div class="navbar">
         <ul class="nav-lists">
-          <li><%= link_to '記録する', new_post_path, class: "left-button" %></li>
-          <li><%= link_to '振り返る', search_posts_path, class: "left-button"  %></li>
+          <li>
+            <i class="fa-solid fa-angle-right fa-lg" alt="右のマーク"></i>
+            <%= link_to '記録する', new_post_path, class: "left-button" %>
+          </li>
+          <li>
+            <i class="fa-solid fa-angle-right fa-lg" alt="右のマーク"></i>
+            <%= link_to '振り返る', search_posts_path, class: "left-button"  %>
+          </li>
         </ul>
         <ul class="nav-lists">
           <% if user_signed_in? %>
@@ -32,9 +38,19 @@
     </header>
     <%= yield %>
     <footer>
-      <p>
+      <div class="yen-info">
         <b>yen! </b> by <a href="#">(＊検討・link:Twi/Git)Asami119</a>
-      </p>
+      </div>
+      <div class="footer-nav">
+        <ul class="footer-nav-lists">
+          <li>
+            <a href="#" class="info-link">利用規約</a>
+          </li>
+          <li>
+            <a href="#">プライバシーポリシー</a>
+          </li>
+        </ul>
+      </div>
     </footer>
   </body>
 </html>
