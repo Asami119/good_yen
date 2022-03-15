@@ -69,5 +69,19 @@ footer {
   text-align: center;
   border-radius: 10px;
   font-size: 1.2rem;
-  padding: 20px;
+  height: 90px;
+  width: 100vw;
+}
+
+.yen-info {
+  padding-top: 15px;
+}
+
+.footer-nav-lists {
+  display: flex;
+  justify-content: center;
+}
+
+.info-link {
+  margin-right: 30px;
 }
