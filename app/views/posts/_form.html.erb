@@ -4,7 +4,7 @@
     <div class="post-content">
       <%= f.label :date_of_post, '日付' %>
       <span class="indispensable">必須</span><br>
-      <%= f.date_field :date_of_post %>
+      <%= f.date_field :date_of_post, value: Date.today %>
     </div>
     <div class="post-content">
       <%= f.label :price, '支出金額' %>
