@@ -65,10 +65,9 @@ li{
 
 /* フッター */
 footer {
-  height: 60px;
-  width: 100vw;
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
   text-align: center;
   border-radius: 10px;
   font-size: 1.2rem;
+  padding: 20px;
 }
