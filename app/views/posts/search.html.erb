@@ -1,107 +1,108 @@
-<h3>支出記録を（絞り込み）検索する</h3>
-<h3><%= link_to 'トップへ', root_path %></h3>
-<%# 検索フォーム %>
-<div>
-  <%= search_form_for @q, url: search_posts_path do |f| %>
-    <div>
-      <%= f.label :date_of_post_gteq, '日付' %>
-      <%= f.date_field :date_of_post_gteq %> 〜
-      <%= f.date_field :date_of_post_lteq %>
-    </div>
-    <div>
-      <%= f.label :price_gteq, '支出金額' %>
-      <br>
-      <span>半角で入力してください</span>
-      <br>
-      ¥ <%= f.number_field :price_gteq %> 〜
-      <%= f.number_field :price_lteq %>
-    </div>
-    <div>
-      <em>Good yen?：いいお金の使い方でしたか？</em>
-      <br>
-      <%= f.radio_button :select_yen_eq, '' %>
-      <%= f.label :select_yen_eq, '指定なし', value: '' %>
-      <%= f.radio_button :select_yen_eq, true %>
-      <%= f.label :select_yen_eq, 'はい！', value: true %>
-      <%= f.radio_button :select_yen_eq, false %>
-      <%= f.label :select_yen_eq, 'あと一歩', value: false %>
-    </div>
-    <div>
-      <%= f.label :memo1, 'メモ①' %>
-      <br>
-      <%= f.search_field :memo1, placeholder: 'メモ①', value: params[:q]&.dig(:memo1) %>
-    </div>
-    <div>
-      <%= f.label :memo2, 'メモ②' %>
-      <br>
-      <%= f.search_field :memo2, placeholder: 'メモ②', value: params[:q]&.dig(:memo2) %>
-    </div>
-    <%= f.submit '検索' %>
-  <% end %>
-</div>
-<%# /検索フォーム %>
-<%# ドーナツグラフ %>
-<div>
-  <% unless @price_for_graph[:'good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
-    <%= pie_chart @price_for_graph, options = {
-      donut: true,
-      width: '400px',
-      height: '400px',
-      colors: ["#ACFF40", "#FFF33F"],
-      thousands: ",", 
-      suffix: "円",
-      library: {
-        title: {
-          text: "Good yen!<br>#{@price_true_percent}%",
-          align: 'center',
-          verticalAlign: 'middle'
-        },
-        plotOptions: {
-          pie: {
-            dataLabels: {
-              enabled: false
-            },
-            innerSize: '50%',
+<div class="contents">
+  <h3>支出記録を（絞り込み）検索する</h3>
+  <%# 検索フォーム %>
+  <div>
+    <%= search_form_for @q, url: search_posts_path do |f| %>
+      <div>
+        <%= f.label :date_of_post_gteq, '日付' %>
+        <%= f.date_field :date_of_post_gteq %> 〜
+        <%= f.date_field :date_of_post_lteq %>
+      </div>
+      <div>
+        <%= f.label :price_gteq, '支出金額' %>
+        <br>
+        <span>半角で入力してください</span>
+        <br>
+        ¥ <%= f.number_field :price_gteq %> 〜
+        <%= f.number_field :price_lteq %>
+      </div>
+      <div>
+        <em>Good yen?：いいお金の使い方でしたか？</em>
+        <br>
+        <%= f.radio_button :select_yen_eq, '' %>
+        <%= f.label :select_yen_eq, '指定なし', value: '' %>
+        <%= f.radio_button :select_yen_eq, true %>
+        <%= f.label :select_yen_eq, 'はい！', value: true %>
+        <%= f.radio_button :select_yen_eq, false %>
+        <%= f.label :select_yen_eq, 'あと一歩', value: false %>
+      </div>
+      <div>
+        <%= f.label :memo1, 'メモ①' %>
+        <br>
+        <%= f.search_field :memo1, placeholder: 'メモ①', value: params[:q]&.dig(:memo1) %>
+      </div>
+      <div>
+        <%= f.label :memo2, 'メモ②' %>
+        <br>
+        <%= f.search_field :memo2, placeholder: 'メモ②', value: params[:q]&.dig(:memo2) %>
+      </div>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+  <%# /検索フォーム %>
+  <%# ドーナツグラフ %>
+  <div>
+    <% unless @price_for_graph[:'good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
+      <%= pie_chart @price_for_graph, options = {
+        donut: true,
+        width: '400px',
+        height: '400px',
+        colors: ["#ACFF40", "#FFF33F"],
+        thousands: ",", 
+        suffix: "円",
+        library: {
+          title: {
+            text: "Good yen!<br>#{@price_true_percent}%",
+            align: 'center',
+            verticalAlign: 'middle'
+          },
+          plotOptions: {
+            pie: {
+              dataLabels: {
+                enabled: false
+              },
+              innerSize: '50%',
+            }
           }
         }
-      }
-    } %>
-  <% else %>
-    <h3>該当する支出記録はありません。</h3>
-  <% end %>
-  <%# /ドーナツグラフ %>
-  <%# 積み上げ棒グラフ %>
-  <% unless @price_year.zero? %>
-    <%= column_chart  @price_month, options = {
-      stacked: true,
-      width: '800px',
-      colors: ["#ACFF40", "#FFF33F"],
-      thousands: ",", 
-      suffix: "円"
-    } %>
-    <div>
-      <h4><%= Date.today.year %>年・支出金額の累計：<%= @price_year.to_s(:delimited) %>円</h4>
-      <h4>支出金額の月平均：<%= @price_month_average.to_s(:delimited) %>円</h4>
-    </div>
-  <% end %>
-  <%# /積み上げ棒グラフ %>
-</div>
-<%# 結果一覧 %>
-<div>
-  <p>検索結果：<%= @posts.length %>件</p>
-    <ul>
-      <% @posts.each do |post| %>
-        <li><%= link_to '編集', edit_post_path(post.id) %></li>
-        <li><%= link_to '削除', post_path(post.id), method: :delete %></li>
-        <% if post.select_yen %>
-          <li><em>Good yen!</em></li>
+      } %>
+    <% else %>
+      <h3>該当する支出記録はありません。</h3>
+    <% end %>
+    <%# /ドーナツグラフ %>
+    <%# 積み上げ棒グラフ %>
+    <% unless @price_year.zero? %>
+      <%= column_chart  @price_month, options = {
+        stacked: true,
+        width: '800px',
+        colors: ["#ACFF40", "#FFF33F"],
+        thousands: ",", 
+        suffix: "円"
+      } %>
+      <div>
+        <h4><%= Date.today.year %>年・支出金額の累計：<%= @price_year.to_s(:delimited) %>円</h4>
+        <h4>支出金額の月平均：<%= @price_month_average.to_s(:delimited) %>円</h4>
+      </div>
+    <% end %>
+    <%# /積み上げ棒グラフ %>
+  </div>
+  <%# 結果一覧 %>
+  <div>
+    <p>検索結果：<%= @posts.length %>件</p>
+      <ul>
+        <% @posts.each do |post| %>
+          <li><%= link_to '編集', edit_post_path(post.id) %></li>
+          <li><%= link_to '削除', post_path(post.id), method: :delete %></li>
+          <% if post.select_yen %>
+            <li><em>Good yen!</em></li>
+          <% end %>
+            <li><%= post.date_of_post %></li>
+            <li><%= post.memo1 %></li>
+            <li><%= post.memo2 %></li> 
+            <li>¥<%= post.price %></li> 
         <% end %>
-          <li><%= post.date_of_post %></li>
-          <li><%= post.memo1 %></li>
-          <li><%= post.memo2 %></li> 
-          <li>¥<%= post.price %></li> 
-      <% end %>
-    </ul>  
-  </p>
+      </ul>  
+    </p>
+  </div>
+  <%# /結果一覧 %>
 </div>
-<%# /結果一覧 %>

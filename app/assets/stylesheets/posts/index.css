@@ -1,6 +1,7 @@
 .contents {
   background-color: white;
   margin: 0 70px;
+  min-height: calc(100vh - 90px - 90px);
 }
 
 .yen-logo {
@@ -17,7 +18,7 @@
   border: 1px solid #808080;
 }
 
-.button-registration {
+.button-gradation {
   padding: 30px 120px;
   font-weight: bold;
   text-align: center;
