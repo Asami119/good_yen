@@ -2,12 +2,14 @@
   <div class="first-view">
     <%= image_tag 'yen-logo.png', alt: "yen!アイコン", class: "yen-logo" %>
     <div class="first-messages">
-      <h1>お金を、<br>もっと豊かに！</h1>
+      <h1>お金を、もっと豊かに！</h1>
       <p>
         yen!（エン）は、手軽に家計簿をつけたい方向けの、<span class="under-line">かんたん支出管理</span>サービスです。
         <br>支出を前向きにとらえ、<span class="under-line">豊かに実ったお金</span>にしていく仕組みが特徴です。
       </p>
-      <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-registration" %>
+      <div class="div-button-registration">
+        <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-registration" %>
+      </div>
     </div>
   </div>
   <%# ここがおすすめ %>

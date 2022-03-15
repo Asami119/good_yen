@@ -6,6 +6,7 @@ html {
 body {
   color: #333;
   margin: 0 auto;
+  padding-top: 100px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -26,6 +27,7 @@ a {
 /* ヘッダー */
 header {
   top: 0;
+  left: 0;
   height: 80px;
   width: 100vw;
   display: flex;
@@ -63,6 +65,7 @@ li{
 /* フッター */
 footer {
   height: 60px;
+  width: 100vw;
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
   text-align: center;
   border-radius: 10px;

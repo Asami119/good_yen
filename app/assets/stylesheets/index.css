@@ -1,22 +1,14 @@
 .contents {
   background-color: white;
-  margin: 30px;
-}
-
-.first-view {
-  margin: 80px 50px 0;
-  display: flex;
-  justify-content: center;
+  margin: 0 70px;
 }
 
 .yen-logo {
-  margin: 50px 0;
-  width: auto;
-  height: auto;
+  height: 35vh;
 }
 
 .first-messages {
-  margin: auto 0;
+  margin-top: 20px;
 }
 
 .button-session {
@@ -26,13 +18,15 @@
 }
 
 .button-registration {
-  padding: 15px 100px;
-  margin-top: 20px;
+  padding: 30px 120px;
   font-weight: bold;
   text-align: center;
   border-radius: 4px;
-  display: inline-block;
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
+}
+
+.div-button-registration {
+  margin: 50px auto 90px;
 }
 
 .under-line {
@@ -40,10 +34,6 @@
 }
 
 /* ここがおすすめ */
-.content {
-  margin: 0 50px;
-}
-
 .heading-name {
   text-align: center;
   margin: 0 auto;
@@ -55,11 +45,6 @@
   margin: 0 auto;
 }
 
-/* .messages {
-  display: block;
-  justify-content: center;
-} */
-
 .message {
   margin: 30px auto 60px;
 }
@@ -67,7 +52,6 @@
 .point {
   color: #FF9340;
 } 
-
 
 /* よくある質問 */
 .page-link {
