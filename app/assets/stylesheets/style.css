@@ -1,6 +1,9 @@
 /* リセットCSS */
-body {
+html {
   font-size: 18px;
+}
+
+body {
   color: #333;
   margin: 0 auto;
 }
