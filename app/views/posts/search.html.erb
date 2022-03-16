@@ -1,6 +1,17 @@
 <div class="contents">
-  <h3>支出記録を（絞り込み）検索する</h3>
+  <h2>
+    <i class="fa-solid fa-coins fa-lg fa-fw point" alt="コインのマーク"></i>
+    支出を振り返りましょう！
+  </h2>
   <%# 検索フォーム %>
+  <div class="content">
+    <div class="heading-name">
+      <h3 class="h2-heading-name set-margin">絞り込み検索フォーム</h3>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+  </div>
   <div>
     <%= search_form_for @q, url: search_posts_path do |f| %>
       <div>
@@ -40,7 +51,17 @@
     <% end %>
   </div>
   <%# /検索フォーム %>
+  <div class="content">
+    <div class="heading-name">
+      <h3 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの支出レポート</h3>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+  </div>
   <%# ドーナツグラフ %>
+  <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
+  <div>絞り込み条件：すべて</div>
   <div>
     <% unless @price_for_graph[:'good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
       <%= pie_chart @price_for_graph, options = {
@@ -69,8 +90,12 @@
     <% else %>
       <h3>該当する支出記録はありません。</h3>
     <% end %>
-    <%# /ドーナツグラフ %>
-    <%# 積み上げ棒グラフ %>
+  </div>
+  <%# /ドーナツグラフ %>
+  <%# 積み上げ棒グラフ %>
+  <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
+  <div>絞り込み条件：<%= Date.today.year %>年</div>
+  <div>
     <% unless @price_year.zero? %>
       <%= column_chart  @price_month, options = {
         stacked: true,
@@ -80,15 +105,18 @@
         suffix: "円"
       } %>
       <div>
-        <h4><%= Date.today.year %>年・支出金額の累計：<%= @price_year.to_s(:delimited) %>円</h4>
-        <h4>支出金額の月平均：<%= @price_month_average.to_s(:delimited) %>円</h4>
+        合計：<%= @price_year.to_s(:delimited) %>円 | 月平均：<%= @price_month_average.to_s(:delimited) %>円
       </div>
     <% end %>
-    <%# /積み上げ棒グラフ %>
   </div>
+  <%# /積み上げ棒グラフ %>
   <%# 結果一覧 %>
+  <div>
+    <i class="fa-solid fa-arrow-up-short-wide fa-lg fa-fw" alt="ソートのマーク"></i><br>
+    項目名のクリックで、並べ替えができます<br>
+    一覧：<%= @posts.length %>件
+  </div>
   <div class="posts-list">
-    <p><%= @posts.length %>件 | 累計：円 | 1日平均:円</p>
     <table>
       <thead>
         <tr>
