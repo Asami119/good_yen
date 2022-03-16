@@ -3,54 +3,6 @@
     <i class="fa-solid fa-coins fa-lg fa-fw point" alt="コインのマーク"></i>
     支出を振り返りましょう！
   </h2>
-  <%# 検索フォーム %>
-  <div class="content">
-    <div class="heading-name">
-      <h3 class="h2-heading-name set-margin">絞り込み検索フォーム</h3>
-    </div>
-    <ul class="messages">
-      <li class="heading-name-line"><li>
-    </ul>
-  </div>
-  <div>
-    <%= search_form_for @q, url: search_posts_path do |f| %>
-      <div>
-        <%= f.label :date_of_post_gteq, '日付' %>
-        <%= f.date_field :date_of_post_gteq %> 〜
-        <%= f.date_field :date_of_post_lteq %>
-      </div>
-      <div>
-        <%= f.label :price_gteq, '支出金額' %>
-        <br>
-        <span>半角で入力してください</span>
-        <br>
-        ¥ <%= f.number_field :price_gteq %> 〜
-        <%= f.number_field :price_lteq %>
-      </div>
-      <div>
-        <em>Good yen?：いいお金の使い方でしたか？</em>
-        <br>
-        <%= f.radio_button :select_yen_eq, '' %>
-        <%= f.label :select_yen_eq, '指定なし', value: '' %>
-        <%= f.radio_button :select_yen_eq, true %>
-        <%= f.label :select_yen_eq, 'はい！', value: true %>
-        <%= f.radio_button :select_yen_eq, false %>
-        <%= f.label :select_yen_eq, 'あと一歩', value: false %>
-      </div>
-      <div>
-        <%= f.label :memo1, 'メモ①' %>
-        <br>
-        <%= f.search_field :memo1, placeholder: 'メモ①', value: params[:q]&.dig(:memo1) %>
-      </div>
-      <div>
-        <%= f.label :memo2, 'メモ②' %>
-        <br>
-        <%= f.search_field :memo2, placeholder: 'メモ②', value: params[:q]&.dig(:memo2) %>
-      </div>
-      <%= f.submit '検索する' %>
-    <% end %>
-  </div>
-  <%# /検索フォーム %>
   <div class="content">
     <div class="heading-name">
       <h3 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの支出レポート</h3>
@@ -110,6 +62,54 @@
     <% end %>
   </div>
   <%# /積み上げ棒グラフ %>
+  <%# 検索フォーム %>
+  <div class="content">
+    <div class="heading-name">
+      <h3 class="h2-heading-name set-margin">絞り込み検索フォーム</h3>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+  </div>
+  <div>
+    <%= search_form_for @q, url: search_posts_path do |f| %>
+      <div>
+        <%= f.label :date_of_post_gteq, '日付' %>
+        <%= f.date_field :date_of_post_gteq %> 〜
+        <%= f.date_field :date_of_post_lteq %>
+      </div>
+      <div>
+        <%= f.label :price_gteq, '支出金額' %>
+        <br>
+        <span>半角で入力してください</span>
+        <br>
+        ¥ <%= f.number_field :price_gteq %> 〜
+        <%= f.number_field :price_lteq %>
+      </div>
+      <div>
+        <em>Good yen?：いいお金の使い方でしたか？</em>
+        <br>
+        <%= f.radio_button :select_yen_eq, '' %>
+        <%= f.label :select_yen_eq, '指定なし', value: '' %>
+        <%= f.radio_button :select_yen_eq, true %>
+        <%= f.label :select_yen_eq, 'はい！', value: true %>
+        <%= f.radio_button :select_yen_eq, false %>
+        <%= f.label :select_yen_eq, 'あと一歩', value: false %>
+      </div>
+      <div>
+        <%= f.label :memo1, 'メモ①' %>
+        <br>
+        <%= f.search_field :memo1, placeholder: 'メモ①', value: params[:q]&.dig(:memo1) %>
+      </div>
+      <div>
+        <%= f.label :memo2, 'メモ②' %>
+        <br>
+        <%= f.search_field :memo2, placeholder: 'メモ②', value: params[:q]&.dig(:memo2) %>
+      </div>
+      <%= f.submit '検索する' %>
+    <% end %>
+  </div>
+  <%# /検索フォーム %>
   <%# 結果一覧 %>
   <div>
     <i class="fa-solid fa-arrow-up-short-wide fa-lg fa-fw" alt="ソートのマーク"></i><br>
