@@ -36,12 +36,9 @@ table {
   margin: 0 auto;
 }
 
-tr {
-  border-bottom: solid 1px #808080;
-}
-
 td {
   height: 60px;
+  border-bottom: solid 1px #808080;
 }
 
 .set-width {

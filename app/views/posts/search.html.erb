@@ -36,7 +36,7 @@
         <br>
         <%= f.search_field :memo2, placeholder: 'メモ②', value: params[:q]&.dig(:memo2) %>
       </div>
-      <%= f.submit '検索' %>
+      <%= f.submit '検索する' %>
     <% end %>
   </div>
   <%# /検索フォーム %>
@@ -87,22 +87,24 @@
     <%# /積み上げ棒グラフ %>
   </div>
   <%# 結果一覧 %>
-  <div>
-    <p>検索結果：<%= @posts.length %>件</p>
-      <ul>
-        <% @posts.each do |post| %>
-          <li><%= link_to '編集', edit_post_path(post.id) %></li>
-          <li><%= link_to '削除', post_path(post.id), method: :delete %></li>
-          <% if post.select_yen %>
-            <li><em>Good yen!</em></li>
-          <% end %>
-            <li><%= post.date_of_post %></li>
-            <li><%= post.memo1 %></li>
-            <li><%= post.memo2 %></li> 
-            <li>¥<%= post.price %></li> 
-        <% end %>
-      </ul>  
-    </p>
+  <div class="posts-list">
+    <p><%= @posts.length %>件 | 累計：円 | 1日平均:円</p>
+    <table>
+      <thead>
+        <tr>
+          <th class="set-width-logo"><%= sort_link(@q, :select_yen, 'Good yen?') %></th>
+          <th><%= sort_link(@q, :date_of_post, '日付') %></th>
+          <th><%= sort_link(@q, :memo1, 'メモ①') %></th>
+          <th><%= sort_link(@q, :memo2, 'メモ②') %></th>
+          <th class="nowrap"><%= sort_link(@q, :price, '　金額') %></th>
+          <th class="set-width"></th>
+          <th class="set-width"></th>
+        </tr>
+      <thead>
+      <tbody>
+        <%= render partial: 'post_list', locals: { posts: @posts } %>
+      <tbody>
+    </table>
   </div>
   <%# /結果一覧 %>
 </div>

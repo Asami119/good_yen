@@ -21,31 +21,9 @@
     </ul>
     <div class="posts-list">
       <%= @posts.length %>件 | 累計：円 | 1日平均:円
-      <% @posts.each do |post| %>
-        <table>
-          <tr>
-            <td class="set-width-logo">
-              <% if post.select_yen %>
-                <%= image_tag 'yen-logo.png', alt: "yen!アイコン", class: "yen-logo-list" %>
-              <% end %>
-            </td>
-            <td class="nowrap"><%= post.date_of_post %></td>
-            <td><%= post.memo1 %></td>
-            <td><%= post.memo2 %></td>
-            <td class="nowrap price"><%= post.price.to_s(:delimited) %>円</td>
-            <td class="set-width">
-              <%= link_to edit_post_path(post.id) do %>
-                <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
-              <% end %>
-            </td>
-            <td class="set-width">
-              <%= link_to  post_path(post.id), method: :delete do %>
-                <i class="fa-solid fa-trash fa-lg fa-fw" alt="削除のマーク"></i>
-              <% end %>
-            </td>
-          </tr>
-        </table>
-      <% end %>
+      <table>
+        <%= render partial: 'post_list', locals: { posts: @posts } %>
+      </table>
     </div>
   </div>
 </div>
