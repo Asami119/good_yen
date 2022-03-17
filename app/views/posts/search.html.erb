@@ -83,8 +83,8 @@
         <br>
         <span>半角で入力してください</span>
         <br>
-        ¥ <%= f.number_field :price_gteq %> 〜
-        <%= f.number_field :price_lteq %>
+        <%= f.number_field :price_gteq %> 円〜
+        <%= f.number_field :price_lteq %> 円
       </div>
       <div>
         <em>Good yen?：いいお金の使い方でしたか？</em>
@@ -135,4 +135,46 @@
     </table>
   </div>
   <%# /結果一覧 %>
+  <%# 検索クエリ %>
+  <div>
+    <% if params[:q].present? %>
+      <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
+      絞り込み条件<br>
+      <% if params[:q][:date_of_post_gteq].present? %>
+        ・<%= params[:q][:date_of_post_gteq] %> から<br>
+      <% end %>
+
+      <% if params[:q][:date_of_post_lteq].present? %>
+        ・<%= params[:q][:date_of_post_lteq] %> まで<br>
+      <% end %>
+
+      <% if params[:q][:price_gteq].present? %>
+        ・<%= params[:q][:price_gteq] %>円 から<br>
+      <% end %>
+
+      <% if params[:q][:price_lteq].present? %>
+        ・<%= params[:q][:price_lteq] %>円 まで<br>
+      <% end %>
+
+      <% if params[:q][:select_yen_eq].present? %>
+        <% if params[:q][:select_yen_eq] == true %>
+          ・「Good yen!」のみ<br>
+        <% else %>
+          ・「あと一歩」のみ<br>
+        <% end %>
+      <% end %>
+
+      <% if params[:q][:memo1].present? %>
+        ・メモ①：<%= params[:q][:memo1] %><br>
+      <% end %>
+      
+      <% if params[:q][:memo2].present? %>
+        ・メモ②：<%= params[:q][:memo2] %><br>
+      <% end %>
+    <% else %>
+      <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
+      絞り込み条件：なし
+    <% end %>
+  </div>
+  <%# /検索クエリ %>
 </div>
