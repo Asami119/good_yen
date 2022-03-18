@@ -63,7 +63,7 @@ class Post < ApplicationRecord
     array_true.zip(array_false) do |t, f|
       count_month += 1 unless t.zero? && f.zero?
     end
-    
+
     count_max = [count_month, Date.today.month].max
     (price_year / count_max)
   end
