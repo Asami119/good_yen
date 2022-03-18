@@ -107,7 +107,7 @@
   <%# /検索クエリ %>
   <%# ドーナツグラフ %>
   <div>
-    <% unless @price_for_graph[:'good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
+    <% unless @price_for_graph[:'Good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
       <%= pie_chart @price_for_graph, options = {
         donut: true,
         width: '400px',
