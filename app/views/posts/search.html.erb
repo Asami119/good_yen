@@ -22,10 +22,8 @@
       <div>
         <%= f.label :price_gteq, '支出金額' %>
         <br>
-        <span>半角で入力してください</span>
-        <br>
-        <%= f.number_field :price_gteq %> 円〜
-        <%= f.number_field :price_lteq %> 円
+        <%= f.number_field :price_gteq, placeholder: '半角数字のみ' %> 円〜
+        <%= f.number_field :price_lteq, placeholder: '半角数字のみ' %> 円
       </div>
       <div>
         <em>Good yen?：いいお金の使い方でしたか？</em>
@@ -40,12 +38,12 @@
       <div>
         <%= f.label :memo1, 'メモ①' %>
         <br>
-        <%= f.search_field :memo1, placeholder: 'メモ①', value: params[:q]&.dig(:memo1) %>
+        <%= f.search_field :memo1, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo1) %>
       </div>
       <div>
         <%= f.label :memo2, 'メモ②' %>
         <br>
-        <%= f.search_field :memo2, placeholder: 'メモ②', value: params[:q]&.dig(:memo2) %>
+        <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2) %>
       </div>
       <%= f.submit '検索する' %>
     <% end %>
@@ -103,7 +101,7 @@
       <% end %>
     <% else %>
       <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
-      絞り込み条件：なし
+      絞り込み条件<br>・なし（すべて表示）
     <% end %>
   </div>
   <%# /検索クエリ %>
