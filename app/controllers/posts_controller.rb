@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @posts = Post.search_month(current_user.id)
+    @posts, @sum_price_month = Post.search_month(current_user.id)
   end
 
   def create

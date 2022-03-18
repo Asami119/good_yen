@@ -20,7 +20,7 @@
       <li class="heading-name-line"><li>
     </ul>
     <div class="posts-list">
-      <%= @posts.length %>件 | 累計：円 | 1日平均:円
+      <%= @posts.length %>件 | 合計：<%= @sum_price_month.to_s(:delimited) %>円
       <table>
         <%= render partial: 'post_list', locals: { posts: @posts } %>
       </table>
