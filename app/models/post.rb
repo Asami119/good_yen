@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   def self.search_month(current_user_id)
     @posts = Post.where(user_id: current_user_id).where(
       date_of_post: Date.today.beginning_of_month..Date.today.end_of_month
-    ).order(date_of_post: 'DESC')
+    ).order(date_of_post: :DESC, created_at: :DESC)
     @sum_price_month = @posts.sum(:price)
     [@posts, @sum_price_month]
   end
