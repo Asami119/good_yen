@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   def self.search_month(current_user_id)
     @posts = Post.where(user_id: current_user_id).where(
-      date_of_post: Date.today.beginning_of_month..Date.today.end_of_month
+      date_of_post: Time.now.beginning_of_month..Time.now.end_of_month
     ).order(date_of_post: :DESC, created_at: :DESC)
     @sum_price_month = @posts.sum(:price)
     [@posts, @sum_price_month]
@@ -22,14 +22,14 @@ class Post < ApplicationRecord
   end
 
   def self.calc_column(posts)
-    year = Date.today.year
+    year = Time.now.year
     data_year = posts.where(date_of_post: "#{year}-01-01".."#{year}-12-31")
     price_year = data_year.sum(:price)
     array_true = []
     array_false = []
 
     1.upto(12) do |i|
-      first_day_month = Date.new(year, i, 1)
+      first_day_month = Time.new(year, i, 1)
       month_post = data_year.where(date_of_post: first_day_month..first_day_month.end_of_month)
       sum_price_true = month_post.where(select_yen: true).sum(:price)
       sum_price_false = month_post.where(select_yen: false).sum(:price)
@@ -66,7 +66,7 @@ class Post < ApplicationRecord
       count_month += 1 unless t.zero? && f.zero?
     end
 
-    count_max = [count_month, Date.today.month].max
+    count_max = [count_month, Time.now.month].max
     (price_year / count_max)
   end
 end
