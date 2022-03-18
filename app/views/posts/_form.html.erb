@@ -2,18 +2,18 @@
   <%= form_with model: post, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <div class="post-content">
-      <%= f.label :date_of_post, '日付' %>
-      <span class="indispensable">必須</span><br>
+      <span class="indispensable">必須</span>
+      <%= f.label :date_of_post, '日付' %><br>
       <%= f.date_field :date_of_post, value: Date.today %>
     </div>
     <div class="post-content">
-      <%= f.label :price, '支出金額' %>
-      <span class="indispensable">必須</span><br>
+      <span class="indispensable">必須</span>
+      <%= f.label :price, '支出金額' %><br>
       <%= f.text_field :price, placeholder:'半角数字のみ' %> 円
     </div>
     <div class="post-content">
-      <b>Good yen?（いいお金の使い方でしたか？）</b>
-      <span class="indispensable">必須</span><br />
+      <span class="indispensable">必須</span>
+      <b>Good yen?（いいお金の使い方でしたか？）</b><br>
         <%= f.radio_button :select_yen, true %>
         <%= f.label :select_yen, 'はい！', value: true %>
         <%= f.radio_button :select_yen, false %>
