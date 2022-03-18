@@ -56,3 +56,7 @@ td {
 .price {
   text-align: right;
 }
+
+.form_memo {
+  resize: none;
+}

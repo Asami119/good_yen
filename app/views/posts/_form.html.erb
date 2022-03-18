@@ -21,11 +21,11 @@
     </div>
     <div class="post-content">
       <%= f.label :memo1, 'メモ①' %><br>
-      <%= f.text_field :memo1, placeholder:'入力は任意です' %>
+      <%= f.text_area :memo1, placeholder:'入力は任意です', class: 'form_memo' %>
     </div>
     <div class="post-content">
       <%= f.label :memo2, 'メモ②' %><br>
-      <%= f.text_field :memo2, placeholder:'入力は任意です' %>
+      <%= f.text_area :memo2, placeholder:'入力は任意です', class: 'form_memo' %>
     </div>
     <div>
       <%= f.submit '記録する', class: "submit-button" %>
