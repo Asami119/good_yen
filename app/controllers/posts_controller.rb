@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   def search
     set_memo_search
     @q = current_user.posts.ransack(params[:q])
-    @pagy, @posts = pagy(@q.result.order(date_of_post: 'DESC'), items: 10)
+    @pagy, @posts = pagy(@q.result.order(date_of_post: :DESC, created_at: :DESC), items: 10)
     @price_for_graph, @price_true_percent = Post.calc_donut(@posts)
     @price_month, @price_year = Post.calc_column(@posts)
 
