@@ -112,7 +112,7 @@
         donut: true,
         width: '400px',
         height: '400px',
-        colors: ["#8CFF1A", "#FFFF1A"],
+        colors: ["#ACFF40", "#FFF33F"],
         thousands: ",", 
         suffix: "円",
         label: "金額",
@@ -143,7 +143,7 @@
       <%= column_chart  @price_month, options = {
         stacked: true,
         width: '800px',
-        colors: ["#B3FF66", "#FFFF1A"],
+        colors: ["#ACFF40", "#FFF33F"],
         thousands: ",", 
         suffix: "円"
       } %>
@@ -166,9 +166,10 @@
   <%# /積み上げ棒グラフ・よこ %>
   <%# 結果一覧 %>
   <div>
-    一覧：<%= @posts.length %>件<br>
+    一覧：全<%= @count_post %>件<br>
     <i class="fa-solid fa-sort fa-lg fa-fw" alt="ソートのマーク"></i>
     「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
   </div>
   <div class="posts-list">
     <table>
@@ -184,7 +185,7 @@
         </tr>
       <thead>
       <tbody>
-        <%= render partial: 'post_list', locals: { posts: @posts } %>
+        <%= render partial: 'post_list', collection: @posts, as: "post" %>
       <tbody>
     </table>
   </div>

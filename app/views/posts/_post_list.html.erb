@@ -1,25 +1,23 @@
-<% posts.each do |post| %>
-  <tr>
-    <td class="set-width-logo">
-      <% if post.select_yen %>
-        <%= image_tag 'yen-logo.png', alt: "yen!アイコン", class: "yen-logo-list" %>
-      <% end %>
-    </td>
-    <td class="nowrap">
-      <%= post.date_of_post %>(<%= %w(日 月 火 水 木 金 土)[post.date_of_post.wday] %>)
-    </td>
-    <td><%= post.memo1 %></td>
-    <td><%= post.memo2 %></td>
-    <td class="nowrap price"><%= post.price.to_s(:delimited) %>円</td>
-    <td class="set-width">
-      <%= link_to edit_post_path(post.id) do %>
-        <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
-      <% end %>
-    </td>
-    <td class="set-width">
-      <%= link_to  post_path(post.id), method: :delete, data: { confirm: '削除してよろしいですか? この操作は取り消せません。' } do %>
-        <i class="fa-solid fa-trash fa-lg fa-fw" alt="削除のマーク"></i>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+<tr>
+  <td class="set-width-logo">
+    <% if post.select_yen %>
+      <%= image_tag 'yen-logo.png', alt: "yen!アイコン", class: "yen-logo-list" %>
+    <% end %>
+  </td>
+  <td class="nowrap">
+    <%= post.date_of_post %>(<%= %w(日 月 火 水 木 金 土)[post.date_of_post.wday] %>)
+  </td>
+  <td><%= post.memo1 %></td>
+  <td><%= post.memo2 %></td>
+  <td class="nowrap price"><%= post.price.to_s(:delimited) %>円</td>
+  <td class="set-width">
+    <%= link_to edit_post_path(post.id) do %>
+      <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
+    <% end %>
+  </td>
+  <td class="set-width">
+    <%= link_to  post_path(post.id), method: :delete, data: { confirm: '削除してよろしいですか? この操作は取り消せません。' } do %>
+      <i class="fa-solid fa-trash fa-lg fa-fw" alt="削除のマーク"></i>
+    <% end %>
+  </td>
+</tr>
