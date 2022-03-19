@@ -115,6 +115,7 @@
         colors: ["#ACFF40", "#FFF33F"],
         thousands: ",", 
         suffix: "円",
+        label: "金額",
         library: {
           title: {
             text: "Good yen!<br>#{@price_true_percent}%",
@@ -136,7 +137,7 @@
     <% end %>
   </div>
   <%# /ドーナツグラフ %>
-  <%# 積み上げ棒グラフ %>
+  <%# 積み上げ棒グラフ・たて %>
   <div>
     <% unless @price_year.zero? %>
       <%= column_chart  @price_month, options = {
@@ -148,7 +149,21 @@
       } %>
     <% end %>
   </div>
-  <%# /積み上げ棒グラフ %>
+  <%# /積み上げ棒グラフ・たて %>
+  <%# 積み上げ棒グラフ・よこ %>
+  <div>
+    <% unless @price_year.zero? %>
+      <%= bar_chart  @price_month, options = {
+        stacked: true,
+        width: '800px',
+        colors: ["#ACFF40", "#FFF33F"],
+        thousands: ",", 
+        suffix: "円",
+        legend: "top"
+      } %>
+    <% end %>
+  </div>
+  <%# /積み上げ棒グラフ・よこ %>
   <%# 結果一覧 %>
   <div>
     一覧：<%= @posts.length %>件<br>
