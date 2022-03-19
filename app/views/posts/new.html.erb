@@ -23,7 +23,7 @@
       <%= @posts.length %>件 | 合計：<%= @sum_price_month.to_s(:delimited) %>円
       <table>
         <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-        <%= render partial: 'post_list', locals: { posts: @posts } %>
+        <%= render partial: 'post_list', collection: @posts, as: "post" %>
       </table>
     </div>
   </div>

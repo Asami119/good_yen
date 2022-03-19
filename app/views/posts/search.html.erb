@@ -185,7 +185,7 @@
         </tr>
       <thead>
       <tbody>
-        <%= render partial: 'post_list', locals: { posts: @posts } %>
+        <%= render partial: 'post_list', collection: @posts, as: "post" %>
       <tbody>
     </table>
   </div>
