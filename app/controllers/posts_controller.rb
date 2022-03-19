@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @posts, @sum_price_month = Post.search_month(current_user.id)
     if @post.save
       redirect_to new_post_path
     else
