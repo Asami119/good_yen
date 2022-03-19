@@ -166,7 +166,7 @@
   <%# /積み上げ棒グラフ・よこ %>
   <%# 結果一覧 %>
   <div>
-    一覧：<%= @posts.length %>件<br>
+    一覧：全<%= @count_post %>件<br>
     <i class="fa-solid fa-sort fa-lg fa-fw" alt="ソートのマーク"></i>
     「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます
     <%== pagy_nav(@pagy) if @pagy.pages > 1 %>

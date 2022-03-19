@@ -8,13 +8,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    posts, @sum_price_month = Post.search_month(current_user.id)
+    posts, @sum_price_month, @count_post = Post.search_month(current_user.id)
     @pagy, @posts = pagy(posts, items: 5)
   end
 
   def create
     @post = Post.new(post_params)
-    posts, @sum_price_month = Post.search_month(current_user.id)
+    posts, @sum_price_month, @count_post = Post.search_month(current_user.id)
     @pagy, @posts = pagy(posts, items: 5)
 
     if @post.save
@@ -43,7 +43,9 @@ class PostsController < ApplicationController
   def search
     set_memo_search
     @q = current_user.posts.ransack(params[:q])
-    @pagy, @posts = pagy(@q.result.order(date_of_post: :DESC, created_at: :DESC), items: 10)
+    posts = @q.result.order(date_of_post: :DESC, created_at: :DESC)
+    @count_post = posts.count
+    @pagy, @posts = pagy(posts, items: 10)
     @price_for_graph, @price_true_percent = Post.calc_donut(@posts)
     @price_month, @price_year = Post.calc_column(@posts)
 

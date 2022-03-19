@@ -10,7 +10,8 @@ class Post < ApplicationRecord
       date_of_post: Time.now.beginning_of_month..Time.now.end_of_month
     ).order(date_of_post: :DESC, created_at: :DESC)
     @sum_price_month = @posts.sum(:price)
-    [@posts, @sum_price_month]
+    @count_post = @posts.count
+    [@posts, @sum_price_month, @count_post]
   end
 
   def self.calc_donut(posts)
