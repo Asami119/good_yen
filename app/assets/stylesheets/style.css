@@ -35,7 +35,7 @@ header {
   position: fixed;
   background: linear-gradient(to right, #FFFFCC, #FFFFBB, #DDFFBA);
   border-radius: 10px;
-  font-size: 1.2rem;
+  z-index: 1;
 }
 
 .heading {

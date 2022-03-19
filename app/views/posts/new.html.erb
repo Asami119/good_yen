@@ -5,7 +5,7 @@
   </h2>
   <div class="content">
     <div class="heading-name">
-      <h2 class="h2-heading-name set-margin">送信フォーム</h2>
+      <h3 class="h2-heading-name set-margin">送信フォーム</h3>
     </div>
     <ul class="messages">
       <li class="heading-name-line"><li>
@@ -14,38 +14,16 @@
   </div>
   <div class="content">
     <div class="heading-name">
-      <h2 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの<%= Date.today.month %>月の支出</h2>
+      <h3 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録（<%= Time.now.month %>月）</h3>
     </div>
     <ul class="messages">
       <li class="heading-name-line"><li>
     </ul>
     <div class="posts-list">
-      <%= @posts.length %>件 | 累計：円 | 1日平均:円
-      <% @posts.each do |post| %>
-        <table>
-          <tr>
-            <td class="set-width-logo">
-              <% if post.select_yen %>
-                <%= image_tag 'yen-logo.png', alt: "yen!アイコン", class: "yen-logo-list" %>
-              <% end %>
-            </td>
-            <td class="nowrap"><%= post.date_of_post %></td>
-            <td><%= post.memo1 %></td>
-            <td><%= post.memo2 %></td>
-            <td class="nowrap price"><%= post.price.to_s(:delimited) %>円</td>
-            <td class="set-width">
-              <%= link_to edit_post_path(post.id) do %>
-                <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
-              <% end %>
-            </td>
-            <td class="set-width">
-              <%= link_to  post_path(post.id), method: :delete do %>
-                <i class="fa-solid fa-trash fa-lg fa-fw" alt="削除のマーク"></i>
-              <% end %>
-            </td>
-          </tr>
-        </table>
-      <% end %>
+      <%= @posts.length %>件 | 合計：<%= @sum_price_month.to_s(:delimited) %>円
+      <table>
+        <%= render partial: 'post_list', locals: { posts: @posts } %>
+      </table>
     </div>
   </div>
 </div>

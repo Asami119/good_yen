@@ -1,6 +1,17 @@
 <div class="contents">
-  <h3>支出記録を（絞り込み）検索する</h3>
+  <h2>
+    <i class="fa-solid fa-coins fa-lg fa-fw point" alt="コインのマーク"></i>
+    支出を振り返りましょう！
+  </h2>
   <%# 検索フォーム %>
+  <div class="content">
+    <div class="heading-name">
+      <h3 class="h2-heading-name set-margin">検索フォーム</h3>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+  </div>
   <div>
     <%= search_form_for @q, url: search_posts_path do |f| %>
       <div>
@@ -11,10 +22,8 @@
       <div>
         <%= f.label :price_gteq, '支出金額' %>
         <br>
-        <span>半角で入力してください</span>
-        <br>
-        ¥ <%= f.number_field :price_gteq %> 〜
-        <%= f.number_field :price_lteq %>
+        <%= f.number_field :price_gteq, placeholder: '半角数字のみ' %> 円〜
+        <%= f.number_field :price_lteq, placeholder: '半角数字のみ' %> 円
       </div>
       <div>
         <em>Good yen?：いいお金の使い方でしたか？</em>
@@ -29,27 +38,84 @@
       <div>
         <%= f.label :memo1, 'メモ①' %>
         <br>
-        <%= f.search_field :memo1, placeholder: 'メモ①', value: params[:q]&.dig(:memo1) %>
+        <%= f.search_field :memo1, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo1) %>
       </div>
       <div>
         <%= f.label :memo2, 'メモ②' %>
         <br>
-        <%= f.search_field :memo2, placeholder: 'メモ②', value: params[:q]&.dig(:memo2) %>
+        <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2) %>
       </div>
-      <%= f.submit '検索' %>
+      <%= f.submit '検索する' %>
     <% end %>
   </div>
   <%# /検索フォーム %>
+  <div class="content">
+    <div class="heading-name">
+      <h3 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録</h3>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+  </div>
+  <% unless @price_year.zero? %>
+    <div>
+      合計：<%= @price_year.to_s(:delimited) %>円 | 月平均：<%= @price_month_average.to_s(:delimited) %>円
+    </div>
+  <% end %>
+  <%# 上記は要修正。今年以外の記録がある場合も表示する %>
+  <%# 検索クエリ %>
+  <div>
+    <% if params[:q].present? %>
+      <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
+      絞り込み条件<br>
+      <% if params[:q][:date_of_post_gteq].present? %>
+        ・<%= params[:q][:date_of_post_gteq] %> から<br>
+      <% end %>
+
+      <% if params[:q][:date_of_post_lteq].present? %>
+        ・<%= params[:q][:date_of_post_lteq] %> まで<br>
+      <% end %>
+
+      <% if params[:q][:price_gteq].present? %>
+        ・<%= params[:q][:price_gteq] %>円 から<br>
+      <% end %>
+
+      <% if params[:q][:price_lteq].present? %>
+        ・<%= params[:q][:price_lteq] %>円 まで<br>
+      <% end %>
+
+      <% if params[:q][:select_yen_eq].present? %>
+        <% if params[:q][:select_yen_eq] == true %>
+          ・「Good yen!」のみ<br>
+        <% else %>
+          ・「あと一歩」のみ<br>
+        <% end %>
+      <% end %>
+
+      <% if params[:q][:memo1].present? %>
+        ・メモ①：<%= params[:q][:memo1] %><br>
+      <% end %>
+      
+      <% if params[:q][:memo2].present? %>
+        ・メモ②：<%= params[:q][:memo2] %><br>
+      <% end %>
+    <% else %>
+      <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
+      絞り込み条件<br>・なし（すべて表示）
+    <% end %>
+  </div>
+  <%# /検索クエリ %>
   <%# ドーナツグラフ %>
   <div>
-    <% unless @price_for_graph[:'good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
+    <% unless @price_for_graph[:'Good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
       <%= pie_chart @price_for_graph, options = {
         donut: true,
         width: '400px',
         height: '400px',
-        colors: ["#ACFF40", "#FFF33F"],
+        colors: ["#8CFF1A", "#FFFF1A"],
         thousands: ",", 
         suffix: "円",
+        label: "金額",
         library: {
           title: {
             text: "Good yen!<br>#{@price_true_percent}%",
@@ -69,40 +135,58 @@
     <% else %>
       <h3>該当する支出記録はありません。</h3>
     <% end %>
-    <%# /ドーナツグラフ %>
-    <%# 積み上げ棒グラフ %>
+  </div>
+  <%# /ドーナツグラフ %>
+  <%# 積み上げ棒グラフ・たて %>
+  <div>
     <% unless @price_year.zero? %>
       <%= column_chart  @price_month, options = {
         stacked: true,
         width: '800px',
-        colors: ["#ACFF40", "#FFF33F"],
+        colors: ["#B3FF66", "#FFFF1A"],
         thousands: ",", 
         suffix: "円"
       } %>
-      <div>
-        <h4><%= Date.today.year %>年・支出金額の累計：<%= @price_year.to_s(:delimited) %>円</h4>
-        <h4>支出金額の月平均：<%= @price_month_average.to_s(:delimited) %>円</h4>
-      </div>
     <% end %>
-    <%# /積み上げ棒グラフ %>
   </div>
+  <%# /積み上げ棒グラフ・たて %>
+  <%# 積み上げ棒グラフ・よこ %>
+  <div>
+    <% unless @price_year.zero? %>
+      <%= bar_chart  @price_month, options = {
+        stacked: true,
+        width: '800px',
+        colors: ["#ACFF40", "#FFF33F"],
+        thousands: ",", 
+        suffix: "円",
+        legend: "top"
+      } %>
+    <% end %>
+  </div>
+  <%# /積み上げ棒グラフ・よこ %>
   <%# 結果一覧 %>
   <div>
-    <p>検索結果：<%= @posts.length %>件</p>
-      <ul>
-        <% @posts.each do |post| %>
-          <li><%= link_to '編集', edit_post_path(post.id) %></li>
-          <li><%= link_to '削除', post_path(post.id), method: :delete %></li>
-          <% if post.select_yen %>
-            <li><em>Good yen!</em></li>
-          <% end %>
-            <li><%= post.date_of_post %></li>
-            <li><%= post.memo1 %></li>
-            <li><%= post.memo2 %></li> 
-            <li>¥<%= post.price %></li> 
-        <% end %>
-      </ul>  
-    </p>
+    一覧：<%= @posts.length %>件<br>
+    <i class="fa-solid fa-sort fa-lg fa-fw" alt="ソートのマーク"></i>
+    「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます
+  </div>
+  <div class="posts-list">
+    <table>
+      <thead>
+        <tr>
+          <th class="set-width-logo"><%= sort_link(@q, :select_yen, 'Good yen?') %></th>
+          <th><%= sort_link(@q, :date_of_post, '日付') %></th>
+          <th><%= sort_link(@q, :memo1, 'メモ①') %></th>
+          <th><%= sort_link(@q, :memo2, 'メモ②') %></th>
+          <th class="nowrap"><%= sort_link(@q, :price, '　金額') %></th>
+          <th class="set-width"></th>
+          <th class="set-width"></th>
+        </tr>
+      <thead>
+      <tbody>
+        <%= render partial: 'post_list', locals: { posts: @posts } %>
+      <tbody>
+    </table>
   </div>
   <%# /結果一覧 %>
 </div>

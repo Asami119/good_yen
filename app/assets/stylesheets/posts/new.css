@@ -1,6 +1,6 @@
 .indispensable {
   background-color: #DDFFBA;
-  margin-left: 5px;
+  margin-right: 5px;
   padding: 3px;
   border-radius: 2px;
   font-size: 0.9rem;
@@ -29,19 +29,17 @@
 }
 
 table {
-  width: 75vw;
+  width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
   text-align: center;
   margin: 0 auto;
 }
 
-tr {
-  border-bottom: solid 1px #808080;
-}
-
 td {
   height: 60px;
+  border-top: solid 1px #808080;
+  border-bottom: solid 1px #808080;
 }
 
 .set-width {
@@ -58,4 +56,8 @@ td {
 
 .price {
   text-align: right;
+}
+
+.form_memo {
+  resize: none;
 }
