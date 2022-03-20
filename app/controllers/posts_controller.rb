@@ -50,6 +50,12 @@ class PostsController < ApplicationController
     @price_month, @price_year = Post.calc_column(@posts)
 
     @price_month_average = Post.calc_month_average(@price_month, @price_year) unless @price_year.zero?
+
+    if params[:export_csv]
+      send_posts_csv(posts)
+    else
+      render :search
+    end
   end
 
   private
@@ -75,5 +81,18 @@ class PostsController < ApplicationController
 
     squished_keywords = params[:q][:memo2].squish
     params[:q][:memo2_cont_any] = squished_keywords.split(' ')
+  end
+
+  def send_posts_csv(posts)
+    csv_data = CSV.generate do |csv|
+      header = %w(日付 金額 Good_yen? メモ1 メモ2)
+      csv << header
+
+      posts.each do |post|
+        values = [post.date_of_post, post.price, post.select_yen, post.memo1, post.memo2]
+        csv << values
+      end
+    end
+    send_data(csv_data, filename: "記録一覧#{Time.now.strftime("%Y%m%d")}.csv")
   end
 end

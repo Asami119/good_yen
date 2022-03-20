@@ -45,7 +45,12 @@
         <br>
         <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2) %>
       </div>
-      <%= f.submit '検索する' %>
+      <%= f.button class: 'btn btn-default btn-primary' do %>
+        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" alt="検索のマーク"></i>検索
+      <% end %>
+      <%= f.button class: 'btn btn-default', name: 'export_csv' do %>
+        <i class="fa-solid fa-file-lines fa-lg fa-fw" alt="ファイルのマーク"></i>CSV出力
+      <% end %>
     <% end %>
   </div>
   <%# /検索フォーム %>
