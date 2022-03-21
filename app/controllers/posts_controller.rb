@@ -84,7 +84,8 @@ class PostsController < ApplicationController
   end
 
   def send_posts_csv(posts)
-    csv_data = CSV.generate do |csv|
+    bom ="\xEF\xBB\xBF"
+    csv_data = CSV.generate(bom, :force_quotes => true) do |csv|
       header = %w(日付 金額 Good_yen? メモ1 メモ2)
       csv << header
 
