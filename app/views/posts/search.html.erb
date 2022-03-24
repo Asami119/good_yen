@@ -19,19 +19,19 @@
     <%= search_form_for @q, url: search_posts_path do |f| %>
       <div>
         <%= f.label :date_of_post_gteq, '日付' %>
-        <%= f.date_field :date_of_post_gteq %> 〜
-        <%= f.date_field :date_of_post_lteq %>
+        <%= f.date_field :date_of_post_gteq, id: "date1" %> 〜
+        <%= f.date_field :date_of_post_lteq, id: "date2" %>
       </div>
       <div>
         <%= f.label :price_gteq, '支出金額' %>
         <br>
-        <%= f.number_field :price_gteq, placeholder: '半角数字のみ' %> 円〜
-        <%= f.number_field :price_lteq, placeholder: '半角数字のみ' %> 円
+        <%= f.number_field :price_gteq, placeholder: '半角数字のみ', id: "price1" %> 円〜
+        <%= f.number_field :price_lteq, placeholder: '半角数字のみ', id: "price2" %> 円
       </div>
       <div>
         <em>Good yen?：いいお金の使い方でしたか？</em>
         <br>
-        <%= f.radio_button :select_yen_eq, '' %>
+        <%= f.radio_button :select_yen_eq, '', id: "select_yen" %>
         <%= f.label :select_yen_eq, '指定なし', value: '' %>
         <%= f.radio_button :select_yen_eq, true %>
         <%= f.label :select_yen_eq, '「Good yen!」のみ', value: true %>
@@ -41,12 +41,12 @@
       <div>
         <%= f.label :memo1, 'メモ①' %>
         <br>
-        <%= f.search_field :memo1, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo1) %>
+        <%= f.search_field :memo1, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo1), id: "memo1" %>
       </div>
       <div>
         <%= f.label :memo2, 'メモ②' %>
         <br>
-        <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2) %>
+        <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2), id: "memo2" %>
       </div>
       <%= f.button class: 'btn btn-default btn-primary' do %>
         <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
@@ -63,8 +63,11 @@
       <%= f.button class: 'btn btn-default', name: 'show_bar' do %>
         <i class="fa-solid fa-chart-simple fa-lg fa-fw bar_rotate" alt="横向き棒グラフ"></i>月ごと
       <% end %>
-      <%= f.submit "clear", type: :reset %>
     <% end %>
+    <a href="/" id="reset_btn">
+      <i class="fa-solid fa-arrow-rotate-right fa-lg fa-fw" aria-hidden="true"></i>
+      検索条件をクリア
+    </a>
   </div>
   <%# /検索フォーム %>
   <div class="content">
