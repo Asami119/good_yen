@@ -1,4 +1,4 @@
-function search (){
+function reset (){
   const resetButton = document.getElementById("reset_btn");
   resetButton.addEventListener("click", (e) => {
     e.preventDefault();
@@ -19,4 +19,4 @@ function search (){
   });
 };
 
-window.addEventListener('load', search);
+window.addEventListener('load', reset);
