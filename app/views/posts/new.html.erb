@@ -1,6 +1,6 @@
 <div class="contents">
   <h2>
-    <i class="fa-solid fa-coins fa-lg fa-fw point" alt="コインのマーク"></i>
+    <i class="fa-solid fa-coins fa-lg fa-fw point" aria-hidden="true"></i>
     支出を記録しましょう！
   </h2>
   <div class="content">
@@ -19,10 +19,10 @@
     <ul class="messages">
       <li class="heading-name-line"><li>
     </ul>
+    全<%= @count_post %>件 | 合計：<%= @sum_price_month.to_s(:delimited) %>円
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
     <div class="posts-list">
-      全<%= @count_post %>件 | 合計：<%= @sum_price_month.to_s(:delimited) %>円
       <table>
-        <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
         <%= render partial: 'post_list', collection: @posts, as: "post" %>
       </table>
     </div>
