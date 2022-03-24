@@ -11,11 +11,6 @@
   margin-top: 10px;
 }
 
-.submit-button {
-  margin-top: 8px;
-  width: 80px;
-}
-
 .set-margin {
   margin-top: 50px;
 }
@@ -64,4 +59,8 @@ td {
 
 .twitter {
   width: 2rem;
+}
+
+.bar_rotate {
+  transform: rotate(90deg);
 }
