@@ -19,15 +19,15 @@
       <div class="navbar">
         <ul class="nav-lists">
           <li>
-            <%= link_to '記録する', new_post_path, class: "left-button" %>
+            <%= link_to '記録する', new_post_path, class: "left-button nowrap" %>
           </li>
           <li>
-            <%= link_to '振り返る', search_posts_path, class: "left-button"  %>
+            <%= link_to '振り返る', search_posts_path, class: "left-button nowrap"  %>
           </li>
         </ul>
         <ul class="nav-lists">
           <% if user_signed_in? %>
-            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "button-session" %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "button-session nowrap" %></li>
           <% else %>
             <li><%= link_to 'ログイン', new_user_session_path, class: "button-session" %></li>
           <% end %>
