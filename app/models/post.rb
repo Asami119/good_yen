@@ -23,9 +23,9 @@ class Post < ApplicationRecord
   def self.calc_donut(posts)
     price_true = posts.where(select_yen: true).sum(:price)
     price_false = posts.where(select_yen: false).sum(:price)
-    total_price = (price_true + price_false).to_f
-    price_true_percent = (price_true / total_price * 100).floor(1)
-    [{ 'Good yen!': price_true, 'あと一歩': price_false }, price_true_percent]
+    price_total = (price_true + price_false).to_f
+    good_yen_percent = (price_true / price_total * 100).floor(1)
+    [{ 'Good yen!': price_true, 'あと一歩': price_false }, good_yen_percent]
   end
 
   def self.calc_column(posts)

@@ -1,8 +1,8 @@
 <div class="contents">
   <%= render partial: 'query', locals: { post: @post } %>
   <div>
-    <% unless @price_for_graph[:'Good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
-      <%= pie_chart @price_for_graph, options = {
+    <% unless @price_sums.dig(:'Good yen!').zero? && @price_sums.dig(:'あと一歩').zero? %>
+      <%= pie_chart @price_sums, options = {
         donut: true,
         width: '400px',
         height: '400px',
@@ -12,7 +12,7 @@
         label: "金額",
         library: {
           title: {
-            text: "Good yen!<br>#{@price_true_percent}%",
+            text: "Good yen!<br>#{@good_yen_percent}%",
             align: 'center',
             verticalAlign: 'middle'
           },

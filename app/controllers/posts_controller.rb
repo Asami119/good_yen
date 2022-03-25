@@ -46,7 +46,7 @@ class PostsController < ApplicationController
     posts = @q.result.order(date_of_post: :DESC, created_at: :DESC)
     @post_count, @price_sum = Post.calc_post(posts)
     @pagy, @posts = pagy(posts, items: 10)
-    @price_for_graph, @price_true_percent = Post.calc_donut(@posts)
+    @price_sums, @good_yen_percent = Post.calc_donut(posts)
     # @price_month = Post.calc_column(@posts)
 
     # @price_month_average = Post.calc_month_average(@price_month, @price_sum) unless @price_sum.zero?
