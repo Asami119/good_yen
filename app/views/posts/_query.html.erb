@@ -3,19 +3,19 @@
     <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>
     検索条件<br>
     <% if params[:q][:date_of_post_gteq].present? %>
-      ・<%= params[:q][:date_of_post_gteq] %> から<br>
+      ・<%= params[:q][:date_of_post_gteq] %> 〜<br>
     <% end %>
 
     <% if params[:q][:date_of_post_lteq].present? %>
-      ・<%= params[:q][:date_of_post_lteq] %> まで<br>
+      ・<%= params[:q][:date_of_post_lteq] %><br>
     <% end %>
 
     <% if params[:q][:price_gteq].present? %>
-      ・<%= params[:q][:price_gteq] %>円 から<br>
+      ・<%= params[:q][:price_gteq] %>円 〜<br>
     <% end %>
 
     <% if params[:q][:price_lteq].present? %>
-      ・<%= params[:q][:price_lteq] %>円 まで<br>
+      ・<%= params[:q][:price_lteq] %>円<br>
     <% end %>
 
     <% if params[:q][:select_yen_eq].present? %>

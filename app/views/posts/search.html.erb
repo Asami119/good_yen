@@ -9,7 +9,10 @@
   <%# 検索フォーム %>
   <div class="content">
     <div class="heading-name">
-      <h3 class="h2-heading-name set-margin">検索フォーム</h3>
+      <h3 class="h2-heading-name set-margin">
+        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>
+        検索フォーム
+      </h3>
     </div>
     <ul class="messages">
       <li class="heading-name-line"><li>
@@ -51,6 +54,9 @@
       <%= f.button class: 'btn btn-default btn-primary' do %>
         <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
       <% end %>
+      <%= f.button class: 'btn btn-default btn-primary' do %>
+        <i class="fa-solid fa-list fa-lg fa-fw" aria-hidden="true"></i>一覧
+      <% end %>
       <%= f.button class: 'btn btn-default', name: 'export_csv' do %>
         <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>CSV出力
       <% end %>
@@ -84,8 +90,6 @@
     </div>
   <% end %>
   <%# 上記は要修正。今年以外の記録がある場合も表示する %>
-
-
   <%# 結果一覧 %>
   <div>
     一覧：全<%= @count_post %>件<br>
