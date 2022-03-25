@@ -46,15 +46,17 @@ class PostsController < ApplicationController
     posts = @q.result.order(date_of_post: :DESC, created_at: :DESC)
     @post_count, @price_sum = Post.calc_post(posts)
     @pagy, @posts = pagy(posts, items: 10)
-    @price_sums, @price_true_percent = Post.calc_donut(posts)
 
     if params[:show_donut]
+      @price_sums, @price_true_percent = Post.calc_donut(posts)
       render :donut
-    elsif params[:show_column]
+    elsif params[:show_column] || params[:show_bar]
       @monthly_price_sums, @monthly_price_average = Post.calc_column_and_bar(params, posts, @price_sum)
-      render :column
-    elsif params[:show_bar]
-      render :bar
+      if params[:show_column]
+        render :column
+      else
+        render :bar
+      end
     elsif params[:export_csv]
       send_posts_csv(posts)
     else
