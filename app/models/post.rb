@@ -14,6 +14,12 @@ class Post < ApplicationRecord
     [@posts, @sum_price_month, @count_post]
   end
 
+  def self.calc_post(posts)
+    post_count = posts.count
+    price_sum = posts.sum(:price)
+    [post_count, price_sum]
+  end
+
   def self.calc_donut(posts)
     price_true = posts.where(select_yen: true).sum(:price)
     price_false = posts.where(select_yen: false).sum(:price)
@@ -25,7 +31,6 @@ class Post < ApplicationRecord
   def self.calc_column(posts)
     year = Time.now.year
     data_year = posts.where(date_of_post: "#{year}-01-01".."#{year}-12-31")
-    price_year = data_year.sum(:price)
     array_true = []
     array_false = []
 
@@ -45,29 +50,28 @@ class Post < ApplicationRecord
           data: array_true },
         { name: 'あと一歩',
           data: array_false }
-      ],
-      price_year
+      ]
     ]
   end
 
-  def self.calc_month_average(price_month, price_year)
-    array_true = []
-    array_false = []
-    count_month = 0
+  # def self.calc_month_average(price_month, sum_price)
+    # array_true = []
+    # array_false = []
+    # count_month = 0
 
-    price_month[0][:data].each do |data|
-      array_true << data[1]
-    end
+    # price_month[0][:data].each do |data|
+    #   array_true << data[1]
+    # end
 
-    price_month[1][:data].each do |data|
-      array_false << data[1]
-    end
+    # price_month[1][:data].each do |data|
+    #   array_false << data[1]
+    # end
 
-    array_true.zip(array_false) do |t, f|
-      count_month += 1 unless t.zero? && f.zero?
-    end
+    # array_true.zip(array_false) do |t, f|
+    #   count_month += 1 unless t.zero? && f.zero?
+    # end
 
-    count_max = [count_month, Time.now.month].max
-    (price_year / count_max)
-  end
+    # count_max = [count_month, Time.now.month].max
+    # (sum_price / count_max)
+  # end
 end

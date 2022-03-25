@@ -44,12 +44,12 @@ class PostsController < ApplicationController
     set_memo_search
     @q = current_user.posts.ransack(params[:q])
     posts = @q.result.order(date_of_post: :DESC, created_at: :DESC)
-    @count_post = posts.count
+    @post_count, @price_sum = Post.calc_post(posts)
     @pagy, @posts = pagy(posts, items: 10)
     @price_for_graph, @price_true_percent = Post.calc_donut(@posts)
-    @price_month, @price_year = Post.calc_column(@posts)
+    # @price_month = Post.calc_column(@posts)
 
-    @price_month_average = Post.calc_month_average(@price_month, @price_year) unless @price_year.zero?
+    # @price_month_average = Post.calc_month_average(@price_month, @price_sum) unless @price_sum.zero?
 
     if params[:show_donut]
       render :donut

@@ -22,7 +22,7 @@
     <ul class="messages">
       <li class="heading-name-line"><li>
     </ul>
-    全<%= @count_post %>件 | 合計：<%= @sum_price_month.to_s(:delimited) %>円
+    全<%= @post_count %>件 | 合計：<%= @sum_price_month.to_s(:delimited) %>円
     <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
     <div class="posts-list">
       <table>

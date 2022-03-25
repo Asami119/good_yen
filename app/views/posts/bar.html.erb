@@ -1,7 +1,7 @@
 <div class="contents">
   <%= render partial: 'query', locals: { post: @post } %>
   <div>
-    <% unless @price_year.zero? %>
+    <% unless @price_sum.zero? %>
       <%= bar_chart  @price_month, options = {
         stacked: true,
         width: '800px',
