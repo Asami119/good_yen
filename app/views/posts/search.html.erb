@@ -93,7 +93,7 @@
   <%# 上記は要修正。今年以外の記録がある場合も表示する %>
   <%# 結果一覧 %>
   <div>
-    一覧：全<%= @post_count %>件<br>
+    一覧：<%= @post_count %>件<br>
     <i class="fa-solid fa-sort fa-lg fa-fw" aria-hidden="true"></i>
     「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます
     <%== pagy_nav(@pagy) if @pagy.pages > 1 %>

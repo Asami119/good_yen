@@ -24,54 +24,68 @@ class Post < ApplicationRecord
     price_true = posts.where(select_yen: true).sum(:price)
     price_false = posts.where(select_yen: false).sum(:price)
     price_total = (price_true + price_false).to_f
-    good_yen_percent = (price_true / price_total * 100).floor(1)
-    [{ 'Good yen!': price_true, 'あと一歩': price_false }, good_yen_percent]
+    price_true_percent = (price_true / price_total * 100).floor(1)
+    [{ 'Good yen!': price_true, 'あと一歩': price_false }, price_true_percent]
   end
 
-  def self.calc_column(posts)
-    year = Time.now.year
-    data_year = posts.where(date_of_post: "#{year}-01-01".."#{year}-12-31")
-    array_true = []
-    array_false = []
+  def self.set_month(posts, year, first_month, last_month, price_true_sums, price_false_sums)
+    first_month.upto(last_month) do |i|
+      first_day = Time.new(year, i, 1)
+      month_post = posts.where(date_of_post: first_day..first_day.end_of_month)
+      price_true = month_post.where(select_yen: true).sum(:price)
+      price_false = month_post.where(select_yen: false).sum(:price)
 
-    1.upto(12) do |i|
-      first_day_month = Time.new(year, i, 1)
-      month_post = data_year.where(date_of_post: first_day_month..first_day_month.end_of_month)
-      sum_price_true = month_post.where(select_yen: true).sum(:price)
-      sum_price_false = month_post.where(select_yen: false).sum(:price)
+      price_true_sums.push(["#{year}-#{i}月", price_true])
+      price_false_sums.push(["#{year}-#{i}月", price_false])
+    end
+    [price_true_sums, price_false_sums]
+  end
 
-      array_true.push(["#{i}月", sum_price_true])
-      array_false.push(["#{i}月", sum_price_false])
+  def self.calc_monthly_average(monthly_price_sums, price_sum)
+    month_count = monthly_price_sums.dig(0, :data).count
+    monthly_price_average = price_sum / month_count
+  end
+
+  def self.calc_column_and_bar(params, posts, price_sum)
+    if params.dig(:q, :date_of_post_gteq).present?
+      gteq = params.dig(:q, :date_of_post_gteq).to_date
+    else
+      gteq = posts.last[:date_of_post]
     end
 
-    [
-      [
-        { name: 'Good yen!',
-          data: array_true },
-        { name: 'あと一歩',
-          data: array_false }
-      ]
-    ]
+    if params.dig(:q, :date_of_post_lteq).present?
+      lteq = params.dig(:q, :date_of_post_lteq).to_date
+    else
+      lteq = posts.first[:date_of_post]
+    end
+
+    old_year = gteq.year
+    old_month = gteq.month
+    new_year = lteq.year
+    new_month = lteq.month
+
+    price_true_sums = []
+    price_false_sums = []
+
+    if old_year == new_year
+      set_month(posts, old_year, old_month, new_month, price_true_sums, price_false_sums)
+    else
+      january = 1
+      december = 12
+
+      set_month(posts, old_year, old_month, december, price_true_sums, price_false_sums)
+      old_year += 1
+      while old_year != new_year
+        set_month(posts, old_year, january, december, price_true_sums, price_false_sums)
+        old_year += 1
+      end
+      set_month(posts, old_year, january, new_month, price_true_sums, price_false_sums)
+    end
+
+    monthly_price_sums = [{ name: 'Good yen!', data: price_true_sums }, { name: 'あと一歩', data: price_false_sums }]
+    monthly_price_average = calc_monthly_average(monthly_price_sums, price_sum)
+    [monthly_price_sums, monthly_price_average]
   end
 
-  # def self.calc_month_average(price_month, sum_price)
-    # array_true = []
-    # array_false = []
-    # count_month = 0
-
-    # price_month[0][:data].each do |data|
-    #   array_true << data[1]
-    # end
-
-    # price_month[1][:data].each do |data|
-    #   array_false << data[1]
-    # end
-
-    # array_true.zip(array_false) do |t, f|
-    #   count_month += 1 unless t.zero? && f.zero?
-    # end
-
-    # count_max = [count_month, Time.now.month].max
-    # (sum_price / count_max)
-  # end
+  private_class_method :set_month, :calc_monthly_average
 end

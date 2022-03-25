@@ -2,7 +2,7 @@
   <%= render partial: 'query', locals: { post: @post } %>
   <div>
     <% unless @price_sum.zero? %>
-      <%= bar_chart  @price_month, options = {
+      <%= bar_chart  @monthly_price_sums, options = {
         stacked: true,
         width: '800px',
         colors: ["#ACFF40", "#FFF33F"],
@@ -12,4 +12,5 @@
       } %>
     <% end %>
   </div>
+  <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円 | 月平均：<%= @monthly_price_average.to_s(:delimited) %>円
 </div>

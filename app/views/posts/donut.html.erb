@@ -12,7 +12,7 @@
         label: "金額",
         library: {
           title: {
-            text: "Good yen!<br>#{@good_yen_percent}%",
+            text: "Good yen!<br>#{@price_true_percent}%",
             align: 'center',
             verticalAlign: 'middle'
           },
@@ -26,6 +26,7 @@
           }
         }
       } %>
+    <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円
     <% else %>
       <h3>該当する支出記録はありません。</h3>
     <% end %>
