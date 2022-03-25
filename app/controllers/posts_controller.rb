@@ -51,7 +51,13 @@ class PostsController < ApplicationController
 
     @price_month_average = Post.calc_month_average(@price_month, @price_year) unless @price_year.zero?
 
-    if params[:export_csv]
+    if params[:show_donut]
+      render :donut
+    elsif params[:show_column]
+      render :column
+    elsif params[:show_bar]
+      render :bar
+    elsif params[:export_csv]
       send_posts_csv(posts)
     else
       render :search

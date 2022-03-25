@@ -3,13 +3,13 @@
     <%= render 'shared/error_messages', model: f.object %>
     <div class="post-content">
       <span class="indispensable">必須</span>
-      <%= f.label :date_of_post, '日付' %><br>
+      <%= f.label :date_of_post, '日付' %>
       <%= f.date_field :date_of_post, value: Date.today %>
     </div>
     <div class="post-content">
       <span class="indispensable">必須</span>
-      <%= f.label :price, '支出金額' %><br>
-      <%= f.text_field :price, placeholder:'半角数字のみ' %> 円
+      <%= f.label :price, '支出金額' %>
+      <%= f.number_field :price, min: 1, placeholder:'半角数字のみ' %> 円
     </div>
     <div class="post-content">
       <span class="indispensable">必須</span>
@@ -20,15 +20,17 @@
         <%= f.label :select_yen, 'あと一歩', value: false %>
     </div>
     <div class="post-content">
-      <%= f.label :memo1, 'メモ①' %><br>
-      <%= f.text_area :memo1, placeholder:'入力は任意です', class: 'form_memo' %>
+      <%= f.label :memo1, 'メモ①' %>
+      <%= f.text_area :memo1, placeholder:'100文字まで', maxlength: 100, class: 'form_memo' %>
     </div>
     <div class="post-content">
-      <%= f.label :memo2, 'メモ②' %><br>
-      <%= f.text_area :memo2, placeholder:'入力は任意です', class: 'form_memo' %>
+      <%= f.label :memo2, 'メモ②' %>
+      <%= f.text_area :memo2, placeholder:'100文字まで', maxlength: 100, class: 'form_memo' %>
     </div>
     <div>
-      <%= f.submit '記録する', class: "submit-button" %>
+      <%= f.button name: "submit" do %>
+        <i class="fa-solid fa-seedling  fa-lg fa-fw" aria-hidden="true"></i>保存
+      <% end %>
     </div>
   <% end %>
 </div>

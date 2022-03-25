@@ -1,6 +1,6 @@
 <div class="contents">
   <h2>
-    <i class="fa-solid fa-coins fa-lg fa-fw point" alt="コインのマーク"></i>
+    <i class="fa-solid fa-coins fa-lg fa-fw point" aria-hidden="true"></i>
     支出を振り返りましょう！
   </h2>
   <a href="https://twitter.com/intent/tweet?url=https://good-yen.herokuapp.com/%0A&hashtags=yen,かんたん支出管理">
@@ -9,7 +9,10 @@
   <%# 検索フォーム %>
   <div class="content">
     <div class="heading-name">
-      <h3 class="h2-heading-name set-margin">検索フォーム</h3>
+      <h3 class="h2-heading-name set-margin">
+        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>
+        検索フォーム
+      </h3>
     </div>
     <ul class="messages">
       <li class="heading-name-line"><li>
@@ -19,42 +22,58 @@
     <%= search_form_for @q, url: search_posts_path do |f| %>
       <div>
         <%= f.label :date_of_post_gteq, '日付' %>
-        <%= f.date_field :date_of_post_gteq %> 〜
-        <%= f.date_field :date_of_post_lteq %>
+        <%= f.date_field :date_of_post_gteq, id: "date1" %> 〜
+        <%= f.date_field :date_of_post_lteq, id: "date2" %>
       </div>
       <div>
         <%= f.label :price_gteq, '支出金額' %>
         <br>
-        <%= f.number_field :price_gteq, placeholder: '半角数字のみ' %> 円〜
-        <%= f.number_field :price_lteq, placeholder: '半角数字のみ' %> 円
+        <%= f.number_field :price_gteq, placeholder: '半角数字のみ', id: "price1" %> 円〜
+        <%= f.number_field :price_lteq, placeholder: '半角数字のみ', id: "price2" %> 円
       </div>
       <div>
         <em>Good yen?：いいお金の使い方でしたか？</em>
         <br>
-        <%= f.radio_button :select_yen_eq, '' %>
+        <%= f.radio_button :select_yen_eq, '', id: "select_yen" %>
         <%= f.label :select_yen_eq, '指定なし', value: '' %>
         <%= f.radio_button :select_yen_eq, true %>
-        <%= f.label :select_yen_eq, 'はい！', value: true %>
+        <%= f.label :select_yen_eq, '「Good yen!」のみ', value: true %>
         <%= f.radio_button :select_yen_eq, false %>
-        <%= f.label :select_yen_eq, 'あと一歩', value: false %>
+        <%= f.label :select_yen_eq, '「あと一歩」のみ', value: false %>
       </div>
       <div>
         <%= f.label :memo1, 'メモ①' %>
         <br>
-        <%= f.search_field :memo1, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo1) %>
+        <%= f.search_field :memo1, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo1), id: "memo1" %>
       </div>
       <div>
         <%= f.label :memo2, 'メモ②' %>
         <br>
-        <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2) %>
+        <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2), id: "memo2" %>
       </div>
       <%= f.button class: 'btn btn-default btn-primary' do %>
-        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" alt="検索のマーク"></i>検索
+        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
+      <% end %>
+      <%= f.button class: 'btn btn-default btn-primary' do %>
+        <i class="fa-solid fa-list fa-lg fa-fw" aria-hidden="true"></i>一覧
       <% end %>
       <%= f.button class: 'btn btn-default', name: 'export_csv' do %>
-        <i class="fa-solid fa-file-lines fa-lg fa-fw" alt="ファイルのマーク"></i>CSV出力
+        <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>CSV出力
+      <% end %>
+      <%= f.button class: 'btn btn-default', name: 'show_donut' do %>
+        <i class="fa-solid fa-chart-pie fa-lg fa-fw" alt="円グラフ"></i>全体
+      <% end %>
+      <%= f.button class: 'btn btn-default', name: 'show_column' do %>
+        <i class="fa-solid fa-chart-simple fa-lg fa-fw" alt="縦向き棒グラフ"></i>月ごと
+      <% end %>
+      <%= f.button class: 'btn btn-default', name: 'show_bar' do %>
+        <i class="fa-solid fa-chart-simple fa-lg fa-fw bar_rotate" alt="横向き棒グラフ"></i>月ごと
       <% end %>
     <% end %>
+    <a href="/" id="reset_btn">
+      <i class="fa-solid fa-arrow-rotate-right fa-lg fa-fw" aria-hidden="true"></i>
+      検索条件をクリア
+    </a>
   </div>
   <%# /検索フォーム %>
   <div class="content">
@@ -71,111 +90,10 @@
     </div>
   <% end %>
   <%# 上記は要修正。今年以外の記録がある場合も表示する %>
-  <%# 検索クエリ %>
-  <div>
-    <% if params[:q].present? %>
-      <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
-      絞り込み条件<br>
-      <% if params[:q][:date_of_post_gteq].present? %>
-        ・<%= params[:q][:date_of_post_gteq] %> から<br>
-      <% end %>
-
-      <% if params[:q][:date_of_post_lteq].present? %>
-        ・<%= params[:q][:date_of_post_lteq] %> まで<br>
-      <% end %>
-
-      <% if params[:q][:price_gteq].present? %>
-        ・<%= params[:q][:price_gteq] %>円 から<br>
-      <% end %>
-
-      <% if params[:q][:price_lteq].present? %>
-        ・<%= params[:q][:price_lteq] %>円 まで<br>
-      <% end %>
-
-      <% if params[:q][:select_yen_eq].present? %>
-        <% if params[:q][:select_yen_eq] == true %>
-          ・「Good yen!」のみ<br>
-        <% else %>
-          ・「あと一歩」のみ<br>
-        <% end %>
-      <% end %>
-
-      <% if params[:q][:memo1].present? %>
-        ・メモ①：<%= params[:q][:memo1] %><br>
-      <% end %>
-      
-      <% if params[:q][:memo2].present? %>
-        ・メモ②：<%= params[:q][:memo2] %><br>
-      <% end %>
-    <% else %>
-      <i class="fa-solid fa-filter fa-lg fa-fw" alt="フィルターのマーク"></i>
-      絞り込み条件<br>・なし（すべて表示）
-    <% end %>
-  </div>
-  <%# /検索クエリ %>
-  <%# ドーナツグラフ %>
-  <div>
-    <% unless @price_for_graph[:'Good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
-      <%= pie_chart @price_for_graph, options = {
-        donut: true,
-        width: '400px',
-        height: '400px',
-        colors: ["#ACFF40", "#FFF33F"],
-        thousands: ",", 
-        suffix: "円",
-        label: "金額",
-        library: {
-          title: {
-            text: "Good yen!<br>#{@price_true_percent}%",
-            align: 'center',
-            verticalAlign: 'middle'
-          },
-          plotOptions: {
-            pie: {
-              dataLabels: {
-                enabled: false
-              },
-              innerSize: '50%',
-            }
-          }
-        }
-      } %>
-    <% else %>
-      <h3>該当する支出記録はありません。</h3>
-    <% end %>
-  </div>
-  <%# /ドーナツグラフ %>
-  <%# 積み上げ棒グラフ・たて %>
-  <div>
-    <% unless @price_year.zero? %>
-      <%= column_chart  @price_month, options = {
-        stacked: true,
-        width: '800px',
-        colors: ["#ACFF40", "#FFF33F"],
-        thousands: ",", 
-        suffix: "円"
-      } %>
-    <% end %>
-  </div>
-  <%# /積み上げ棒グラフ・たて %>
-  <%# 積み上げ棒グラフ・よこ %>
-  <div>
-    <% unless @price_year.zero? %>
-      <%= bar_chart  @price_month, options = {
-        stacked: true,
-        width: '800px',
-        colors: ["#ACFF40", "#FFF33F"],
-        thousands: ",", 
-        suffix: "円",
-        legend: "top"
-      } %>
-    <% end %>
-  </div>
-  <%# /積み上げ棒グラフ・よこ %>
   <%# 結果一覧 %>
   <div>
     一覧：全<%= @count_post %>件<br>
-    <i class="fa-solid fa-sort fa-lg fa-fw" alt="ソートのマーク"></i>
+    <i class="fa-solid fa-sort fa-lg fa-fw" aria-hidden="true"></i>
     「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます
     <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
   </div>

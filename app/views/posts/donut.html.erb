@@ -1,0 +1,33 @@
+<div class="contents">
+  <%= render partial: 'query', locals: { post: @post } %>
+  <div>
+    <% unless @price_for_graph[:'Good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
+      <%= pie_chart @price_for_graph, options = {
+        donut: true,
+        width: '400px',
+        height: '400px',
+        colors: ["#ACFF40", "#FFF33F"],
+        thousands: ",", 
+        suffix: "円",
+        label: "金額",
+        library: {
+          title: {
+            text: "Good yen!<br>#{@price_true_percent}%",
+            align: 'center',
+            verticalAlign: 'middle'
+          },
+          plotOptions: {
+            pie: {
+              dataLabels: {
+                enabled: false
+              },
+              innerSize: '50%',
+            }
+          }
+        }
+      } %>
+    <% else %>
+      <h3>該当する支出記録はありません。</h3>
+    <% end %>
+  </div>
+</div>

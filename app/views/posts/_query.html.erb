@@ -1,0 +1,41 @@
+<div>
+  <% if params[:q].present? %>
+    <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>
+    検索条件<br>
+    <% if params[:q][:date_of_post_gteq].present? %>
+      ・<%= params[:q][:date_of_post_gteq] %> 〜<br>
+    <% end %>
+
+    <% if params[:q][:date_of_post_lteq].present? %>
+      ・<%= params[:q][:date_of_post_lteq] %><br>
+    <% end %>
+
+    <% if params[:q][:price_gteq].present? %>
+      ・<%= params[:q][:price_gteq] %>円 〜<br>
+    <% end %>
+
+    <% if params[:q][:price_lteq].present? %>
+      ・<%= params[:q][:price_lteq] %>円<br>
+    <% end %>
+
+    <% if params[:q][:select_yen_eq].present? %>
+      <% if params[:q][:select_yen_eq] == "true" %>
+        ・「Good yen!」のみ<br>
+      <% else %>
+        ・「あと一歩」のみ<br>
+      <% end %>
+    <% end %>
+
+    <% if params[:q][:memo1].present? %>
+      ・メモ①：<%= params[:q][:memo1] %><br>
+    <% end %>
+    
+    <% if params[:q][:memo2].present? %>
+      ・メモ②：<%= params[:q][:memo2] %><br>
+    <% end %>
+  <% else %>
+    <i class="fa-solid fa-filter fa-lg fa-fw" aria-hidden="true"></i>
+    <%# 検索条件<br>・なし（すべて表示） %>
+    検索条件<br>・<%= @posts[0].date_of_post %>まで
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="contents">
+  <%= render partial: 'query', locals: { post: @post } %>
+  <div>
+    <% unless @price_year.zero? %>
+      <%= bar_chart  @price_month, options = {
+        stacked: true,
+        width: '800px',
+        colors: ["#ACFF40", "#FFF33F"],
+        thousands: ",", 
+        suffix: "円",
+        legend: "top"
+      } %>
+    <% end %>
+  </div>
+</div>
