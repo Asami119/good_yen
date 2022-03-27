@@ -84,10 +84,8 @@
   <% unless @price_sum.zero? %>
     <div>
       合計：<%= @price_sum.to_s(:delimited) %>円 
-      <%# | 月平均：<%= @price_month_average.to_s(:delimited) %>円 %>
     </div>
   <% end %>
-  <%# 上記は要修正。今年以外の記録がある場合も表示する %>
   <%# 結果一覧 %>
   <div>
     一覧：<%= @post_count %>件<br>
