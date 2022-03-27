@@ -43,7 +43,7 @@ class Post < ApplicationRecord
 
   def self.calc_monthly_average(monthly_price_sums, price_sum)
     month_count = monthly_price_sums.dig(0, :data).count
-    monthly_price_average = price_sum / month_count
+    (price_sum / month_count)
   end
 
   def self.calc_column_and_bar(params, posts, price_sum)
