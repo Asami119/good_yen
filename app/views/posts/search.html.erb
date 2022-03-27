@@ -19,7 +19,7 @@
     </ul>
   </div>
   <div>
-    <%= search_form_for @q, url: search_posts_path do |f| %>
+    <%= search_form_for @q, url: search_posts_path(anchor: 'post_list') do |f| %>
       <div>
         <%= f.label :date_of_post_gteq, '日付' %>
         <%= f.date_field :date_of_post_gteq, id: "date1" %> 〜
@@ -52,9 +52,6 @@
         <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2), id: "memo2" %>
       </div>
       <%= f.button class: 'btn btn-default btn-primary' do %>
-        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
-      <% end %>
-      <%= f.button class: 'btn btn-default btn-primary' do %>
         <i class="fa-solid fa-list fa-lg fa-fw" aria-hidden="true"></i>一覧
       <% end %>
       <%= f.button class: 'btn btn-default', name: 'export_csv' do %>
@@ -76,7 +73,7 @@
     </a>
   </div>
   <%# /検索フォーム %>
-  <div class="content">
+  <div class="content" id="post_list">
     <div class="heading-name">
       <h3 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録</h3>
     </div>

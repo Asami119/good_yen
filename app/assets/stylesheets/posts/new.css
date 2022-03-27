@@ -64,3 +64,12 @@ td {
 .bar_rotate {
   transform: rotate(90deg);
 }
+
+.content {
+  padding-top: 90px;
+}
+
+.post_list {
+  margin-top: -90px;
+  padding-top: 90px;
+}
