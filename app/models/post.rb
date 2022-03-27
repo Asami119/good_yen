@@ -47,17 +47,16 @@ class Post < ApplicationRecord
   end
 
   def self.calc_column_and_bar(params, posts, price_sum)
-    if params.dig(:q, :date_of_post_gteq).present?
-      gteq = params.dig(:q, :date_of_post_gteq).to_date
-    else
-      gteq = posts.last[:date_of_post]
-    end
-
-    if params.dig(:q, :date_of_post_lteq).present?
-      lteq = params.dig(:q, :date_of_post_lteq).to_date
-    else
-      lteq = posts.first[:date_of_post]
-    end
+    gteq = if params.dig(:q, :date_of_post_gteq).present?
+             params.dig(:q, :date_of_post_gteq).to_date
+           else
+             posts.last[:date_of_post]
+           end
+    lteq = if params.dig(:q, :date_of_post_lteq).present?
+             params.dig(:q, :date_of_post_lteq).to_date
+           else
+             posts.first[:date_of_post]
+           end
 
     old_year = gteq.year
     old_month = gteq.month
@@ -72,7 +71,6 @@ class Post < ApplicationRecord
     else
       january = 1
       december = 12
-
       set_month(posts, old_year, old_month, december, price_true_sums, price_false_sums)
       old_year += 1
       while old_year != new_year
