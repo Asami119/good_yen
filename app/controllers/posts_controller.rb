@@ -8,15 +8,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    posts, @sum_price_month, @count_post = Post.search_month(current_user.id)
-    @pagy, @posts = pagy(posts, items: 5)
+    set_list
   end
 
   def create
     @post = Post.new(post_params)
-    posts, @sum_price_month, @count_post = Post.search_month(current_user.id)
-    @pagy, @posts = pagy(posts, items: 5)
-
+    set_list
     if @post.save
       redirect_to new_post_path
     else
@@ -68,6 +65,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:date_of_post, :select_yen, :price, :memo1, :memo2).merge(user_id: current_user.id)
+  end
+
+  def set_list
+    posts, @sum_price_month, @count_post = Post.search_month(current_user.id)
+    @pagy, @posts = pagy(posts, items: 10)
   end
 
   def set_post
