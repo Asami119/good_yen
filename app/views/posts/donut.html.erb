@@ -1,8 +1,8 @@
 <div class="contents">
   <%= render partial: 'query', locals: { post: @post } %>
   <div>
-    <% unless @price_for_graph[:'Good yen!'].zero? && @price_for_graph[:'あと一歩'].zero? %>
-      <%= pie_chart @price_for_graph, options = {
+    <% unless @price_sums.dig(:'Good yen!').zero? && @price_sums.dig(:'あと一歩').zero? %>
+      <%= pie_chart @price_sums, options = {
         donut: true,
         width: '400px',
         height: '400px',
@@ -26,6 +26,7 @@
           }
         }
       } %>
+    <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円
     <% else %>
       <h3>該当する支出記録はありません。</h3>
     <% end %>

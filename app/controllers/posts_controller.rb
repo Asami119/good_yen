@@ -8,15 +8,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    posts, @sum_price_month, @count_post = Post.search_month(current_user.id)
-    @pagy, @posts = pagy(posts, items: 5)
+    set_list
   end
 
   def create
     @post = Post.new(post_params)
-    posts, @sum_price_month, @count_post = Post.search_month(current_user.id)
-    @pagy, @posts = pagy(posts, items: 5)
-
+    set_list
     if @post.save
       redirect_to new_post_path
     else
@@ -44,19 +41,19 @@ class PostsController < ApplicationController
     set_memo_search
     @q = current_user.posts.ransack(params[:q])
     posts = @q.result.order(date_of_post: :DESC, created_at: :DESC)
-    @count_post = posts.count
+    @post_count, @price_sum = Post.calc_post(posts)
     @pagy, @posts = pagy(posts, items: 10)
-    @price_for_graph, @price_true_percent = Post.calc_donut(@posts)
-    @price_month, @price_year = Post.calc_column(@posts)
-
-    @price_month_average = Post.calc_month_average(@price_month, @price_year) unless @price_year.zero?
 
     if params[:show_donut]
+      @price_sums, @price_true_percent = Post.calc_donut(posts)
       render :donut
-    elsif params[:show_column]
-      render :column
-    elsif params[:show_bar]
-      render :bar
+    elsif params[:show_column] || params[:show_bar]
+      @monthly_price_sums, @monthly_price_average = Post.calc_column_and_bar(params, posts, @price_sum)
+      if params[:show_column]
+        render :column
+      else
+        render :bar
+      end
     elsif params[:export_csv]
       send_posts_csv(posts)
     else
@@ -68,6 +65,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:date_of_post, :select_yen, :price, :memo1, :memo2).merge(user_id: current_user.id)
+  end
+
+  def set_list
+    posts, @monthly_price_sum, @monthly_post_count = Post.search_month(current_user.id)
+    @pagy, @posts = pagy(posts, items: 10)
   end
 
   def set_post

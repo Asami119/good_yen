@@ -3,8 +3,8 @@
     <i class="fa-solid fa-coins fa-lg fa-fw point" aria-hidden="true"></i>
     支出を振り返りましょう！
   </h2>
-  <a href="https://twitter.com/intent/tweet?url=https://good-yen.herokuapp.com/%0A&hashtags=yen,かんたん支出管理">
-    <%= image_tag '2021 Twitter logo - blue.png', alt: "Twitterのロゴ", class: "twitter" %>
+  <a href="https://twitter.com/intent/tweet?url=https://good-yen.herokuapp.com/%0A&hashtags=yen,かんたん支出管理" target="_blank">
+    <%= image_tag '2021 Twitter logo - blue.png', alt: "Twitterリンク", class: "twitter" %>
   </a>
   <%# 検索フォーム %>
   <div class="content">
@@ -19,7 +19,7 @@
     </ul>
   </div>
   <div>
-    <%= search_form_for @q, url: search_posts_path do |f| %>
+    <%= search_form_for @q, url: search_posts_path(anchor: 'post_list') do |f| %>
       <div>
         <%= f.label :date_of_post_gteq, '日付' %>
         <%= f.date_field :date_of_post_gteq, id: "date1" %> 〜
@@ -54,9 +54,6 @@
       <%= f.button class: 'btn btn-default btn-primary' do %>
         <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
       <% end %>
-      <%= f.button class: 'btn btn-default btn-primary' do %>
-        <i class="fa-solid fa-list fa-lg fa-fw" aria-hidden="true"></i>一覧
-      <% end %>
       <%= f.button class: 'btn btn-default', name: 'export_csv' do %>
         <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>CSV出力
       <% end %>
@@ -76,7 +73,7 @@
     </a>
   </div>
   <%# /検索フォーム %>
-  <div class="content">
+  <div class="content" id="post_list">
     <div class="heading-name">
       <h3 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録</h3>
     </div>
@@ -84,15 +81,16 @@
       <li class="heading-name-line"><li>
     </ul>
   </div>
-  <% unless @price_year.zero? %>
+  <% unless @price_sum.zero? %>
     <div>
-      合計：<%= @price_year.to_s(:delimited) %>円 | 月平均：<%= @price_month_average.to_s(:delimited) %>円
+      合計：<%= @price_sum.to_s(:delimited) %>円 
+      <%# | 月平均：<%= @price_month_average.to_s(:delimited) %>円 %>
     </div>
   <% end %>
   <%# 上記は要修正。今年以外の記録がある場合も表示する %>
   <%# 結果一覧 %>
   <div>
-    一覧：全<%= @count_post %>件<br>
+    一覧：<%= @post_count %>件<br>
     <i class="fa-solid fa-sort fa-lg fa-fw" aria-hidden="true"></i>
     「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます
     <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
