@@ -28,17 +28,17 @@ class Post < ApplicationRecord
     [{ 'Good yen!': price_true, 'あと一歩': price_false }, price_true_percent]
   end
 
-  def self.set_month(posts, year, first_month, last_month, price_true_sums, price_false_sums)
+  def self.set_month(posts, year, first_month, last_month, array)
     first_month.upto(last_month) do |i|
       first_day = Time.new(year, i, 1)
       month_post = posts.select(:select_yen, :price).where(date_of_post: first_day..first_day.end_of_month)
       price_true = month_post.where(select_yen: true).sum(:price)
       price_false = month_post.where(select_yen: false).sum(:price)
 
-      price_true_sums.push(["#{year}-#{i}月", price_true])
-      price_false_sums.push(["#{year}-#{i}月", price_false])
+      array[0].push(["#{year}-#{i}月", price_true])
+      array[1].push(["#{year}-#{i}月", price_false])
     end
-    [price_true_sums, price_false_sums]
+    array
   end
 
   def self.calc_monthly_average(monthly_price_sums, price_sum)
@@ -65,19 +65,20 @@ class Post < ApplicationRecord
 
     price_true_sums = []
     price_false_sums = []
+    array = [price_true_sums, price_false_sums]
 
     if old_year == new_year
-      set_month(posts, old_year, old_month, new_month, price_true_sums, price_false_sums)
+      set_month(posts, old_year, old_month, new_month, array)
     else
       january = 1
       december = 12
-      set_month(posts, old_year, old_month, december, price_true_sums, price_false_sums)
+      set_month(posts, old_year, old_month, december, array)
       old_year += 1
       while old_year != new_year
-        set_month(posts, old_year, january, december, price_true_sums, price_false_sums)
+        set_month(posts, old_year, january, december, array)
         old_year += 1
       end
-      set_month(posts, old_year, january, new_month, price_true_sums, price_false_sums)
+      set_month(posts, old_year, january, new_month, array)
     end
 
     monthly_price_sums = [{ name: 'Good yen!', data: price_true_sums }, { name: 'あと一歩', data: price_false_sums }]
