@@ -52,7 +52,7 @@
         <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2), id: "memo2" %>
       </div>
       <%= f.button class: 'btn btn-default btn-primary' do %>
-        <i class="fa-solid fa-list fa-lg fa-fw" aria-hidden="true"></i>一覧
+        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
       <% end %>
       <%= f.button class: 'btn btn-default', name: 'export_csv' do %>
         <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>CSV出力
