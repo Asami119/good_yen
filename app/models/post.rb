@@ -9,9 +9,9 @@ class Post < ApplicationRecord
     @posts = Post.where(user_id: current_user_id).where(
       date_of_post: Time.now.beginning_of_month..Time.now.end_of_month
     ).order(date_of_post: :DESC, created_at: :DESC)
-    @sum_price_month = @posts.sum(:price)
-    @count_post = @posts.count
-    [@posts, @sum_price_month, @count_post]
+    @monthly_price_sum = @posts.sum(:price)
+    @monthly_post_count = @posts.count
+    [@posts, @monthly_price_sum, @monthly_post_count]
   end
 
   def self.calc_post(posts)

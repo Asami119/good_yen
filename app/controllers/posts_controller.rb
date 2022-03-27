@@ -68,7 +68,7 @@ class PostsController < ApplicationController
   end
 
   def set_list
-    posts, @sum_price_month, @count_post = Post.search_month(current_user.id)
+    posts, @monthly_price_sum, @monthly_post_count = Post.search_month(current_user.id)
     @pagy, @posts = pagy(posts, items: 10)
   end
 
