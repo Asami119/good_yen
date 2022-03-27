@@ -81,8 +81,7 @@ class Post < ApplicationRecord
     end
 
     monthly_price_sums = [{ name: 'Good yen!', data: price_true_sums }, { name: 'あと一歩', data: price_false_sums }]
-    monthly_price_average = calc_monthly_average(monthly_price_sums, price_sum)
-    [monthly_price_sums, monthly_price_average]
+    [monthly_price_sums, calc_monthly_average(monthly_price_sums, price_sum)]
   end
 
   private_class_method :set_month, :calc_monthly_average
