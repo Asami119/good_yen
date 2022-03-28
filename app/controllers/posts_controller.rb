@@ -22,11 +22,12 @@ class PostsController < ApplicationController
   end
 
   def edit
+    session[:previous_url] = request.referer || new_post_path
   end
 
   def update
     if @post.update(post_params)
-      redirect_to new_post_path
+      redirect_to session[:previous_url]
     else
       render :edit
     end
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to new_post_path
+    redirect_back(fallback_location: new_post_path)
   end
 
   def search
