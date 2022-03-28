@@ -39,6 +39,7 @@ class PostsController < ApplicationController
   end
 
   def search
+    binding.pry
     set_memo_search
     @q = current_user.posts.ransack(params[:q])
     posts = @q.result.order(date_of_post: :DESC, created_at: :DESC)

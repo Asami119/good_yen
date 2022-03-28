@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   def self.search_month(current_user_id)
     posts = Post.where(user_id: current_user_id).where(
-      date_of_post: Time.now.beginning_of_month..Time.now.end_of_month
+      date_of_post: Time.now.all_month
     ).order(date_of_post: :DESC, created_at: :DESC)
     monthly_price_sum = posts.sum(:price)
     monthly_post_count = posts.count
@@ -31,7 +31,7 @@ class Post < ApplicationRecord
   def self.set_month(posts, year, first_month, last_month, array)
     first_month.upto(last_month) do |i|
       first_day = Time.new(year, i, 1)
-      month_post = posts.select(:select_yen, :price).where(date_of_post: first_day..first_day.end_of_month)
+      month_post = posts.select(:select_yen, :price).where(date_of_post: first_day.all_month)
       price_true = month_post.where(select_yen: true).sum(:price)
       price_false = month_post.where(select_yen: false).sum(:price)
 
