@@ -7,8 +7,20 @@
   <td class="nowrap">
     <%= post.date_of_post %>(<%= %w(日 月 火 水 木 金 土)[post.date_of_post.wday] %>)
   </td>
-  <td><%= post.memo1 %></td>
-  <td><%= post.memo2 %></td>
+  <td>
+    <% if post.memo1.present? %>
+      <%= safe_join(post.memo1.split("\n"),tag(:br)) %>
+    <% else %>
+      <%= post.memo1 %>
+    <% end %>
+  </td>
+  <td>
+    <% if post.memo2.present? %>
+      <%= safe_join(post.memo2.split("\n"),tag(:br)) %>
+    <% else %>
+      <%= post.memo2 %>
+    <% end %>
+  </td>
   <td class="nowrap price"><%= post.price.to_s(:delimited) %>円</td>
   <td class="set-width">
     <%= link_to edit_post_path(post.id) do %>
