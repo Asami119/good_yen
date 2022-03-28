@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     set_list
     if @post.save
+      flash[:notice] = '1件の記録を「保存」しました。'
       redirect_to new_post_path
     else
       render :new
@@ -22,11 +23,13 @@ class PostsController < ApplicationController
   end
 
   def edit
+    session[:previous_url] = request.referer || new_post_path
   end
 
   def update
     if @post.update(post_params)
-      redirect_to new_post_path
+      flash[:notice] = '1件の記録を「変更」しました。'
+      redirect_to session[:previous_url]
     else
       render :edit
     end
@@ -34,7 +37,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to new_post_path
+    flash[:notice] = '1件の記録を「削除」しました。'
+    redirect_back(fallback_location: new_post_path)
   end
 
   def search
@@ -102,7 +106,7 @@ class PostsController < ApplicationController
         csv << values
       end
     end
-    time_now = Time.now.strftime('%Y%m%d-%H%M%S')
+    time_now = Time.now.strftime('%Y%m%d')
     send_data(csv_data, filename: "記録一覧#{time_now}.csv", type: :csv)
   end
 end

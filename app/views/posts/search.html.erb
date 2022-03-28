@@ -1,4 +1,5 @@
 <div class="contents">
+  <%= notice %>
   <h2>
     <i class="fa-solid fa-coins fa-lg fa-fw point" aria-hidden="true"></i>
     支出を振り返りましょう！
@@ -54,7 +55,7 @@
       <%= f.button class: 'btn btn-default btn-primary' do %>
         <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
       <% end %>
-      <%= f.button class: 'btn btn-default', name: 'export_csv' do %>
+      <%= f.button class: 'btn btn-default', name: 'export_csv', data: { confirm: "現在の条件で絞り込み、出力します。よろしいですか？\n（入力なしの場合、すべての記録が出力されます）"} do %>
         <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>CSV出力
       <% end %>
       <%= f.button class: 'btn btn-default', name: 'show_donut' do %>
@@ -84,10 +85,8 @@
   <% unless @price_sum.zero? %>
     <div>
       合計：<%= @price_sum.to_s(:delimited) %>円 
-      <%# | 月平均：<%= @price_month_average.to_s(:delimited) %>円 %>
     </div>
   <% end %>
-  <%# 上記は要修正。今年以外の記録がある場合も表示する %>
   <%# 結果一覧 %>
   <div>
     一覧：<%= @post_count %>件<br>
