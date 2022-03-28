@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     set_list
     if @post.save
-      flash[:notice] =  "1件の記録を「保存」しました。"
+      flash[:notice] = '1件の記録を「保存」しました。'
       redirect_to new_post_path
     else
       render :new
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] =  "1件の記録を「変更」しました。"
+      flash[:notice] = '1件の記録を「変更」しました。'
       redirect_to session[:previous_url]
     else
       render :edit
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:notice] =  "1件の記録を「削除」しました。"
+    flash[:notice] = '1件の記録を「削除」しました。'
     redirect_back(fallback_location: new_post_path)
   end
 
