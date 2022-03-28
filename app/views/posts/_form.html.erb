@@ -4,7 +4,11 @@
     <div class="post-content">
       <span class="indispensable">必須</span>
       <%= f.label :date_of_post, '日付' %>
-      <%= f.date_field :date_of_post, value: Date.today %>
+      <% if controller.action_name == 'new' %>
+        <%= f.date_field :date_of_post, value: Date.today %>
+      <% else %>
+        <%= f.date_field :date_of_post %>
+      <% end %>
     </div>
     <div class="post-content">
       <span class="indispensable">必須</span>
