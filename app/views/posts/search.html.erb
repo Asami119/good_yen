@@ -55,7 +55,7 @@
       <%= f.button class: 'btn btn-default btn-primary' do %>
         <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
       <% end %>
-      <%= f.button class: 'btn btn-default', name: 'export_csv' do %>
+      <%= f.button class: 'btn btn-default', name: 'export_csv', data: { confirm: "現在の条件で絞り込み、出力します。よろしいですか？\n（入力なしの場合、すべての記録が出力されます）"} do %>
         <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>CSV出力
       <% end %>
       <%= f.button class: 'btn btn-default', name: 'show_donut' do %>

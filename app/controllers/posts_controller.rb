@@ -106,7 +106,7 @@ class PostsController < ApplicationController
         csv << values
       end
     end
-    time_now = Time.now.strftime('%Y%m%d-%H%M%S')
+    time_now = Time.now.strftime('%Y%m%d')
     send_data(csv_data, filename: "記録一覧#{time_now}.csv", type: :csv)
   end
 end
