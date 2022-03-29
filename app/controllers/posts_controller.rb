@@ -49,10 +49,10 @@ class PostsController < ApplicationController
     @pagy, @posts = pagy(posts, items: 10)
 
     if params[:show_donut]
-      @price_sums, @price_true_percent = Post.calc_donut(posts)
+      @price_sums, @price_true_percent = Post.calc_donut(posts) if posts.present?
       render :donut
     elsif params[:show_column] || params[:show_bar]
-      @monthly_price_sums, @monthly_price_average = Post.calc_column_and_bar(params, posts, @price_sum)
+      @monthly_price_sums, @monthly_price_average = Post.calc_column_and_bar(params, posts, @price_sum) if posts.present?
       if params[:show_column]
         render :column
       else
