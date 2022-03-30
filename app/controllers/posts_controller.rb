@@ -47,12 +47,14 @@ class PostsController < ApplicationController
     posts = @q.result.order(date_of_post: :DESC, created_at: :DESC)
     @post_count, @price_sum = Post.calc_post(posts)
     @pagy, @posts = pagy(posts, items: 10)
+    @querys = Post.make_query(params[:q])
+    @period = Post.calc_period(current_user.id)
 
     if params[:show_donut]
-      @price_sums, @price_true_percent = Post.calc_donut(posts)
+      @price_sums, @price_true_percent = Post.calc_donut(posts) if posts.present?
       render :donut
     elsif params[:show_column] || params[:show_bar]
-      @monthly_price_sums, @monthly_price_average = Post.calc_column_and_bar(params, posts, @price_sum)
+      @monthly_price_sums, @monthly_price_average = Post.calc_column_and_bar(params, posts, @price_sum) if posts.present?
       if params[:show_column]
         render :column
       else
@@ -85,7 +87,7 @@ class PostsController < ApplicationController
   end
 
   def set_memo_search
-    if params[:q]&.dig(:memo1)
+    if params[:q]&.dig(:memo1).present?
       squished_keywords = params[:q][:memo1].squish
       params[:q][:memo1_cont_any] = squished_keywords.split(' ')
     end

@@ -85,5 +85,45 @@ class Post < ApplicationRecord
     [monthly_price_sums, calc_monthly_average(monthly_price_sums, price_sum)]
   end
 
+  def self.calc_period(current_user_id)
+    period = {}
+    posts = Post.select(:date_of_post).where(user_id: current_user_id).order(date_of_post: :DESC)
+    if posts.present?
+      first_post = posts.first[:date_of_post]
+      last_post = posts.last[:date_of_post]
+      day = (first_post - last_post + 1).to_i
+      period = { first_post: first_post, last_post: last_post, day: day }
+    end
+    period
+  end
+
+  def self.make_query(q)
+    querys = []
+    if q.blank?
+      querys << '・なし（すべて表示）'
+    else
+      if q[:date_of_post_gteq].present? || q[:date_of_post_lteq].present?
+        querys << "・#{q[:date_of_post_gteq]} 〜 #{q[:date_of_post_lteq]}"
+      end
+
+      if q[:price_gteq].present? && q[:price_lteq].present?
+        querys << "・#{q[:price_gteq].to_i.to_s(:delimited)}円 〜 #{q[:price_lteq].to_i.to_s(:delimited)}円"
+      else
+        querys << "・#{q[:price_gteq].to_i.to_s(:delimited)}円 〜" if q[:price_gteq].present?
+        querys << "・〜 #{q[:price_lteq].to_i.to_s(:delimited)}円" if q[:price_lteq].present?
+      end
+
+      if q[:select_yen_eq].present?
+        querys << '・「Good yen!」のみ' if q[:select_yen_eq] == 'true'
+        querys << '・「あと一歩」のみ' if q[:select_yen_eq] == 'false'
+      end
+
+      querys << "・メモ①：#{q[:memo1]}" if q[:memo1].present?
+      querys << "・メモ②：#{q[:memo2]}" if q[:memo2].present?
+      querys << '・なし（すべて表示）' if querys.blank?
+    end
+    querys
+  end
+
   private_class_method :set_month, :calc_monthly_average
 end

@@ -1,7 +1,7 @@
 <div class="contents">
-  <%= render partial: 'query', locals: { post: @post } %>
+  <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
   <div>
-    <% unless @price_sum.zero? %>
+    <% if @posts.present? %>
       <%= column_chart  @monthly_price_sums, options = {
         stacked: true,
         width: '800px',
@@ -10,6 +10,7 @@
         suffix: "円"
       } %>
     <% end %>
+    <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円 
+    <% if @monthly_price_average.present? %>| 月平均：<%= @monthly_price_average.to_s(:delimited) %>円<% end %>
   </div>
-  <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円 | 月平均：<%= @monthly_price_average.to_s(:delimited) %>円
 </div>
