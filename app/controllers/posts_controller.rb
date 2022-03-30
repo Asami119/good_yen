@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     posts = @q.result.order(date_of_post: :DESC, created_at: :DESC)
     @post_count, @price_sum = Post.calc_post(posts)
     @pagy, @posts = pagy(posts, items: 10)
-    @querys = Post.set_query(params[:q])
+    @querys = Post.make_query(params[:q])
     @period = Post.calc_period(current_user.id)
 
     if params[:show_donut]

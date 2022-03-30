@@ -92,12 +92,12 @@ class Post < ApplicationRecord
       first_post = posts.first[:date_of_post]
       last_post = posts.last[:date_of_post]
       day = (first_post - last_post + 1).to_i
-      period = {first_post: first_post, last_post: last_post, day: day}
+      period = { first_post: first_post, last_post: last_post, day: day }
     end
     period
   end
 
-  def self.set_query(q)
+  def self.make_query(q)
     querys = []
     if q.blank?
       querys << '・なし（すべて表示）'
@@ -114,8 +114,8 @@ class Post < ApplicationRecord
       end
 
       if q[:select_yen_eq].present?
-        querys << "・「Good yen!」のみ" if q[:select_yen_eq] == "true"
-        querys << "・「あと一歩」のみ" if q[:select_yen_eq] == "false"
+        querys << '・「Good yen!」のみ' if q[:select_yen_eq] == 'true'
+        querys << '・「あと一歩」のみ' if q[:select_yen_eq] == 'false'
       end
 
       querys << "・メモ①：#{q[:memo1]}" if q[:memo1].present?
