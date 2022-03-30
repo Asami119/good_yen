@@ -1,5 +1,5 @@
 <div class="contents">
-  <%= render partial: 'query', locals: { post: @post } %>
+  <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
   <div>
     <% if @posts.present? %>
       <%= pie_chart @price_sums, options = {
@@ -26,9 +26,7 @@
           }
         }
       } %>
-      <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円
-    <% else %>
-      <div>結果は0件です。</div>
     <% end %>
+    <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円
   </div>
 </div>

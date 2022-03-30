@@ -109,8 +109,8 @@ class Post < ApplicationRecord
       if q[:price_gteq].present? && q[:price_lteq].present?
         querys << "・#{q[:price_gteq].to_i.to_s(:delimited)}円 〜 #{q[:price_lteq].to_i.to_s(:delimited)}円"
       else
-        querys << "・#{q[:price_gteq].to_i.to_s(:delimited)}円〜" if q[:price_gteq].present?
-        querys << "・〜#{q[:price_lteq].to_i.to_s(:delimited)}円" if q[:price_lteq].present?
+        querys << "・#{q[:price_gteq].to_i.to_s(:delimited)}円 〜" if q[:price_gteq].present?
+        querys << "・〜 #{q[:price_lteq].to_i.to_s(:delimited)}円" if q[:price_lteq].present?
       end
 
       if q[:select_yen_eq].present?

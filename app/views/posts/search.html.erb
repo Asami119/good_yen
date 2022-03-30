@@ -82,10 +82,10 @@
       <ul class="messages">
         <li class="heading-name-line"><li>
       </ul>
+    <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
     <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円<br>
     <% if @posts.present? %>
-      <i class="fa-solid fa-sort fa-lg fa-fw" aria-hidden="true"></i>
-      「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます
+      「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます。
       <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
       <div class="posts-list">
         <table>
