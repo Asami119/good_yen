@@ -1,10 +1,6 @@
 /* リセットCSS */
-html {
-  font-size: 18px;
-}
-
 body {
-  color: #333;
+  color: #3b4043;
   margin: 0 auto;
   padding-top: 120px;
 }
@@ -20,7 +16,7 @@ ul,li {
 }
 
 a {
-  color: #333;
+  color: #3b4043;
   text-decoration: none;
 }
 
@@ -38,7 +34,7 @@ header {
   z-index: 1;
 }
 
-.heading {
+.header {
   width: 15%;
   margin-left: 20px;
 }
