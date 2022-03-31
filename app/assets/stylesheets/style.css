@@ -132,10 +132,6 @@ footer {
   margin: 0 auto;
 }
 
-.h2-heading-name {
-  margin-top: 150px;
-}
-
 .heading-name-line {
   width: 60vw;
   border-bottom: 1px solid #808080;
@@ -151,11 +147,6 @@ footer {
 } 
 
 /* よくある質問 */
-.page-link {
-  font-weight: bold;
-  border-bottom: dotted;
-}
-
 .indispensable {
   background-color: #DDFFBA;
   margin-right: 5px;
