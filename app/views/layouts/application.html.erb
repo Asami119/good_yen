@@ -18,12 +18,12 @@
   </head>
   <body>
     <header>
-      <div class="heading">
+      <div class="nav_left">
         <a href="/">
           <%= image_tag 'yen-logo.png', alt: "Topページリンク", class: "header-logo" %>
         </a>
       </div>
-      <div class="navbar">
+      <div class="nav_center">
         <ul class="nav-lists">
           <li>
             <%= link_to '記録する', new_post_path, class: "left-button nowrap" %>
@@ -31,12 +31,21 @@
           <li>
             <%= link_to '振り返る', search_posts_path, class: "left-button nowrap"  %>
           </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-seedling  fa-lg fa-fw" alt="思い出Good_yenリンク"></i></a>
+          </li>
         </ul>
+      </div>
+      <div class="nav_right">
         <ul class="nav-lists">
           <% if user_signed_in? %>
-            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "button-session nowrap" %></li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <li><button type="button" class="btn btn-outline-success nowrap">ログアウト</button></li>
+            <% end %>
           <% else %>
-            <li><%= link_to 'ログイン', new_user_session_path, class: "button-session" %></li>
+            <%= link_to new_user_session_path do %>
+              <li><button type="button" class="btn btn-outline-success nowrap">ログイン</button></li>
+            <% end %>
           <% end %>
         </ul>
       </div>

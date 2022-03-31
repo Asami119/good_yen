@@ -24,31 +24,41 @@ a {
 header {
   top: 0;
   left: 0;
-  height: 90px;
+  height: 80px;
   width: 100vw;
   display: flex;
+  justify-content: space-between;
   padding: 10px, 0;
   position: fixed;
   background: linear-gradient(to right, #FFFFCC, #FFFFBB, #DDFFBA);
-  border-radius: 10px;
   z-index: 1;
 }
 
-.header {
-  width: 15%;
-  margin-left: 20px;
+.header-logo {
+  width: 70px;
+  margin: 5px;
 }
 
-.navbar {
-  width: 85%;
-  margin-top: 6px;
-  padding: 20px;
+.nav_right {
+  display: flex;
+  margin-right: 10px;
+}
+.nav_center {
+  margin: auto 0;
+}
+
+.nav_right {
   display: flex;
   justify-content: space-between;
 }
 
+.nav_left {
+  width: 80px;
+}
+
 .nav-lists {
   display: flex;
+  margin: auto 0;
 }
 
 li{
@@ -56,19 +66,19 @@ li{
 }
 
 .left-button {
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 /* フッター */
 footer {
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
   text-align: center;
-  border-radius: 10px;
   font-size: 1.2rem;
   height: 90px;
   width: 100vw;
 }
 
+/* トップページ */
 .yen-info {
   padding-top: 15px;
 }
@@ -84,13 +94,8 @@ footer {
 
 .contents {
   background-color: white;
-  margin: 0 70px;
+  margin: 0 20px;
   min-height: calc(100vh - 90px - 90px);
-}
-
-.header-logo {
-  height: 70px;
-  margin: 10px 0;
 }
 
 .yen-logo {
@@ -99,12 +104,6 @@ footer {
 
 .first-messages {
   margin-top: 20px;
-}
-
-.button-session {
-  padding: 15px 15px;
-  border-radius: 4px;
-  border: 1px solid #808080;
 }
 
 .button-gradation {
