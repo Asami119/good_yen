@@ -4,6 +4,11 @@
   min-height: calc(100vh - 90px - 90px);
 }
 
+.header-logo {
+  height: 70px;
+  margin: 10px 0;
+}
+
 .yen-logo {
   height: 35vh;
 }
