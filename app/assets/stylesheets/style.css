@@ -94,16 +94,20 @@ footer {
 
 .contents {
   background-color: white;
-  margin: 0 20px;
   min-height: calc(100vh - 90px - 90px);
 }
 
 .yen-logo {
-  height: 35vh;
+  height: 200px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.first-messages {
-  margin-top: 20px;
+.copy {
+  text-align: center;
+}
+.first-message {
+  margin: 0 auto;
 }
 
 .button-gradation {
@@ -114,8 +118,8 @@ footer {
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
 }
 
-.div-button-registration {
-  margin: 50px auto;
+.button-registration {
+  margin: 40px auto;
 }
 
 .under-line {
