@@ -180,14 +180,12 @@ table {
   margin: 0 auto;
 }
 
-td {
-  height: 60px;
-  border-top: solid 1px #808080;
-  border-bottom: solid 1px #808080;
+.table-border {
+  border-bottom: 1px solid #808080;
 }
 
 .set-width {
-  width: 30px;
+  width: 60px;
 }
 
 .set-width-logo {
@@ -198,8 +196,13 @@ td {
   white-space: nowrap; /* 勝手に折り返さない */
 }
 
-.price {
+.align-right {
   text-align: right;
+}
+
+.post-list-memo {
+  word-break: break-all;
+  word-wrap: break-all;
 }
 
 .form_memo {

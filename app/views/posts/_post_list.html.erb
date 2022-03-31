@@ -1,5 +1,5 @@
 <tr>
-  <td class="set-width-logo">
+  <td rowspan="2" class="set-width-logo table-border">
     <% if post.select_yen %>
       <%= image_tag 'yen-logo.png', alt: "Good yen!", class: "yen-logo-list" %>
     <% end %>
@@ -7,29 +7,29 @@
   <td class="nowrap">
     <%= post.date_of_post %>(<%= %w(日 月 火 水 木 金 土)[post.date_of_post.wday] %>)
   </td>
-  <td>
+  <td class="nowrap align-right"><%= post.price.to_s(:delimited) %>円</td>
+  <td rowspan="2" class="set-width table-border align-right">
+    <%= link_to edit_post_path(post.id) do %>
+      <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
+    <% end %>
+    <%= link_to  post_path(post.id), method: :delete, data: { confirm: '削除してよろしいですか? この操作は取り消せません。' } do %>
+      <i class="fa-solid fa-trash fa-lg" alt="削除のマーク"></i>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td class="post-list-memo table-border">
     <% if post.memo1.present? %>
       <%= safe_join(post.memo1.split("\n"),tag(:br)) %>
     <% else %>
       <%= post.memo1 %>
     <% end %>
   </td>
-  <td>
+  <td class="post-list-memo table-border">
     <% if post.memo2.present? %>
       <%= safe_join(post.memo2.split("\n"),tag(:br)) %>
     <% else %>
       <%= post.memo2 %>
-    <% end %>
-  </td>
-  <td class="nowrap price"><%= post.price.to_s(:delimited) %>円</td>
-  <td class="set-width">
-    <%= link_to edit_post_path(post.id) do %>
-      <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
-    <% end %>
-  </td>
-  <td class="set-width">
-    <%= link_to  post_path(post.id), method: :delete, data: { confirm: '削除してよろしいですか? この操作は取り消せません。' } do %>
-      <i class="fa-solid fa-trash fa-lg fa-fw" alt="削除のマーク"></i>
     <% end %>
   </td>
 </tr>
