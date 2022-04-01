@@ -2,7 +2,7 @@
 body {
   color: #3b4043;
   margin: 0 auto;
-  padding-top: 120px;
+  padding-top: 90px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -107,11 +107,11 @@ footer {
   text-align: center;
 }
 .first-message {
-  margin: 0 auto;
+  text-align: center;
 }
 
 .button-gradation {
-  padding: 30px 120px;
+  padding: 30px 90px;
   font-weight: bold;
   text-align: center;
   border-radius: 4px;
@@ -119,7 +119,8 @@ footer {
 }
 
 .button-registration {
-  margin: 40px auto;
+  margin: 40px auto 100px;
+  text-align: center;
 }
 
 .under-line {
@@ -218,6 +219,14 @@ table {
   width: 60px;
 }
 
+.form_set_width_search {
+  width: 100px;
+}
+
+.form_set_height {
+  height: 50px;
+}
+
 .form_price_size {
   flex-grow: 1;
 }
@@ -243,10 +252,20 @@ table {
 }
 
 .content {
-  padding-top: 50px;
+  padding-top: 40px;
 }
 
 .post_list {
-  margin-top: -90px;
-  padding-top: 90px;
+  margin-top: -40px;
+  padding-top: 40px;
+}
+
+@media (max-width: 599px) {
+  .container {
+    font-size: 1.2rem;
+  }
+
+  .first-message {
+    text-align: left;
+  }
 }

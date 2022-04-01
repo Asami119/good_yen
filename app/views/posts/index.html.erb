@@ -5,18 +5,18 @@
         <%= image_tag 'yen-logo.png', alt: "yen!ロゴ", class: "yen-logo" %>
       </div>
       <h1 class="copy">お金を、豊かに！</h1>
-      <p>
+      <div class="first-message">
         yen!（エン）は、手軽に家計簿をつけたい方向けの、<span class="under-line">かんたん支出管理</span>サービスです。
-        <br>支出を前向きにとらえ、<span class="under-line">豊かに実ったお金</span>にしていく仕組みが特徴です。
-      </p>
-    </div>
-    <div class="row">
-      <div class="col-md-6 button-registration">
-        <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-gradation nowrap" %>
+      </div>
+      <div class="first-message">
+        支出を前向きにとらえ、<span class="under-line">豊かに実ったお金</span>にしていく仕組みが特徴です。
       </div>
     </div>
+    <div class="button-registration">
+      <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-gradation nowrap" %>
+    </div>
     <%# ここがおすすめ %>
-    <div class="content">
+    <div class="set-margin">
       <div class="heading-name">
         <h3 class="h2-heading-name">ここがおすすめ</h3>
       </div>
@@ -52,7 +52,7 @@
       </ul>
     </div>
     <%# よくある質問 %>
-    <div class="content">
+    <div class="set-margin">
       <div class="heading-name">
         <h3 class="h2-heading-name">よくある質問</h3>
       </div>
@@ -97,7 +97,7 @@
       </ul>
     </div>
     <%# お問い合わせ %>
-    <div class="content">
+    <div class="set-margin">
       <div class="heading-name">
         <h3 class="h2-heading-name">お問い合わせ</h3>
       </div>
