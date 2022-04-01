@@ -84,19 +84,13 @@
     <%# /検索フォーム %>
     <%# 結果一覧 %>
     <div class="content" id="post_list">
-      <div class="heading-name">
-        <h5 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録</h5>
-      </div>
-      <ul class="messages">
-        <li class="heading-name-line"><li>
-      </ul>
       <div class="align_center">
-      <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
-      <%= @post_count %> 件 | 合計：<%= @price_sum.to_s(:delimited) %>円<br>
+        <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
+        <%= @post_count %> 件 | 合計：<%= @price_sum.to_s(:delimited) %>円<br>
       </div>
       <% if @posts.present? %>
-        項目名を押すと、<b>並べ替え</b>ができます。
         <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+        <div class="sort_info">項目名を押すと、<b>並べ替え</b>ができます。</div>
         <div class="posts-list">
           <table>
             <thead>

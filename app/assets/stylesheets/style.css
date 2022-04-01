@@ -73,8 +73,7 @@ li{
 footer {
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
   text-align: center;
-  font-size: 1.2rem;
-  height: 90px;
+  height: 70px;
   width: 100vw;
 }
 
@@ -94,7 +93,7 @@ footer {
 
 .contents {
   background-color: white;
-  min-height: calc(100vh - 90px - 90px);
+  min-height: calc(100vh - 80px - 70px);
 }
 
 .yen-logo {
@@ -252,12 +251,17 @@ table {
 }
 
 .content {
-  padding-top: 40px;
+  padding-top: 80px;
 }
 
 .post_list {
-  margin-top: -40px;
-  padding-top: 40px;
+  margin-top: -80px;
+  padding-top: 80px;
+}
+
+.sort_info {
+  color: #28a745;
+  font-size: 0.9em;
 }
 
 @media (max-width: 599px) {

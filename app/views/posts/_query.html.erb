@@ -1,10 +1,17 @@
-<div>
-  <b><%= current_user.nickname %>さんの記録</b><br>
+<div class="heading-name">
+  <h5 class="h2-heading-name "><%= current_user.nickname %>さんの記録</h5>
+</div>
+<ul class="messages">
+  <li class="heading-name-line"><li>
+</ul>
+<div class="align_center">
   <% if period.present? %>
-    継続期間：<%= period[:day] %>日（<%= period[:first_post] %> 〜 <%= period[:last_post] %>）<br>
+    継続期間：<%= period[:day] %>日<br>（<%= period[:first_post] %> 〜 <%= period[:last_post] %>）<br>
   <% end %>
-  <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索条件<br>
-  <% querys.each do |query| %>
-    <%= query %><br>
-  <% end %>
+  <div class="form_post">
+    <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索条件<br>
+    <% querys.each do |query| %>
+      <%= query %><br>
+    <% end %>
+  </div>
 </div>
