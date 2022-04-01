@@ -1,11 +1,9 @@
-<div class="contents">
-  <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
-  <div>
+<div class="container">
+  <div class="contents">
+    <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
     <% if @posts.present? %>
       <%= pie_chart @price_sums, options = {
         donut: true,
-        width: '400px',
-        height: '400px',
         colors: ["#ACFF40", "#FFF33F"],
         thousands: ",", 
         suffix: "円",
@@ -27,6 +25,12 @@
         }
       } %>
     <% end %>
-    <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円
+    <div class="align_center">
+      <%= @post_count %> 件 | 合計：<%= @price_sum.to_s(:delimited) %>円<br>
+      <a href="https://twitter.com/intent/tweet?url=https://good-yen.herokuapp.com/%0A&hashtags=yen,かんたん支出管理" target="_blank">
+        <%= image_tag '2021 Twitter logo - blue.png', alt: "Twitterリンク", class: "twitter" %>
+        結果をツイート
+      </a>
+    </div>
   </div>
 </div>

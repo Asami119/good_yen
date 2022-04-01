@@ -91,7 +91,6 @@
       <% if @posts.present? %>
         <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
         <div class="sort_info">項目名を押すと、<b>並べ替え</b>ができます。</div>
-        <div class="posts-list">
           <table>
             <thead>
               <tr>
@@ -109,7 +108,6 @@
               <%= render partial: 'post_list', collection: @posts, as: "post" %>
             <tbody>
           </table>
-        </div>
         <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
       <% end %>
     </div>
