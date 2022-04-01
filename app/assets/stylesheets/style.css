@@ -156,16 +156,8 @@ footer {
   font-weight: bold;
 }
 
-.post-content {
-  margin-top: 10px;
-}
-
 .set-margin {
   margin-top: 50px;
-}
-
-.posts-list {
-  margin: 50px auto;
 }
 
 .yen-logo-list {
@@ -190,6 +182,7 @@ table {
 
 .set-width-logo {
   width: 60px;
+  height: 60px;
 }
 
 .nowrap {
@@ -205,6 +198,38 @@ table {
   word-wrap: break-all;
 }
 
+.form_post {
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid silver;
+  border-radius: 8px;
+}
+
+.align_center {
+  text-align: center;
+}
+
+.form_set_width_max {
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.form_set_width {
+  width: 60px;
+}
+
+.form_price_size {
+  flex-grow: 1;
+}
+
+.form_memo_size {
+  flex-grow: 1;
+}
+
+.form_align_left {
+  text-align: left;
+}
+
 .form_memo {
   resize: none;
 }
@@ -218,7 +243,7 @@ table {
 }
 
 .content {
-  padding-top: 90px;
+  padding-top: 50px;
 }
 
 .post_list {

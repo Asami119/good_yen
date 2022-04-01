@@ -1,36 +1,21 @@
 <div class="container">
   <div class="contents">
     <%= notice %>
-    <div class="content">
-      <div class="heading-name">
-        <h3 class="h2-heading-name set-margin">
-          <i class="fa-solid fa-calculator fa-lg fa-fw green" aria-hidden="true"></i>
-          記録フォーム
-        </h3>
-      </div>
-      <ul class="messages">
-        <li class="heading-name-line"><li>
-      </ul>
-      <%= render partial: 'form', locals: { post: @post } %>
-    </div>
     <%# 結果一覧 %>
-    <div class="content">
-      <div class="heading-name">
-        <h3 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録（<%= Time.now.month %>月）</h3>
-      </div>
-      <ul class="messages">
-        <li class="heading-name-line"><li>
-      </ul>
-      <%= @monthly_post_count %>件 | 合計：<%= @monthly_price_sum.to_s(:delimited) %>円
-      <% if @posts.present? %>
-        <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-        <div class="posts-list">
-          <table>
-            <%= render partial: 'post_list', collection: @posts, as: "post" %>
-          </table>
-        </div>
-      <% end %>
+    <%= render partial: 'form', locals: { post: @post } %>
+    <div class="heading-name">
+      <h5 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録（<%= Time.now.month %>月）</h5>
     </div>
-    <%# /結果一覧 %>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+    <div class="align_center"><%= @monthly_post_count %> 件 | 合計：<%= @monthly_price_sum.to_s(:delimited) %>円</div>
+    <% if @posts.present? %>
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+      <table>
+        <%= render partial: 'post_list', collection: @posts, as: "post" %>
+      </table>
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    <% end %>
   </div>
 </div>
