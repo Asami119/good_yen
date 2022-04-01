@@ -159,6 +159,9 @@ footer {
 .set-margin {
   margin-top: 50px;
 }
+.chart_set_margin {
+  margin: 20px 0;
+}
 
 .yen-logo-list {
   height: 50px;
@@ -244,6 +247,7 @@ table {
 
 .twitter {
   width: 2rem;
+  margin: 15px 0;
 }
 
 .bar_rotate {
