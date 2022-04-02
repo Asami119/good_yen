@@ -1,40 +1,58 @@
-<div>
+<h5 class="align_center">記録フォーム</h5>
+<div class="form_post">
   <%= form_with model: post, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
-    <div class="post-content">
-      <span class="indispensable">必須</span>
-      <%= f.label :date_of_post, '日付' %>
-      <% if controller.action_name == 'new' %>
-        <%= f.date_field :date_of_post, value: Date.today %>
-      <% else %>
-        <%= f.date_field :date_of_post %>
-      <% end %>
-    </div>
-    <div class="post-content">
-      <span class="indispensable">必須</span>
-      <%= f.label :price, '支出金額' %>
-      <%= f.number_field :price, min: 1, placeholder:'半角数字のみ' %> 円
-    </div>
-    <div class="post-content">
-      <span class="indispensable">必須</span>
-      <b>Good yen?（いいお金の使い方でしたか？）</b><br>
-        <%= f.radio_button :select_yen, true %>
-        <%= f.label :select_yen, 'はい！', value: true %>
-        <%= f.radio_button :select_yen, false %>
-        <%= f.label :select_yen, 'あと一歩', value: false %>
-    </div>
-    <div class="post-content">
-      <%= f.label :memo1, 'メモ①' %>
-      <%= f.text_area :memo1, placeholder:'100文字まで', maxlength: 100, class: 'form_memo' %>
-    </div>
-    <div class="post-content">
-      <%= f.label :memo2, 'メモ②' %>
-      <%= f.text_area :memo2, placeholder:'100文字まで', maxlength: 100, class: 'form_memo' %>
-    </div>
-    <div>
-      <%= f.button name: "submit" do %>
-        <i class="fa-solid fa-seedling  fa-lg fa-fw" aria-hidden="true"></i>保存
-      <% end %>
-    </div>
+    <table class="form_set_width_max">
+      <tbody>
+        <tr>
+          <td class="form_set_width"><span class="indispensable">必須</span></td>
+          <td class="form_set_width"><%= f.label :date_of_post, '日付' %></td>
+          <td class="form_align_left">
+            <% if controller.action_name == 'new' %>
+              <%= f.date_field :date_of_post, value: Date.today %>
+            <% else %>
+              <%= f.date_field :date_of_post %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="form_set_width"><span class="indispensable">必須</span></td>
+          <td><%= f.label :price, '金額' %></td>
+          <td class="form_price_size form_align_left"><%= f.number_field :price, style: "width:70%", min: 1, placeholder:'半角数字のみ' %> 円</td>
+        </tr>
+        <tr>
+          <td class="form_set_width"></td>
+          <td><%= f.label :memo1, 'メモ①' %></td>
+          <td class="form_memo_size form_align_left">
+            <%= f.text_area :memo1, style: "width:100%", placeholder:'100文字まで', maxlength: 100, class: 'form_memo' %>
+          </td>
+        </tr>
+        <tr>
+          <td class="form_set_width"></td>
+          <td><%= f.label :memo2, 'メモ②' %></td>
+          <td class="form_memo_size form_align_left">
+            <%= f.text_area :memo2, style: "width:100%", placeholder:'100文字まで', maxlength: 100, class: 'form_memo' %>
+          </td>
+        </tr>
+        <tr>
+          <td class="form_set_width"><span class="indispensable">必須</span></td>
+          <td colspan="2">
+            <b>Good yen?</b><br>
+            <span class="under-line" id="insert_point">いいお金の使い方でしたか？</span><br>
+            <%= f.radio_button :select_yen, true %>
+            <%= f.label :select_yen, 'はい！', value: true, id: "good_yen_label" %>
+            <%= f.radio_button :select_yen, false %>
+            <%= f.label :select_yen, 'あと一歩', value: false, id: "not_good_yen_label" %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <%= f.button class: 'btn btn-default btn-outline-success', name: "submit" do %>
+              <i class="fa-solid fa-calculator fa-lg fa-fw" aria-hidden="true"></i>保存する
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
 </div>

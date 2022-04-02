@@ -1,12 +1,8 @@
 /* リセットCSS */
-html {
-  font-size: 18px;
-}
-
 body {
-  color: #333;
+  color: #3b4043;
   margin: 0 auto;
-  padding-top: 120px;
+  padding-top: 90px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -20,7 +16,7 @@ ul,li {
 }
 
 a {
-  color: #333;
+  color: #3b4043;
   text-decoration: none;
 }
 
@@ -28,31 +24,41 @@ a {
 header {
   top: 0;
   left: 0;
-  height: 90px;
+  height: 80px;
   width: 100vw;
   display: flex;
+  justify-content: space-between;
   padding: 10px, 0;
   position: fixed;
   background: linear-gradient(to right, #FFFFCC, #FFFFBB, #DDFFBA);
-  border-radius: 10px;
   z-index: 1;
 }
 
-.heading {
-  width: 15%;
-  margin-left: 20px;
+.header-logo {
+  width: 70px;
+  margin: 5px;
 }
 
-.navbar {
-  width: 85%;
-  margin-top: 6px;
-  padding: 20px;
+.nav_right {
+  display: flex;
+  margin-right: 10px;
+}
+.nav_center {
+  margin: auto 0;
+}
+
+.nav_right {
   display: flex;
   justify-content: space-between;
 }
 
+.nav_left {
+  width: 80px;
+}
+
 .nav-lists {
   display: flex;
+  margin: auto 0;
 }
 
 li{
@@ -60,19 +66,18 @@ li{
 }
 
 .left-button {
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 /* フッター */
 footer {
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
   text-align: center;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  height: 90px;
+  height: 70px;
   width: 100vw;
 }
 
+/* トップページ */
 .yen-info {
   padding-top: 15px;
 }
@@ -84,4 +89,230 @@ footer {
 
 .info-link {
   margin-right: 30px;
+}
+
+.contents {
+  background-color: white;
+  min-height: calc(100vh - 80px - 70px);
+}
+
+.yen-logo {
+  height: 200px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.copy {
+  text-align: center;
+}
+.first-message {
+  text-align: center;
+}
+
+.button-gradation {
+  padding: 30px 90px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px;
+  background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
+}
+
+.button-registration {
+  margin: 40px auto 100px;
+  text-align: center;
+}
+
+.under-line {
+  background:linear-gradient(transparent 70%, #ACFF40 0%);
+}
+
+/* ここがおすすめ */
+.heading-name {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.heading-name-line {
+  width: 60vw;
+  border-bottom: 1px solid #808080;
+  margin: 0 auto;
+}
+
+.message {
+  margin: 30px auto 60px;
+}
+
+.point {
+  color: #FF9340;
+} 
+
+/* よくある質問 */
+.indispensable {
+  background-color: #DDFFBA;
+  margin-right: 5px;
+  padding: 3px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.set-margin {
+  margin-top: 50px;
+}
+.chart_set_margin {
+  margin-top: 20px;
+}
+
+.chart_content {
+  margin: 200px auto;
+}
+
+.yen-logo-list {
+  height: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.table-border {
+  border-bottom: 1px solid #808080;
+}
+
+.set-width {
+  width: 60px;
+}
+
+.set-width-logo {
+  width: 60px;
+  height: 60px;
+}
+
+.nowrap {
+  white-space: nowrap; /* 勝手に折り返さない */
+}
+
+.align-right {
+  text-align: right;
+}
+
+.post-list-memo {
+  word-break: break-all;
+  word-wrap: break-all;
+}
+
+.form_post {
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid silver;
+  border-radius: 8px;
+}
+
+.align_center {
+  text-align: center;
+}
+
+.form_set_width_max {
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.form_set_width {
+  width: 60px;
+}
+
+.form_set_width_search {
+  width: 100px;
+}
+
+.form_set_height {
+  height: 50px;
+}
+
+.form_price_size {
+  flex-grow: 1;
+}
+
+.form_memo_size {
+  flex-grow: 1;
+}
+
+.form_align_left {
+  text-align: left;
+}
+
+.form_memo {
+  resize: none;
+}
+
+.twitter {
+  width: 2rem;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.bar_rotate {
+  transform: rotate(90deg);
+}
+
+.content {
+  padding-top: 80px;
+}
+
+.post_list {
+  margin-top: -80px;
+  padding-top: 80px;
+}
+
+.sort_info {
+  color: #28a745;
+  font-size: 0.9em;
+}
+
+.target {
+  transition: opacity 300ms;
+}
+
+.target.is-hidden {
+  opacity: 0;
+}
+
+.balloon {
+  position: relative;
+  display: inline-block;
+  margin: 10px auto -40px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #3b4043;
+  font-size: 0.9rem;
+  background: #FFF33F;
+  border-radius: 8px;
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 15%;
+  border: 8px solid transparent;
+  border-top: 12px solid #FFF33F;
+}
+
+.form_query {
+  margin-top: 8px;
+}
+
+@media (max-width: 599px) {
+  .container {
+    font-size: 1.2rem;
+  }
+
+  .first-message {
+    text-align: left;
+  }
 }

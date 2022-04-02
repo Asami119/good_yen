@@ -1,111 +1,116 @@
-<div class="contents">
-  <%= notice %>
-  <h2>
-    <i class="fa-solid fa-coins fa-lg fa-fw point" aria-hidden="true"></i>
-    支出を振り返りましょう！
-  </h2>
-  <a href="https://twitter.com/intent/tweet?url=https://good-yen.herokuapp.com/%0A&hashtags=yen,かんたん支出管理" target="_blank">
-    <%= image_tag '2021 Twitter logo - blue.png', alt: "Twitterリンク", class: "twitter" %>
-  </a>
-  <%# 検索フォーム %>
-  <div class="content">
-    <div class="heading-name">
-      <h3 class="h2-heading-name set-margin">
-        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>
-        検索フォーム
-      </h3>
-    </div>
-    <ul class="messages">
-      <li class="heading-name-line"><li>
-    </ul>
-  </div>
-  <div>
-    <%= search_form_for @q, url: search_posts_path(anchor: 'post_list') do |f| %>
-      <div>
-        <%= f.label :date_of_post_gteq, '日付' %>
-        <%= f.date_field :date_of_post_gteq, id: "date1" %> 〜
-        <%= f.date_field :date_of_post_lteq, id: "date2" %>
-      </div>
-      <div>
-        <%= f.label :price_gteq, '支出金額' %>
-        <br>
-        <%= f.number_field :price_gteq, placeholder: '半角数字のみ', id: "price1" %> 円〜
-        <%= f.number_field :price_lteq, placeholder: '半角数字のみ', id: "price2" %> 円
-      </div>
-      <div>
-        <em>Good yen?：いいお金の使い方でしたか？</em>
-        <br>
-        <%= f.radio_button :select_yen_eq, '', id: "select_yen" %>
-        <%= f.label :select_yen_eq, '指定なし', value: '' %>
-        <%= f.radio_button :select_yen_eq, true %>
-        <%= f.label :select_yen_eq, '「Good yen!」のみ', value: true %>
-        <%= f.radio_button :select_yen_eq, false %>
-        <%= f.label :select_yen_eq, '「あと一歩」のみ', value: false %>
-      </div>
-      <div>
-        <%= f.label :memo1, 'メモ①' %>
-        <br>
-        <%= f.search_field :memo1, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo1), id: "memo1" %>
-      </div>
-      <div>
-        <%= f.label :memo2, 'メモ②' %>
-        <br>
-        <%= f.search_field :memo2, placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2), id: "memo2" %>
-      </div>
-      <%= f.button class: 'btn btn-default btn-primary' do %>
-        <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索
-      <% end %>
-      <%= f.button class: 'btn btn-default', name: 'export_csv', data: { confirm: "現在の条件で絞り込み、出力します。よろしいですか？\n（入力なしの場合、すべての記録が出力されます）"} do %>
-        <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>CSV出力
-      <% end %>
-      <%= f.button class: 'btn btn-default', name: 'show_donut' do %>
-        <i class="fa-solid fa-chart-pie fa-lg fa-fw" alt="円グラフ"></i>全体
-      <% end %>
-      <%= f.button class: 'btn btn-default', name: 'show_column' do %>
-        <i class="fa-solid fa-chart-simple fa-lg fa-fw" alt="縦向き棒グラフ"></i>月ごと
-      <% end %>
-      <%= f.button class: 'btn btn-default', name: 'show_bar' do %>
-        <i class="fa-solid fa-chart-simple fa-lg fa-fw bar_rotate" alt="横向き棒グラフ"></i>月ごと
-      <% end %>
-    <% end %>
-    <a href="/" id="reset_btn">
-      <i class="fa-solid fa-arrow-rotate-right fa-lg fa-fw" aria-hidden="true"></i>
-      検索条件をクリア
-    </a>
-  </div>
-  <%# /検索フォーム %>
-  <%# 結果一覧 %>
-  <div class="content" id="post_list">
-      <div class="heading-name">
-        <h3 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録</h3>
-      </div>
-      <ul class="messages">
-        <li class="heading-name-line"><li>
-      </ul>
-    <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
-    <%= @post_count %>件 | 合計：<%= @price_sum.to_s(:delimited) %>円<br>
-    <% if @posts.present? %>
-      「Good yen?」や「日付」をクリックすると、<strong>並べ替え</strong>ができます。
-      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-      <div class="posts-list">
-        <table>
-          <thead>
-            <tr>
-              <th class="set-width-logo"><%= sort_link(@q, :select_yen, 'Good yen?') %></th>
-              <th><%= sort_link(@q, :date_of_post, '日付') %></th>
-              <th><%= sort_link(@q, :memo1, 'メモ①') %></th>
-              <th><%= sort_link(@q, :memo2, 'メモ②') %></th>
-              <th class="nowrap"><%= sort_link(@q, :price, '　金額') %></th>
-              <th class="set-width"></th>
-              <th class="set-width"></th>
+<div class="container">
+  <div class="contents">
+    <%= notice %>
+    <%# 検索フォーム %>
+    <h5 class="align_center">検索フォーム</h5>
+    <div class="form_post">
+      <%= search_form_for @q, url: search_posts_path(anchor: 'post_list') do |f| %>
+        <table class="form_set_width_max">
+          <tbody>
+              <td class="form_set_width_search"><%= f.label :date_of_post_gteq, '日付' %></td>
+              <td class="form_align_left">
+                <%= f.date_field :date_of_post_gteq, id: "date1" %> から<br>
+                <%= f.date_field :date_of_post_lteq, id: "date2" %> まで
+              </td>
             </tr>
-          <thead>
-          <tbody>
-            <%= render partial: 'post_list', collection: @posts, as: "post" %>
-          <tbody>
+              <td><%= f.label :price_gteq, '金額' %></td>
+              <td class="form_price_size form_align_left">
+                <%= f.number_field :price_gteq, style: "width:60%", placeholder: '半角数字のみ', id: "price1" %> 円から<br>
+                <%= f.number_field :price_lteq, style: "width:60%", placeholder: '半角数字のみ', id: "price2" %> 円まで
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.label :memo1, 'メモ①' %></td>
+              <td class="form_memo_size form_align_left">
+                <%= f.text_field :memo1, style: "width:80%", class: 'form_memo', placeholder: 'OR検索できます', value: params[:q]&.dig(:memo1), id: "memo1" %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.label :memo2, 'メモ②' %></td>
+              <td class="form_memo_size form_align_left">
+                <%= f.text_field :memo2, style: "width:80%", class: 'form_memo', placeholder: 'OR検索できます', value: params[:q]&.dig(:memo2), id: "memo2" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="form_set_width_search">Good<br>yen?</td>
+              <td class="form_align_left">
+                <%= f.radio_button :select_yen_eq, '', id: "select_yen" %>
+                <%= f.label :select_yen_eq, '指定なし', value: '' %><br>
+                <%= f.radio_button :select_yen_eq, true %>
+                <%= f.label :select_yen_eq, '「Good yen!」のみ', value: true %><br>
+                <%= f.radio_button :select_yen_eq, false %>
+                <%= f.label :select_yen_eq, '「あと一歩」のみ', value: false %>
+              </td>
+            </tr>
+            <tr class="form_set_height">
+              <td colspan="2">
+                <%= f.button class: 'btn btn-outline-success' do %>
+                  <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>
+                  一覧
+                <% end %>
+                <%= f.button class: 'btn btn-outline-success', name: 'export_csv', data: { confirm: "現在の条件で絞り込み、出力します。よろしいですか？\n（入力なしの場合、すべての記録が出力されます）"} do %>
+                  <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>
+                  CSV出力
+                <% end %>
+              </td>
+            </tr>
+            <tr class="form_set_height">
+              <td colspan="2">
+                <%= f.button class: 'btn btn-outline-success', name: 'show_donut' do %>
+                  <i class="fa-solid fa-chart-pie fa-lg fa-fw" alt="円グラフ"></i>
+                  全体
+                <% end %>
+                <%= f.button class: 'btn btn-outline-success', name: 'show_column' do %>
+                  <i class="fa-solid fa-chart-simple fa-lg fa-fw" alt="縦向き棒グラフ"></i>
+                  月ごと
+                <% end %>
+                <%= f.button class: 'btn btn-outline-success', name: 'show_bar' do %>
+                  <i class="fa-solid fa-chart-simple fa-lg fa-fw bar_rotate" alt="横向き棒グラフ"></i>
+                  月ごと
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="align_center">
+                <a href="/" id="reset_btn">
+                  <i class="fa-solid fa-arrow-rotate-right fa-lg fa-fw" aria-hidden="true"></i>
+                  検索条件をクリア
+                </a>
+            <tr>
+          </tbody>
         </table>
+      <% end %>
+    </div>
+    <%# /検索フォーム %>
+    <%# 結果一覧 %>
+    <div class="content" id="post_list">
+      <div class="align_center">
+        <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
+        <%= @post_count %> 件 | 合計：<%= @price_sum.to_s(:delimited) %>円<br>
       </div>
-    <% end %>
+      <% if @posts.present? %>
+        <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+        <div class="sort_info">項目名を押すと、<b>並べ替え</b>ができます。</div>
+          <table>
+            <thead>
+              <tr>
+                <th rowspan="2" class="set-width-logo"><%= sort_link(@q, :select_yen, 'Good yen?') %></th>
+                <th><%= sort_link(@q, :date_of_post, '日付') %></th>
+                <th class="nowrap"><%= sort_link(@q, :price, '金額') %></th>
+                <th rowspan="2" class="set-width"></th>
+              </tr>
+              <tr class="table-border">
+                <th><%= sort_link(@q, :memo1, 'メモ①') %></th>
+                <th><%= sort_link(@q, :memo2, 'メモ②') %></th>
+              </tr>
+            <thead>
+            <tbody>
+              <%= render partial: 'post_list', collection: @posts, as: "post" %>
+            <tbody>
+          </table>
+        <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+      <% end %>
+    </div>
+    <%# /結果一覧 %>
   </div>
-  <%# /結果一覧 %>
 </div>
