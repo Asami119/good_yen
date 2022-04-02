@@ -44,11 +44,11 @@
             </tr>
             <tr class="form_set_height">
               <td colspan="2">
-                <%= f.button class: 'btn btn-default btn-outline-success' do %>
+                <%= f.button class: 'btn btn-outline-success' do %>
                   <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>
                   一覧
                 <% end %>
-                <%= f.button class: 'btn btn-default btn-outline-success', name: 'export_csv', data: { confirm: "現在の条件で絞り込み、出力します。よろしいですか？\n（入力なしの場合、すべての記録が出力されます）"} do %>
+                <%= f.button class: 'btn btn-outline-success', name: 'export_csv', data: { confirm: "現在の条件で絞り込み、出力します。よろしいですか？\n（入力なしの場合、すべての記録が出力されます）"} do %>
                   <i class="fa-solid fa-file-lines fa-lg fa-fw" aria-hidden="true"></i>
                   CSV出力
                 <% end %>
@@ -56,15 +56,15 @@
             </tr>
             <tr class="form_set_height">
               <td colspan="2">
-                <%= f.button class: 'btn btn-default btn-outline-success', name: 'show_donut' do %>
+                <%= f.button class: 'btn btn-outline-success', name: 'show_donut' do %>
                   <i class="fa-solid fa-chart-pie fa-lg fa-fw" alt="円グラフ"></i>
                   全体
                 <% end %>
-                <%= f.button class: 'btn btn-default btn-outline-success', name: 'show_column' do %>
+                <%= f.button class: 'btn btn-outline-success', name: 'show_column' do %>
                   <i class="fa-solid fa-chart-simple fa-lg fa-fw" alt="縦向き棒グラフ"></i>
                   月ごと
                 <% end %>
-                <%= f.button class: 'btn btn-default btn-outline-success', name: 'show_bar' do %>
+                <%= f.button class: 'btn btn-outline-success', name: 'show_bar' do %>
                   <i class="fa-solid fa-chart-simple fa-lg fa-fw bar_rotate" alt="横向き棒グラフ"></i>
                   月ごと
                 <% end %>

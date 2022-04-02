@@ -268,6 +268,14 @@ table {
   font-size: 0.9em;
 }
 
+.target {
+  transition: opacity 300ms;
+}
+
+.target.is-hidden {
+  opacity: 0;
+}
+
 @media (max-width: 599px) {
   .container {
     font-size: 1.2rem;
