@@ -2,7 +2,7 @@
 body {
   color: #3b4043;
   margin: 0 auto;
-  padding-top: 90px;
+  padding-top: 70px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -24,7 +24,7 @@ a {
 header {
   top: 0;
   left: 0;
-  height: 80px;
+  height: 70px;
   width: 100vw;
   display: flex;
   justify-content: space-between;
@@ -36,7 +36,7 @@ header {
 
 .header-logo {
   width: 70px;
-  margin: 5px;
+  margin: auto 5px;
 }
 
 .nav_right {
@@ -75,6 +75,7 @@ footer {
   text-align: center;
   height: 70px;
   width: 100vw;
+  margin-top: 8px;
 }
 
 /* トップページ */
@@ -93,7 +94,7 @@ footer {
 
 .contents {
   background-color: white;
-  min-height: calc(100vh - 80px - 70px);
+  min-height: calc(100vh - 70px - 70px);
 }
 
 .yen-logo {
@@ -260,12 +261,12 @@ table {
 }
 
 .content {
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
 .post_list {
-  margin-top: -80px;
-  padding-top: 80px;
+  margin-top: -70px;
+  padding-top: 70px;
 }
 
 .sort_info {
