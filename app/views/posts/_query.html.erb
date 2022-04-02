@@ -8,7 +8,7 @@
   <% if period.present? %>
     継続期間：<%= period[:day] %>日<br>（<%= period[:first_post] %> 〜 <%= period[:last_post] %>）<br>
   <% end %>
-  <div class="form_post">
+  <div class="form_post form_query">
     <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>検索条件<br>
     <% querys.each do |query| %>
       <%= query %><br>
