@@ -135,7 +135,7 @@ footer {
 
 .heading-name-line {
   width: 60vw;
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #BFBFBF;
   margin: 0 auto;
 }
 
@@ -181,7 +181,7 @@ table {
 }
 
 .table-border {
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #BFBFBF;
 }
 
 .set-width {
@@ -209,8 +209,14 @@ table {
 .form_post {
   max-width: 500px;
   margin: 0 auto;
-  border: 1px solid silver;
+  border-top: 1px solid #BFBFBF;
+  border-bottom: 1px solid #BFBFBF;
+}
+
+.form_query {
+  margin-top: 8px;
   border-radius: 8px;
+  border: 1px solid #BFBFBF;
 }
 
 .align_center {
@@ -302,10 +308,6 @@ table {
   left: 15%;
   border: 8px solid transparent;
   border-top: 12px solid #FFF33F;
-}
-
-.form_query {
-  margin-top: 8px;
 }
 
 @media (max-width: 599px) {
