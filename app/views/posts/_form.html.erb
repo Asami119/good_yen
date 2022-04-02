@@ -38,11 +38,11 @@
           <td class="form_set_width"><span class="indispensable">必須</span></td>
           <td colspan="2">
             <b>Good yen?</b><br>
-            <span class="under-line">いいお金の使い方でしたか？</span><br>
+            <span class="under-line" id="insert_point">いいお金の使い方でしたか？</span><br>
             <%= f.radio_button :select_yen, true %>
-            <%= f.label :select_yen, 'はい！', value: true %>
+            <%= f.label :select_yen, 'はい！', value: true, id: "good_yen_label" %>
             <%= f.radio_button :select_yen, false %>
-            <%= f.label :select_yen, 'あと一歩', value: false %>
+            <%= f.label :select_yen, 'あと一歩', value: false, id: "not_good_yen_label" %>
           </td>
         </tr>
         <tr>

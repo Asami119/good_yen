@@ -281,6 +281,28 @@ table {
   opacity: 0;
 }
 
+.balloon {
+  position: relative;
+  display: inline-block;
+  margin: 10px auto -40px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #3b4043;
+  font-size: 0.9rem;
+  background: #FFF33F;
+  border-radius: 8px;
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 15%;
+  border: 8px solid transparent;
+  border-top: 12px solid #FFF33F;
+}
+
 @media (max-width: 599px) {
   .container {
     font-size: 1.2rem;
