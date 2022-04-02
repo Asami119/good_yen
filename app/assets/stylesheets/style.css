@@ -275,7 +275,7 @@ table {
 }
 
 .target {
-  transition: opacity 300ms;
+  transition: opacity 1;
 }
 
 .target.is-hidden {
