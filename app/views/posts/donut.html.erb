@@ -1,6 +1,6 @@
 <div class="container">
   <div class="contents">
-    <div class="chart_content">
+    <div class="chart_content content" id="post_list">
       <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
       <% if @posts.present? %>
         <%= pie_chart @price_sums, options = {
