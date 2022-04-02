@@ -1,25 +1,29 @@
 <div class="container">
   <div class="contents">
-    <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
-    <% if @posts.present? %>
-      <div class="chart_set_margin">
-        <%= bar_chart  @monthly_price_sums, options = {
-          stacked: true,
-          max_width: '100vw',
-          max_height: '80vh',
-          colors: ["#ACFF40", "#FFF33F"],
-          thousands: ",", 
-          suffix: "円",
-          legend: "top"
-        } %>
+    <div class="chart_content">
+      <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
+      <% if @posts.present? %>
+        <div class="chart_set_margin">
+          <%= bar_chart  @monthly_price_sums, options = {
+            stacked: true,
+            max_width: '100vw',
+            max_height: '80vh',
+            colors: ["#ACFF40", "#FFF33F"],
+            thousands: ",", 
+            suffix: "円",
+            legend: "top"
+          } %>
+        </div>
+      <% end %>
+      <div class="align_center">
+        <%= @post_count %> 件
+        <div class="target">
+          合計：<%= @price_sum.to_s(:delimited) %>円<br>
+          <% if @monthly_price_average.present? %>月平均：<%= @monthly_price_average.to_s(:delimited) %>円<% end %><br>
+        </div>
       </div>
-    <% end %>
+    </div>
     <div class="align_center">
-      <%= @post_count %> 件
-      <div class="target">
-        合計：<%= @price_sum.to_s(:delimited) %>円<br>
-        <% if @monthly_price_average.present? %>月平均：<%= @monthly_price_average.to_s(:delimited) %>円<% end %><br>
-      </div>
       <div>
         <input type="checkbox" id="show_hide" checked>
         <label for="show_hide">金額を表示</label>

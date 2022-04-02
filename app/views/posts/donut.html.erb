@@ -1,35 +1,39 @@
 <div class="container">
   <div class="contents">
-    <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
-    <% if @posts.present? %>
-      <%= pie_chart @price_sums, options = {
-        donut: true,
-        colors: ["#ACFF40", "#FFF33F"],
-        thousands: ",", 
-        suffix: "円",
-        label: "金額",
-        library: {
-          title: {
-            text: "Good yen!<br>#{@price_true_percent}%",
-            align: 'center',
-            verticalAlign: 'middle'
-          },
-          plotOptions: {
-            pie: {
-              dataLabels: {
-                enabled: false
-              },
-              innerSize: '50%',
+    <div class="chart_content">
+      <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
+      <% if @posts.present? %>
+        <%= pie_chart @price_sums, options = {
+          donut: true,
+          colors: ["#ACFF40", "#FFF33F"],
+          thousands: ",", 
+          suffix: "円",
+          label: "金額",
+          library: {
+            title: {
+              text: "Good yen!<br>#{@price_true_percent}%",
+              align: 'center',
+              verticalAlign: 'middle'
+            },
+            plotOptions: {
+              pie: {
+                dataLabels: {
+                  enabled: false
+                },
+                innerSize: '50%',
+              }
             }
           }
-        }
-      } %>
-    <% end %>
-    <div class="align_center">
-      <%= @post_count %> 件
-      <div class="target">
-        合計：<%= @price_sum.to_s(:delimited) %>円<br>
+        } %>
+      <% end %>
+      <div class="align_center">
+        <%= @post_count %> 件
+        <div class="target">
+          合計：<%= @price_sum.to_s(:delimited) %>円<br>
+        </div>
       </div>
+    </div>
+    <div class="align_center">
       <div>
         <input type="checkbox" id="show_hide" checked>
         <label for="show_hide">金額を表示</label>
