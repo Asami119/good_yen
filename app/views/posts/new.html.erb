@@ -2,6 +2,7 @@
   <div class="contents">
     <%= notice %>
     <%# 結果一覧 %>
+    <h5 class="align_center">記録フォーム</h5>
     <%= render partial: 'form', locals: { post: @post } %>
     <div class="heading-name">
       <h5 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録（<%= Time.now.month %>月）</h5>
