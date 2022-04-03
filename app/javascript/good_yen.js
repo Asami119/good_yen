@@ -1,8 +1,9 @@
 function good_yen (){
-  const radioButton = document.getElementById('radio_button')
+  const radioButton = document.getElementById('radio_button');
+  const radioButtonTrue = document.getElementById('post_select_yen_true');
+
   radioButton.addEventListener('change', () => {
-    const html = document.getElementById('id_balloon')
-    if (html == null) {
+    if (radioButtonTrue.checked) {
       const insertPoint = document.getElementById('insert_point');
       const messages = ['Good yen!', 'Good yen!', 'Good yen!', 'ありがとう！', 'いいね！', 'ステキ！', 'さすがです！', '最高！'];
       const messageNo = Math.floor(Math.random() * messages.length);
@@ -12,8 +13,11 @@ function good_yen (){
         </div>`;
       insertPoint.insertAdjacentHTML('afterend', html);
     } else {
-        html.remove();    
+      const html = document.getElementById('id_balloon');
+      if (html != null) {
+        html.remove();
       };
+    };
   });
 };
 
