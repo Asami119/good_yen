@@ -1,6 +1,8 @@
 <div class="form_post">
   <%= form_with model: post, local: true do |f| %>
-    <%= render 'shared/error_messages', model: f.object %>
+    <div class='flash-message'>
+      <%= render 'shared/error_messages', model: f.object %>
+    </div>
     <table class="form_set_width_max">
       <tbody>
         <tr>
