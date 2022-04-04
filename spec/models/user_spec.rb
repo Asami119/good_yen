@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
       it 'emailが空では登録できない' do
         @user.email = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Eメールを入力してください")
+        expect(@user.errors.full_messages).to include("メールアドレスを入力してください")
       end
 
       it 'passwordが空では登録できない' do
@@ -40,7 +40,7 @@ RSpec.describe User, type: :model do
       it 'emailに@が入っていなければ登録できない' do
         @user.email = 'test.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Eメールは不正な値です')
+        expect(@user.errors.full_messages).to include('メールアドレスは不正な値です')
       end
 
       it '重複したemailが存在する場合は登録できない' do
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include('Eメールはすでに存在します')
+        expect(another_user.errors.full_messages).to include('メールアドレスはすでに存在します')
       end
 
       it 'passwordが6文字未満では登録できない' do
