@@ -310,7 +310,7 @@ table {
   border-top: 12px solid #FFF33F;
 }
 
-/* ログイン画面 */
+/* 新規登録・ログイン画面 */
 .actions {
   text-align: center;
 }
@@ -319,10 +319,18 @@ table {
   width: 80%;
 }
 
+.form_nickname {
+  width: 50%;
+}
+
 .flash-message {
   color: #28a745;
   font-weight: bold;
   text-align: center;
+}
+
+.margin_top {
+  margin-top: 10px;
 }
 
 @media (max-width: 599px) {
