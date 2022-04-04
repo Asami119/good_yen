@@ -94,7 +94,8 @@ footer {
 
 .contents {
   background-color: white;
-  min-height: calc(100vh - 70px - 70px);
+  min-height: calc(100vh - 70px - 70px - 10px);
+  margin-top: 10px;
 }
 
 .yen-logo {
