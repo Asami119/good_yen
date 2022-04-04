@@ -5,7 +5,7 @@
     <h5 class="align_center"><b>記録フォーム</b></h5>
     <%= render partial: 'form', locals: { post: @post } %>
     <div class="heading-name">
-      <h5 class="h2-heading-name set-margin"><%= current_user.nickname %>さんの記録（<%= Time.now.month %>月）</h5>
+      <h5 class="set-margin"><%= current_user.nickname %>さんの記録（<%= Time.now.month %>月）</h5>
     </div>
     <ul class="messages">
       <li class="heading-name-line"><li>
