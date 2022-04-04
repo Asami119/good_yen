@@ -310,6 +310,21 @@ table {
   border-top: 12px solid #FFF33F;
 }
 
+/* ログイン画面 */
+.actions {
+  text-align: center;
+}
+
+.form_email {
+  width: 80%;
+}
+
+.flash-message {
+  color: #28a745;
+  font-weight: bold;
+  text-align: center;
+}
+
 @media (max-width: 599px) {
   .container {
     font-size: 1.1rem;
@@ -317,5 +332,9 @@ table {
 
   .first-message {
     text-align: left;
+  }
+
+  .flash-message {
+    font-size: 1rem;
   }
 }
