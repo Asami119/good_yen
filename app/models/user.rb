@@ -10,5 +10,5 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英数字混合で設定してください'
   # messageを変更するなら、単体テストも変更
 
-  validates :nickname, presence: true
+  validates :nickname, presence: true, length: { maximum: 10 }
 end
