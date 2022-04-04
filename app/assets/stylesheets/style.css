@@ -334,6 +334,19 @@ table {
   margin-top: 10px;
 }
 
+/* ユーザー編集・退会ページ */
+.margin_top_edit {
+  margin-top: 50px;
+}
+
+.form_registration_edit {
+  height: calc(100vh - 70px);
+}
+
+.form_registration_destroy {
+  height: calc(100vh - 70px - 70px - 50px);
+}
+
 @media (max-width: 599px) {
   .container {
     font-size: 1.1rem;
