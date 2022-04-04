@@ -74,10 +74,11 @@
             登録情報（ニックネーム・メールアドレス・パスワード）を変更したいのですが
           </h4>
           <div>
-            <b><a href="#">こちらのページ</a></b>から、変更をお願い致します。
+            ログイン後、<b><%= link_to 'こちらのページ', edit_user_registration_path %></b>から変更をお願い致します。<br>
+            （ログイン前にクリックした場合、ログインページに遷移します）
           </div>
         </li>
-        <li class="message">
+        <li class="message content" id='export_info'>
           <h4 class="message-topic">
             <i class="fa-solid fa-check fa-lg fa-fw point" aria-hidden="true"></i>
             データのエクスポートは、どのような手順で行えばいいですか？
@@ -92,7 +93,8 @@
             退会したいのですが
           </h4>
           <div>
-            <b><a href="#">こちらのページ</a></b>から、手続きをお願い致します。
+            ログイン後、<b><%= link_to 'こちらのページ', edit_user_registration_path(anchor: 'registration_destroy') %></b>から手続きをお願い致します。<br>
+            （ログイン前にクリックした場合、ログインページに遷移します）
           </div>
         </li>
       </ul>
