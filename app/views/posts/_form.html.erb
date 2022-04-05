@@ -1,7 +1,8 @@
-<h5 class="align_center">記録フォーム</h5>
 <div class="form_post">
   <%= form_with model: post, local: true do |f| %>
-    <%= render 'shared/error_messages', model: f.object %>
+    <div class='flash-message'>
+      <%= render 'shared/error_messages', model: f.object %>
+    </div>
     <table class="form_set_width_max">
       <tbody>
         <tr>
@@ -38,11 +39,13 @@
           <td class="form_set_width"><span class="indispensable">必須</span></td>
           <td colspan="2">
             <b>Good yen?</b><br>
-            <span class="under-line" id="insert_point">いいお金の使い方でしたか？</span><br>
-            <%= f.radio_button :select_yen, true %>
-            <%= f.label :select_yen, 'はい！', value: true, id: "good_yen_label" %>
-            <%= f.radio_button :select_yen, false %>
-            <%= f.label :select_yen, 'あと一歩', value: false, id: "not_good_yen_label" %>
+            <span class="under-line" id="insert_point">いいお金の使い方でしたか？</span>
+            <div id="radio_button">
+              <%= f.radio_button :select_yen, true %>
+              <%= f.label :select_yen, 'はい！', value: true %>
+              <%= f.radio_button :select_yen, false %>
+              <%= f.label :select_yen, 'あと一歩', value: false %>
+            </div>
           </td>
         </tr>
         <tr>

@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        nickname: ニックネーム
+      post:
+        date_of_post: 日付
+        price: 金額

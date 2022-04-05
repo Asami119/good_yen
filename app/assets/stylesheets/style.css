@@ -2,7 +2,7 @@
 body {
   color: #3b4043;
   margin: 0 auto;
-  padding-top: 90px;
+  padding-top: 70px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -24,7 +24,7 @@ a {
 header {
   top: 0;
   left: 0;
-  height: 80px;
+  height: 70px;
   width: 100vw;
   display: flex;
   justify-content: space-between;
@@ -36,7 +36,7 @@ header {
 
 .header-logo {
   width: 70px;
-  margin: 5px;
+  margin: auto 5px;
 }
 
 .nav_right {
@@ -66,7 +66,7 @@ li{
 }
 
 .left-button {
-  margin-right: 10px;
+  margin-right: 7px;
 }
 
 /* フッター */
@@ -75,6 +75,7 @@ footer {
   text-align: center;
   height: 70px;
   width: 100vw;
+  margin-top: 8px;
 }
 
 /* トップページ */
@@ -93,7 +94,8 @@ footer {
 
 .contents {
   background-color: white;
-  min-height: calc(100vh - 80px - 70px);
+  min-height: calc(100vh - 70px - 70px - 10px);
+  margin-top: 10px;
 }
 
 .yen-logo {
@@ -134,7 +136,7 @@ footer {
 
 .heading-name-line {
   width: 60vw;
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #BFBFBF;
   margin: 0 auto;
 }
 
@@ -180,7 +182,7 @@ table {
 }
 
 .table-border {
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #BFBFBF;
 }
 
 .set-width {
@@ -208,8 +210,14 @@ table {
 .form_post {
   max-width: 500px;
   margin: 0 auto;
-  border: 1px solid silver;
+  border-top: 1px solid #BFBFBF;
+  border-bottom: 1px solid #BFBFBF;
+}
+
+.form_query {
+  margin-top: 8px;
   border-radius: 8px;
+  border: 1px solid #BFBFBF;
 }
 
 .align_center {
@@ -260,12 +268,12 @@ table {
 }
 
 .content {
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
 .post_list {
-  margin-top: -80px;
-  padding-top: 80px;
+  margin-top: -70px;
+  padding-top: 70px;
 }
 
 .sort_info {
@@ -274,7 +282,7 @@ table {
 }
 
 .target {
-  transition: opacity 300ms;
+  transition: opacity 1;
 }
 
 .target.is-hidden {
@@ -284,7 +292,7 @@ table {
 .balloon {
   position: relative;
   display: inline-block;
-  margin: 10px auto -40px;
+  margin-bottom: 7px;
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
@@ -303,16 +311,52 @@ table {
   border-top: 12px solid #FFF33F;
 }
 
-.form_query {
-  margin-top: 8px;
+/* 新規登録・ログイン画面 */
+.actions {
+  text-align: center;
+}
+
+.form_email {
+  width: 70%;
+}
+
+.form_nickname {
+  width: 50%;
+}
+
+.flash-message {
+  color: #28a745;
+  font-weight: bold;
+  text-align: center;
+}
+
+.margin_top {
+  margin-top: 10px;
+}
+
+/* ユーザー編集・退会ページ */
+.margin_top_edit {
+  margin-top: 50px;
+}
+
+.form_registration_edit {
+  height: calc(100vh - 70px);
+}
+
+.form_registration_destroy {
+  height: calc(100vh - 70px - 70px - 50px);
 }
 
 @media (max-width: 599px) {
   .container {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .first-message {
     text-align: left;
+  }
+
+  .flash-message {
+    font-size: 1rem;
   }
 }

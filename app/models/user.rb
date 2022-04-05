@@ -4,11 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英数字混合で設定してください'
-  # messageを変更するなら、単体テストも変更
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英数字混合で設定してください', if: :password_required?
 
-  validates :nickname, presence: true
+  validates :nickname, presence: true, length: { maximum: 10 }
 end

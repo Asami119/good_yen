@@ -1,5 +1,6 @@
 <div class="container">
   <div class="contents">
+    <div class='flash-message'><%= notice %></div>
     <div class="first-message">
       <div class="yen-logo">
         <%= image_tag 'yen-logo.png', alt: "yen!ロゴ", class: "yen-logo" %>
@@ -18,7 +19,7 @@
     <%# ここがおすすめ %>
     <div class="set-margin">
       <div class="heading-name">
-        <h3 class="h2-heading-name">ここがおすすめ</h3>
+        <h3>ここがおすすめ</h3>
       </div>
       <ul class="messages">
         <li class="heading-name-line"><li>
@@ -54,7 +55,7 @@
     <%# よくある質問 %>
     <div class="set-margin">
       <div class="heading-name">
-        <h3 class="h2-heading-name">よくある質問</h3>
+        <h3>よくある質問</h3>
       </div>
       <ul class="messages">
         <li class="heading-name-line"><li>
@@ -73,10 +74,11 @@
             登録情報（ニックネーム・メールアドレス・パスワード）を変更したいのですが
           </h4>
           <div>
-            <b><a href="#">こちらのページ</a></b>から、変更をお願い致します。
+            ログイン後、<b><%= link_to 'こちらのページ', edit_user_registration_path %></b>から変更をお願い致します。<br>
+            （ログイン前にクリックした場合、ログインページに遷移します）
           </div>
         </li>
-        <li class="message">
+        <li class="message content" id='export_info'>
           <h4 class="message-topic">
             <i class="fa-solid fa-check fa-lg fa-fw point" aria-hidden="true"></i>
             データのエクスポートは、どのような手順で行えばいいですか？
@@ -91,7 +93,8 @@
             退会したいのですが
           </h4>
           <div>
-            <b><a href="#">こちらのページ</a></b>から、手続きをお願い致します。
+            ログイン後、<b><%= link_to 'こちらのページ', edit_user_registration_path(anchor: 'registration_destroy') %></b>から手続きをお願い致します。<br>
+            （ログイン前にクリックした場合、ログインページに遷移します）
           </div>
         </li>
       </ul>
@@ -99,7 +102,7 @@
     <%# お問い合わせ %>
     <div class="set-margin">
       <div class="heading-name">
-        <h3 class="h2-heading-name">お問い合わせ</h3>
+        <h3>お問い合わせ</h3>
       </div>
       <ul class="messages">
         <li class="heading-name-line"><li>

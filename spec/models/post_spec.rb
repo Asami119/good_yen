@@ -31,31 +31,31 @@ RSpec.describe Post, type: :model do
       it '日付が空では保存できない' do
         @post.date_of_post = ''
         @post.valid?
-        expect(@post.errors.full_messages).to include("Date of post can't be blank")
+        expect(@post.errors.full_messages).to include("日付を入力してください")
       end
 
       it '支出金額が空では保存できない' do
         @post.price = ''
         @post.valid?
-        expect(@post.errors.full_messages).to include("Price can't be blank")
+        expect(@post.errors.full_messages).to include('金額を入力してください')
       end
 
       it '支出金額が0では保存できない' do
         @post.price = 0
         @post.valid?
-        expect(@post.errors.full_messages).to include('Price は1以上の半角数字のみ入力できます')
+        expect(@post.errors.full_messages).to include('金額は1以上の半角数字のみ入力できます')
       end
 
       it '支出金額が全角数字では保存できない' do
         @post.price = '１０００'
         @post.valid?
-        expect(@post.errors.full_messages).to include('Price は1以上の半角数字のみ入力できます')
+        expect(@post.errors.full_messages).to include('金額は1以上の半角数字のみ入力できます')
       end
 
       it '支出金額に記号が含まれていると保存できない' do
         @post.price = '1,000'
         @post.valid?
-        expect(@post.errors.full_messages).to include('Price は1以上の半角数字のみ入力できます')
+        expect(@post.errors.full_messages).to include('金額は1以上の半角数字のみ入力できます')
       end
 
       it 'Good yen?の選択がnilでは保存できない' do
@@ -66,7 +66,7 @@ RSpec.describe Post, type: :model do
       it 'user（記録者）が紐付いていなければ保存できない' do
         @post.user = nil
         @post.valid?
-        expect(@post.errors.full_messages).to include('User must exist')
+        expect(@post.errors.full_messages).to include('Userを入力してください')
       end
     end
   end
