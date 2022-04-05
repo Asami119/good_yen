@@ -31,7 +31,7 @@ RSpec.describe Post, type: :model do
       it '日付が空では保存できない' do
         @post.date_of_post = ''
         @post.valid?
-        expect(@post.errors.full_messages).to include("日付を入力してください")
+        expect(@post.errors.full_messages).to include('日付を入力してください')
       end
 
       it '支出金額が空では保存できない' do
