@@ -3,7 +3,7 @@
     <div class='flash-message'>
     <%= render "devise/shared/error_messages", resource: resource %>
     </div>
-    <h5 class="align_center"><b>パスワード再設定フォーム</b></h5>
+    <h5 class="align_center">パスワード再設定フォーム</h5>
     <div class="form_post">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <table class="form_set_width_max">
