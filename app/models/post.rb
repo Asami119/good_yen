@@ -100,7 +100,7 @@ class Post < ApplicationRecord
   def self.make_query(q)
     querys = []
     if q.blank?
-      querys << '・なし（すべて表示）'
+      querys << '・すべて表示'
     else
       if q[:date_of_post_gteq].present? || q[:date_of_post_lteq].present?
         querys << "・#{q[:date_of_post_gteq]} 〜 #{q[:date_of_post_lteq]}"
