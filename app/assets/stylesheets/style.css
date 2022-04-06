@@ -347,6 +347,10 @@ table {
   height: calc(100vh - 70px - 70px - 50px);
 }
 
+h5 {
+  font-weight: bold;
+}
+
 @media (max-width: 599px) {
   .container {
     font-size: 1.1rem;
