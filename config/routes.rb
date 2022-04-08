@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts, except: :show do
     collection do
       get 'search'
+      get 'select'
     end
   end
 end

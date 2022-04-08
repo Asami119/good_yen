@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="contents">
+    <div class='flash-message'><%= notice %></div>
+    <div class="heading-name">
+      <h5><%= current_user.nickname %>さんの<br>思い出 Good yen!</h5>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+    <div class="yen-logo">
+      <%= image_tag 'yen-logo.png', alt: "yen!ロゴ", class: "yen-logo-img" %>
+    </div>
+    <div class="align_center">
+      <% if @post.present? %>
+        全 <%= @post_count %> 件から選ばれました。
+        <div class="green">
+          <%= %w(覚えていますか？ 決め手はなんでしたか？ リピートしてみませんか？)[rand(0..2)] %>
+        </div>
+        <div class="show_select_good_yen">
+          <%= @post.date_of_post %>(<%= %w(日 月 火 水 木 金 土)[@post.date_of_post.wday] %>)<br>
+          <%= @post.price.to_s(:delimited) %>円<br>
+          <% if @post.memo1.present? %>
+            <%= safe_join(@post.memo1.split("\n"),tag(:br)) %><br>
+          <% end %>
+
+          <% if @post.memo2.present? %>
+            <%= safe_join(@post.memo2.split("\n"),tag(:br)) %><br>
+          <% end %>
+        </div>
+        <a href="https://twitter.com/intent/tweet?url=https://good-yen.herokuapp.com/%0A&hashtags=yen,かんたん支出管理" target="_blank">
+          <%= image_tag '2021 Twitter logo - blue.png', alt: "Twitterリンク", class: "twitter" %>
+          結果をツイート
+        </a>
+      <% else %>
+        Good yenの記録が0件です。
+      <% end %>
+    </div>
+  </div>
+</div>

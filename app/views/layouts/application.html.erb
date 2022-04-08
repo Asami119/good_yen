@@ -20,7 +20,7 @@
     <header>
       <div class="nav_left">
         <a href="/">
-          <%= image_tag 'yen-logo.png', alt: "Topページリンク", class: "header-logo" %>
+          <%= image_tag 'yen-logo.png', alt: "Topページリンク", class: "header-logo-img" %>
         </a>
       </div>
       <div class="nav_center">
@@ -32,7 +32,9 @@
             <%= link_to '振り返る', search_posts_path, class: "left-button nowrap"  %>
           </li>
           <li>
-            <a href="#"><i class="fa-solid fa-seedling  fa-lg fa-fw" alt="思い出Good_yenリンク"></i></a>
+            <%= link_to select_posts_path do %>
+              <i class="fa-solid fa-seedling  fa-lg fa-fw" alt="思い出Good_yen!リンク"></i>
+            <% end %>
           </li>
         </ul>
       </div>
