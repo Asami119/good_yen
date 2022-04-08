@@ -67,6 +67,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def select
+    post = current_user.posts.where(select_yen: true)
+    if post.present?
+      @post_count = post.count
+      @post = post.sample
+    end
+  end
+
   private
 
   def post_params
