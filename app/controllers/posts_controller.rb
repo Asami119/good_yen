@@ -69,10 +69,10 @@ class PostsController < ApplicationController
 
   def select
     post = current_user.posts.where(select_yen: true)
-    if post.present?
-      @post_count = post.count
-      @post = post.sample
-    end
+    return if post.blank?
+
+    @post_count = post.count
+    @post = post.sample
   end
 
   private
