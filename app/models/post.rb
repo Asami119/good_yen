@@ -89,8 +89,8 @@ class Post < ApplicationRecord
     period = {}
     posts = Post.select(:date_of_post).where(user_id: current_user_id).order(date_of_post: :DESC)
     if posts.present?
-      first_post = posts.first[:date_of_post]
-      last_post = posts.last[:date_of_post]
+      first_post = posts.last[:date_of_post]
+      last_post = posts.first[:date_of_post]
       day = (first_post - last_post + 1).to_i
       period = { first_post: first_post, last_post: last_post, day: day }
     end
