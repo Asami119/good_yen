@@ -1,20 +1,22 @@
 <div class="container">
   <div class="contents">
     <div class='flash-message'><%= notice %></div>
-    <div class="first-message">
-      <div class="yen-logo">
-        <%= image_tag 'yen-logo.png', alt: "yen!ロゴ", class: "yen-logo-img" %>
-      </div>
-      <h2 class="copy">お金を、豊かに！</h2>
+    <div class="first-view">
       <div class="first-message">
-        yen!（エン）は、手軽に家計簿をつけたい方向けの、<span class="under-line">かんたん支出管理</span>サービスです。
+        <div class="yen-logo first-view-logo">
+          <%= image_tag 'yen-logo.png', alt: "yen!ロゴ", class: "yen-logo-img" %>
+        </div>
+        <h2 class="copy">お金を、豊かに！</h2>
+        <div class="first-message">
+          yen!（エン）は、手軽に家計簿をつけたい方向けの、<span class="under-line">かんたん支出管理</span>サービスです。
+        </div>
+        <div class="first-message">
+          支出を前向きにとらえ、<span class="under-line">豊かに実ったお金</span>にしていく仕組みが特徴です。
+        </div>
       </div>
-      <div class="first-message">
-        支出を前向きにとらえ、<span class="under-line">豊かに実ったお金</span>にしていく仕組みが特徴です。
+      <div class="button-registration">
+        <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-gradation nowrap" %>
       </div>
-    </div>
-    <div class="button-registration">
-      <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-gradation nowrap" %>
     </div>
     <%# ここがおすすめ %>
     <div class="set-margin">

@@ -122,6 +122,14 @@ footer {
   text-align: center;
 }
 
+.first-view {
+  height: calc(100vh - 70px - 60px);
+}
+
+.first-view-logo {
+  margin-top: 50px;
+}
+
 .button-gradation {
   padding: 30px 90px;
   font-weight: bold;
