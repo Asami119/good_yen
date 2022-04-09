@@ -21,15 +21,11 @@
   <td class="post-list-memo table-border">
     <% if post.memo1.present? %>
       <%= safe_join(post.memo1.split("\n"),tag(:br)) %>
-    <% else %>
-      <%= post.memo1 %>
     <% end %>
   </td>
   <td class="post-list-memo table-border">
     <% if post.memo2.present? %>
       <%= safe_join(post.memo2.split("\n"),tag(:br)) %>
-    <% else %>
-      <%= post.memo2 %>
     <% end %>
   </td>
 </tr>
