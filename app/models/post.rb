@@ -91,7 +91,7 @@ class Post < ApplicationRecord
     if posts.present?
       first_post = posts.last[:date_of_post]
       last_post = posts.first[:date_of_post]
-      day = (first_post - last_post + 1).to_i
+      day = (last_post - first_post + 1).to_i
       period = { first_post: first_post, last_post: last_post, day: day }
     end
     period
