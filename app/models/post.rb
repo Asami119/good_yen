@@ -120,7 +120,7 @@ class Post < ApplicationRecord
 
       querys << "・メモ①：#{q[:memo1]}" if q[:memo1].present?
       querys << "・メモ②：#{q[:memo2]}" if q[:memo2].present?
-      querys << '・なし（すべて表示）' if querys.blank?
+      querys << '・すべて表示' if querys.blank?
     end
     querys
   end
