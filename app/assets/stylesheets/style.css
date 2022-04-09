@@ -167,6 +167,26 @@ footer {
   color: #FF9340;
 } 
 
+.message-topic {
+  margin-bottom: 20px;
+}
+
+.list-sample-img {
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.sample-img {
+  max-width: 45%;
+  border-radius: 10px;
+  border: solid 2px #BFBFBF;
+}
+
+.left {
+  margin-right: 5px;
+}
+
 /* よくある質問 */
 .indispensable {
   background-color: #DDFFBA;
