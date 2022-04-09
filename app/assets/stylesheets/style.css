@@ -67,7 +67,11 @@ li{
 }
 
 .left-button {
-  margin-right: 7px;
+  margin-right: 9px;
+}
+
+.header_btn {
+  padding: 7px;
 }
 
 /* フッター */

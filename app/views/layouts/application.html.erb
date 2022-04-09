@@ -36,7 +36,7 @@
           </li>
           <li>
             <%= link_to select_posts_path do %>
-              <i class="fa-solid fa-seedling  fa-lg fa-fw" alt="思い出Good_yen!リンク"></i>
+              <i class="fa-solid fa-seedling fa-lg fa-fw left-button" alt="思い出Good_yen!リンク"></i>
             <% end %>
           </li>
         </ul>
@@ -45,11 +45,11 @@
         <ul class="nav-lists">
           <% if user_signed_in? %>
             <%= link_to destroy_user_session_path, method: :delete do %>
-              <li><button type="button" class="btn btn-outline-success nowrap">ログアウト</button></li>
+              <li><button type="button" class="btn btn-outline-success nowrap header_btn">ログアウト</button></li>
             <% end %>
           <% else %>
             <%= link_to new_user_session_path do %>
-              <li><button type="button" class="btn btn-outline-success nowrap">ログイン</button></li>
+              <li><button type="button" class="btn btn-outline-success nowrap header_btn">ログイン</button></li>
             <% end %>
           <% end %>
         </ul>
