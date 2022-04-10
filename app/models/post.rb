@@ -89,9 +89,9 @@ class Post < ApplicationRecord
     period = {}
     posts = Post.select(:date_of_post).where(user_id: current_user_id).order(date_of_post: :DESC)
     if posts.present?
-      first_post = posts.first[:date_of_post]
-      last_post = posts.last[:date_of_post]
-      day = (first_post - last_post + 1).to_i
+      first_post = posts.last[:date_of_post]
+      last_post = posts.first[:date_of_post]
+      day = (last_post - first_post + 1).to_i
       period = { first_post: first_post, last_post: last_post, day: day }
     end
     period
@@ -120,7 +120,7 @@ class Post < ApplicationRecord
 
       querys << "・メモ①：#{q[:memo1]}" if q[:memo1].present?
       querys << "・メモ②：#{q[:memo2]}" if q[:memo2].present?
-      querys << '・なし（すべて表示）' if querys.blank?
+      querys << '・すべて表示' if querys.blank?
     end
     querys
   end

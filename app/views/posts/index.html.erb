@@ -1,23 +1,23 @@
 <div class="container">
   <div class="contents">
     <div class='flash-message'><%= notice %></div>
-    <div class="first-message">
-      <div class="yen-logo">
-        <%= image_tag 'yen-logo.png', alt: "yen!ロゴ", class: "yen-logo-img" %>
-      </div>
-      <h2 class="copy">お金を、豊かに！</h2>
+    <div class="first-view">
       <div class="first-message">
-        yen!（エン）は、手軽に家計簿をつけたい方向けの、<span class="under-line">かんたん支出管理</span>サービスです。
+        <div class="yen-logo first-view-logo">
+          <%= image_tag 'yen-logo.png', alt: "yen!ロゴ", class: "yen-logo-img" %>
+        </div>
+        <h2 class="copy">お金を、豊かに！</h2>
+        <div class="index_align_center">
+          yen!（エン）は、手軽に家計簿をつけたい方向けの、<span class="under-line">かんたん支出管理</span>サービスです。<br>
+          支出を前向きにとらえ、<span class="under-line">豊かに実ったお金</span>にしていく仕組みが特徴です。
+        </div>
       </div>
-      <div class="first-message">
-        支出を前向きにとらえ、<span class="under-line">豊かに実ったお金</span>にしていく仕組みが特徴です。
+      <div class="button-registration">
+        <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-gradation nowrap" %>
       </div>
-    </div>
-    <div class="button-registration">
-      <%= link_to 'はじめる（無料）', new_user_registration_path, class: "button-gradation nowrap" %>
     </div>
     <%# ここがおすすめ %>
-    <div class="set-margin">
+    <div class="set-margin index_align_center">
       <div class="heading-name">
         <h3>ここがおすすめ</h3>
       </div>
@@ -31,6 +31,10 @@
           <div>
             必須項目はたったの3つ。シンプルな画面で、日々の支出をかんたんに記録できます。
           </div>
+          <div class="list-sample-img">
+            <%= image_tag 'index_form_post.png', alt: "見本画像", class: "sample-img left" %>
+            <%= image_tag 'index_post_list.png', alt: "見本画像", class: "sample-img" %>
+          </div>
         </li>
         <li class="message">
           <h4 class="message-topic">
@@ -38,7 +42,12 @@
             手軽に振り返り＆シェア
           </h4>
           <div>
-            グラフ機能で支出を見える化。画面をスクリーンショットして、SNSで共有しましょう！
+            「グラフ化機能」で支出を見える化。「思い出 Good yen!」というお楽しみ機能も用意しています。<br>
+            画面をスクリーンショットして、SNSで共有しましょう！
+          </div>
+          <div class="list-sample-img">
+            <%= image_tag 'index_donut.png', alt: "見本画像", class: "sample-img left" %>
+            <%= image_tag 'index_good_yen.png', alt: "見本画像", class: "sample-img" %>
           </div>
         </li>
         <li class="message">
@@ -47,13 +56,18 @@
             「楽しい」から「もっと」が始まる
           </h4>
           <div>
-            使い方を見直してみたり、収入や貯蓄とのバランスを考えたり。<br>データの「エクスポート機能」を利用して、より発展的な支出の分析も可能です。<br><span class="under-line">大事な「お金」を考える、はじめの一歩に！</span>
+            「検索機能」を利用して、お金の使い方を見直してみたり、収入や貯蓄とのバランスを考えたり。<br>
+            貴重なデータは、<b><a href="/#export_info">こちらの手順</a></b>にてExcelシートなどに出力（エクスポート）することも可能です。「データのバックアップ」「よりオリジナルで発展的な分析」などにご活用ください！
+          </div>
+          <div class="list-sample-img">
+            <%= image_tag 'index_form_search.png', alt: "見本画像", class: "sample-img left" %>
+            <%= image_tag 'index_column.png', alt: "見本画像", class: "sample-img" %>
           </div>
         </li>
       </ul>
     </div>
     <%# よくある質問 %>
-    <div class="set-margin">
+    <div class="set-margin index_align_center">
       <div class="heading-name">
         <h3>よくある質問</h3>
       </div>
@@ -68,7 +82,19 @@
             はい。すべての機能を「無料」でご利用いただけます。
           </div>
         </li>
-        <li class="message">
+        <li class="message content" id='good_yen_info'>
+          <h4 class="message-topic">
+            <i class="fa-solid fa-check fa-lg fa-fw point" aria-hidden="true"></i>
+            「Good yen!」の基準は？
+          </h4>
+          <div>
+            「いいお金の使い方」の基準は様々です。ご自身が「そのように思えるか、捉えられるか」という「主観」でご判断ください。<br><br>
+            あくまで目安として、以下の2つをご提案いたします。<br>
+            <span class="under-line">・「プラスの気分」になれるか</span><br>
+            <span class="under-line">・「100歳の自分」が Good yen! と思うか</span>
+          </div>
+        </li>
+        <li class="message content"  id='registration_edit_info'>
           <h4 class="message-topic">
             <i class="fa-solid fa-check fa-lg fa-fw point" aria-hidden="true"></i>
             登録情報（ニックネーム・メールアドレス・パスワード）を変更したいのですが
@@ -81,10 +107,11 @@
         <li class="message content" id='export_info'>
           <h4 class="message-topic">
             <i class="fa-solid fa-check fa-lg fa-fw point" aria-hidden="true"></i>
-            データのエクスポートは、どのような手順で行えばいいですか？
+            データの出力（エクスポート）は、どのような手順で行えばいいですか？
           </h4>
           <div>
-            ＊検討
+            「振り返る」ページの検索フォームにて絞り込み条件を指定し、「CSV出力」ボタンをクリックしてください。<br>
+            条件の指定がない場合、「すべての記録」が出力されます。
           </div>
         </li>
         <li class="message">
@@ -100,14 +127,14 @@
       </ul>
     </div>
     <%# お問い合わせ %>
-    <div class="set-margin">
+    <div class="set-margin index_align_center">
       <div class="heading-name">
         <h3>お問い合わせ</h3>
       </div>
       <ul class="messages">
         <li class="heading-name-line"><li>
         <li class="message">
-          「よくある質問」以外のお問い合わせ・ご意見は、<b><a href="https://forms.gle/V7VAExtxm42KSEuJ8" target="_blank">こちらのページ</a></b>から、お気軽にどうぞ！
+          その他のお問い合わせ・ご意見は、<b><a href="https://forms.gle/V7VAExtxm42KSEuJ8" target="_blank">こちらのページ</a></b>から、お気軽にどうぞ！
         </li>
       </ul>
     </div>

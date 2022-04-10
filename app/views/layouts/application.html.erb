@@ -36,7 +36,7 @@
           </li>
           <li>
             <%= link_to select_posts_path do %>
-              <i class="fa-solid fa-seedling  fa-lg fa-fw" alt="思い出Good_yen!リンク"></i>
+              <i class="fa-solid fa-seedling fa-lg fa-fw left-button" alt="思い出Good_yen!リンク"></i>
             <% end %>
           </li>
         </ul>
@@ -45,11 +45,11 @@
         <ul class="nav-lists">
           <% if user_signed_in? %>
             <%= link_to destroy_user_session_path, method: :delete do %>
-              <li><button type="button" class="btn btn-outline-success nowrap">ログアウト</button></li>
+              <li><button type="button" class="btn btn-outline-success nowrap header_btn">ログアウト</button></li>
             <% end %>
           <% else %>
             <%= link_to new_user_session_path do %>
-              <li><button type="button" class="btn btn-outline-success nowrap">ログイン</button></li>
+              <li><button type="button" class="btn btn-outline-success nowrap header_btn">ログイン</button></li>
             <% end %>
           <% end %>
         </ul>
@@ -58,15 +58,16 @@
     <%= yield %>
     <footer class="footer">
       <div class="yen-info">
-        <b>yen! </b> by <a href="#">(＊検討・link:Twi/Git)Asami119</a>
+        <a class="footer_link" href="https://github.com/Asami119/good_yen" target="_blank">yen!</a>
+        by <a href="https://twitter.com/asamiya_isseki" target="_blank">アサミヤ</a>
       </div>
       <div class="footer-nav">
         <ul class="footer-nav-lists">
           <li>
-            <a href="#" class="info-link">利用規約</a>
+            <a href="#" class="info-link" target="_blank">利用規約</a>
           </li>
           <li>
-            <a href="#">プライバシーポリシー</a>
+            <a href="#" target="_blank">プライバシーポリシー</a>
           </li>
         </ul>
       </div>

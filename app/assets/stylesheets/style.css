@@ -67,7 +67,11 @@ li{
 }
 
 .left-button {
-  margin-right: 7px;
+  margin-right: 9px;
+}
+
+.header_btn {
+  padding: 7px;
 }
 
 /* フッター */
@@ -79,9 +83,15 @@ footer {
   margin-top: 8px;
 }
 
+.footer_link {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-right: 10px;
+}
+
 /* トップページ */
 .yen-info {
-  padding-top: 15px;
+  padding-top: 5px;
 }
 
 .footer-nav-lists {
@@ -95,7 +105,8 @@ footer {
 
 .contents {
   background-color: white;
-  min-height: calc(100vh - 70px - 70px - 10px);
+  min-height: calc(100vh - 70px - 70px - 15px);
+  /* 15pxは、footerのpaddingやmarginの分 */
   margin-top: 10px;
 }
 
@@ -111,28 +122,38 @@ footer {
 
 .copy {
   text-align: center;
-  padding-top: 0;
+  padding-top: 10px;
 }
 
 .first-message {
   text-align: center;
 }
 
+.first-view {
+  height: calc(100vh - 70px - 60px);
+}
+
+.first-view-logo {
+  margin-top: 50px;
+}
+
 .button-gradation {
   padding: 30px 90px;
   font-weight: bold;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 8px;
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
 }
 
 .button-registration {
-  margin: 40px auto 100px;
+  margin: 50px auto 100px;
   text-align: center;
 }
 
 .under-line {
   background:linear-gradient(transparent 70%, #ACFF40 0%);
+  font-weight: bold;
+  white-space: nowrap; /* 勝手に折り返さない */
 }
 
 /* ここがおすすめ */
@@ -155,7 +176,32 @@ footer {
   color: #FF9340;
 } 
 
+.message-topic {
+  margin-bottom: 20px;
+}
+
+.list-sample-img {
+  margin-top: 30px;
+  padding-bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.sample-img {
+  max-width: 35%;
+  border-radius: 25px;
+  border: solid 2px #BFBFBF;
+}
+
+.left {
+  margin-right: 5px;
+}
+
 /* よくある質問 */
+.index_align_center {
+  text-align: center;
+}
+
 .indispensable {
   background-color: #DDFFBA;
   margin-right: 5px;
@@ -222,6 +268,7 @@ table {
 }
 
 .form_query {
+  max-width: 300px;
   margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #BFBFBF;
@@ -286,6 +333,7 @@ table {
 .sort_info {
   color: #28a745;
   font-size: 0.9em;
+  text-align: center;
 }
 
 .target {
@@ -373,16 +421,22 @@ h5 {
   font-weight: bold;
 }
 
+/* スマホ表示 */
 @media (max-width: 599px) {
   .container {
     font-size: 1.1rem;
   }
 
-  .first-message {
+  .index_align_center {
     text-align: left;
   }
 
   .flash-message {
     font-size: 1rem;
+  }
+
+  .sample-img {
+    max-width: 45%;
+    border-radius: 15px;
   }
 }
