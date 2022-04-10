@@ -83,9 +83,15 @@ footer {
   margin-top: 8px;
 }
 
+.footer_link {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-right: 10px;
+}
+
 /* トップページ */
 .yen-info {
-  padding-top: 15px;
+  padding-top: 5px;
 }
 
 .footer-nav-lists {
@@ -99,7 +105,8 @@ footer {
 
 .contents {
   background-color: white;
-  min-height: calc(100vh - 70px - 70px - 10px);
+  min-height: calc(100vh - 70px - 70px - 15px);
+  /* 15pxは、footerのpaddingやmarginの分 */
   margin-top: 10px;
 }
 
