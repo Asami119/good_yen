@@ -188,8 +188,8 @@ footer {
 }
 
 .sample-img {
-  max-width: 45%;
-  border-radius: 15px;
+  max-width: 35%;
+  border-radius: 25px;
   border: solid 2px #BFBFBF;
 }
 
@@ -433,5 +433,10 @@ h5 {
 
   .flash-message {
     font-size: 1rem;
+  }
+
+  .sample-img {
+    max-width: 45%;
+    border-radius: 15px;
   }
 }

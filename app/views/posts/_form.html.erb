@@ -41,7 +41,7 @@
             <b>Good yen?</b>
             <%= link_to root_path(anchor: 'good_yen_info'), data: { confirm: 'トップページの「よくある質問」欄へ移動します。よろしいですか？' } do %>
               <i class="fa-solid fa-circle-question fa-lg fa-fw" alt="Good yen! 説明欄へのリンク"></i>
-            <% end %>
+            <% end %><br>
             <span class="under-line" id="insert_point">いいお金の使い方でしたか？</span>
             <div id="radio_button">
               <%= f.radio_button :select_yen, true %>
