@@ -115,7 +115,7 @@ footer {
 
 .copy {
   text-align: center;
-  padding-top: 0;
+  padding-top: 10px;
 }
 
 .first-message {
@@ -134,17 +134,19 @@ footer {
   padding: 30px 90px;
   font-weight: bold;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 8px;
   background: linear-gradient(to right, #DDFFBA, #FFFFBB, #FFFFCC);
 }
 
 .button-registration {
-  margin: 40px auto 100px;
+  margin: 50px auto 100px;
   text-align: center;
 }
 
 .under-line {
   background:linear-gradient(transparent 70%, #ACFF40 0%);
+  font-weight: bold;
+  white-space: nowrap; /* 勝手に折り返さない */
 }
 
 /* ここがおすすめ */
@@ -179,7 +181,7 @@ footer {
 
 .sample-img {
   max-width: 45%;
-  border-radius: 10px;
+  border-radius: 15px;
   border: solid 2px #BFBFBF;
 }
 
@@ -188,6 +190,10 @@ footer {
 }
 
 /* よくある質問 */
+.index_align_center {
+  text-align: center;
+}
+
 .indispensable {
   background-color: #DDFFBA;
   margin-right: 5px;
@@ -405,12 +411,13 @@ h5 {
   font-weight: bold;
 }
 
+/* スマホ表示 */
 @media (max-width: 599px) {
   .container {
     font-size: 1.1rem;
   }
 
-  .first-message {
+  .index_align_center {
     text-align: left;
   }
 
