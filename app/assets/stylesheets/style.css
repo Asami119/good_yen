@@ -389,6 +389,11 @@ table {
   margin-top: 10px;
 }
 
+.registration_disclaimer {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
 /* ユーザー編集・退会ページ */
 .margin_top_edit {
   margin-top: 50px;
