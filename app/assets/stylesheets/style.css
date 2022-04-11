@@ -329,7 +329,7 @@ table {
 .sort_info {
   color: #28a745;
   font-size: 0.9em;
-  text-align: center;
+  text-align: right;
 }
 
 .target {
