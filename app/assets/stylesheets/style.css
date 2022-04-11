@@ -129,10 +129,6 @@ footer {
   text-align: center;
 }
 
-.first-view {
-  height: calc(100vh - 70px - 60px);
-}
-
 .first-view-logo {
   margin-top: 50px;
 }
@@ -146,7 +142,7 @@ footer {
 }
 
 .button-registration {
-  margin: 50px auto 100px;
+  margin: 50px auto 200px;
   text-align: center;
 }
 
@@ -333,7 +329,7 @@ table {
 .sort_info {
   color: #28a745;
   font-size: 0.9em;
-  text-align: center;
+  text-align: right;
 }
 
 .target {
@@ -389,6 +385,11 @@ table {
   margin-top: 10px;
 }
 
+.registration_disclaimer {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
 /* ユーザー編集・退会ページ */
 .margin_top_edit {
   margin-top: 50px;
@@ -399,7 +400,7 @@ table {
 }
 
 .form_registration_destroy {
-  height: calc(100vh - 70px - 70px - 50px);
+  height: calc(100vh - 70px - 70px - 15px);
 }
 
 h5 {
