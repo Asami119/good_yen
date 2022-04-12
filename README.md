@@ -48,11 +48,14 @@ https://good-yen.herokuapp.com/
 - 「いいお金の使い方だったか？」という項目を設け、「お金を実り豊かに使えた」という満足感や、自分にとっての「良い支出」について考えるきっかけを作る
 <br><br>
 
+家計簿をつけたいとは思いつつ始められない、続かない方の「面倒」「ハードルが高い」といった課題を解消し、支出を「豊かに実ったお金」にしていく一助になればと考えています。
+<br><br>
+
 # 洗い出した要件
 [要件を定義したシート](https://docs.google.com/spreadsheets/d/1HpywS1N54deJ9mjSwYvUwvIJbJZsYJq7xjoyW3L30zs/edit#gid=1785908763)
 <br><br>
 
-# 実装した機能について（トップページより抜粋）
+# 実装した機能について（トップページ画面より抜粋）
 [![Image from Gyazo](https://i.gyazo.com/96847db22421d25901f7c7c1a2258210.jpg)](https://gyazo.com/96847db22421d25901f7c7c1a2258210)
 
 [![Image from Gyazo](https://i.gyazo.com/d489354bf1c05d70a15eccb25abdec2e.jpg)](https://gyazo.com/d489354bf1c05d70a15eccb25abdec2e)
@@ -76,15 +79,18 @@ https://good-yen.herokuapp.com/
 
 # 開発環境
 フロントエンド
-- HTML
-- CSS
+- HTML/CSS
 - JavaScript
+- chart.js
 
 バックエンド
-- Ruby（Ruby on Rails）
+- Ruby（2.6.5）
+- Ruby on Rails（6.0.0）
+
+データベース
+- MySQL2（0.4.4）
 
 インフラ
-- MySQL
 - Heroku
 
 テスト
@@ -105,8 +111,17 @@ https://good-yen.herokuapp.com/
 % yarn install<br>
 <br><br>
 
-# 工夫したポイント : 「ユーザー目線」
+# 工夫したポイント
+## 「ユーザー目線」
 幅広い層にアピールできるシンプルな設計・デザインを基本に、工数を極力減らした記録ページ、共有したくなるグラフ化機能やお楽しみとしての「思い出 Good yen!」ページなど、継続の動機付けとなる仕組みを用意しました。
 <br><br>
 
 一方で、「Good yen?（いいお金の使い方だったか）？」という必須項目やデータのCSV出力など、より良い支出を考える発展的なきっかけをも創出できるような機能も実装しました。
+
+<br><br>
+
+## 「考え抜く」
+スキルや経験不足により実装できる機能が限られるなか、どのような要件定義・ページ遷移にすることが「ベストな課題解決策となるか」を一貫して考え抜きました。
+<br><br>
+
+結果として、「かんたん・シンプル」でありつつも汎用的な分析が可能で、「豊かなお金」についての内省するきっかけをも作ることができる、一つの提案ができたかと思います。
