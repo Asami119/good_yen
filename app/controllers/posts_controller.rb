@@ -75,6 +75,9 @@ class PostsController < ApplicationController
     @post = post.sample
   end
 
+  def kana
+  end
+
   private
 
   def post_params

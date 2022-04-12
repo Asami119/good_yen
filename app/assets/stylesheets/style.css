@@ -422,6 +422,13 @@ h5 {
   font-weight: bold;
 }
 
+/* ひらがな版 */
+.kana {
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
 /* スマホ表示 */
 @media (max-width: 599px) {
   .container {
