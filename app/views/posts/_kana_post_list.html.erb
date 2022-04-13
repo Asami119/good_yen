@@ -9,7 +9,7 @@
   </td>
   <td class="nowrap align-right"><%= post.price.to_s(:delimited) %>えん</td>
   <td rowspan="2" class="set-width table-border align-right">
-    <%= link_to edit_post_path(post.id) do %>
+    <%= link_to edit_post_path(post.id, type: 'kana') do %>
       <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
     <% end %>
     <%= link_to  post_path(post.id), method: :delete, data: { confirm: 'さくじょして いいですか? このそうさは もとに もどせません。' } do %>

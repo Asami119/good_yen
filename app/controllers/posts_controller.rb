@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def edit
     session[:previous_url] = request.referer || new_post_path
+    return render :kana_edit if request.referer.include?('kana')
   end
 
   def update
