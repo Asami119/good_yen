@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="contents">
+    <div class='flash-message'><%= notice %></div>
+    <div class='kana'>
+      <%= link_to 'きろくする', new_post_path(type: 'kana'), class: 'margin_kana' %>
+      <%= link_to 'ふりかえる', search_posts_path(type: 'kana') %>
+    </div>
+    <%# 結果一覧 %>
+    <h5 class="align_center">きろく ふぉーむ</h5>
+    <%= render partial: 'kana_form', locals: { post: @post } %>
+    <div class="heading-name">
+      <h5 class="set-margin"><%= current_user.nickname %>さんの きろく（<%= Time.now.month %>がつ）</h5>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+    <div class="align_center"><%= @monthly_post_count %> けん | ごうけい：<%= @monthly_price_sum.to_s(:delimited) %>えん</div>
+    <% if @posts.present? %>
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+      <table>
+        <%= render partial: 'kana_post_list', collection: @posts, as: "post" %>
+      </table>
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    <% end %>
+  </div>
+</div>

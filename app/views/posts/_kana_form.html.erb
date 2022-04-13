@@ -1,0 +1,64 @@
+<div class="form_post">
+  <%= form_with model: post, local: true do |f| %>
+    <div class='flash-message'>
+      <%= render 'shared/error_messages', model: f.object %>
+    </div>
+    <table class="form_set_width_max">
+      <tbody>
+        <tr>
+          <td class="form_set_width"><span class="indispensable">ひっす</span></td>
+          <td class="form_set_width"><%= f.label :date_of_post, 'ひにち' %></td>
+          <td class="form_align_left">
+            <% if controller.action_name == 'new' %>
+              <%= f.date_field :date_of_post, value: Date.today %>
+            <% else %>
+              <%= f.date_field :date_of_post %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="form_set_width"><span class="indispensable">ひっす</span></td>
+          <td><%= f.label :price, 'きんがく' %></td>
+          <td class="form_price_size form_align_left"><%= f.number_field :price, style: "width:70%", min: 1, placeholder:'はんかく すうじ' %> えん</td>
+        </tr>
+        <tr>
+          <td class="form_set_width"></td>
+          <td><%= f.label :memo1, 'めも①' %></td>
+          <td class="form_memo_size form_align_left">
+            <%= f.text_area :memo1, style: "width:100%", placeholder:'100もじまで', maxlength: 100, class: 'form_memo' %>
+          </td>
+        </tr>
+        <tr>
+          <td class="form_set_width"></td>
+          <td><%= f.label :memo2, 'めも②' %></td>
+          <td class="form_memo_size form_align_left">
+            <%= f.text_area :memo2, style: "width:100%", placeholder:'100もじまで', maxlength: 100, class: 'form_memo' %>
+          </td>
+        </tr>
+        <tr>
+          <td class="form_set_width"><span class="indispensable">ひっす</span></td>
+          <td colspan="2">
+            <b>ぐっど えん？</b>
+            <%= link_to root_path(anchor: 'good_yen_info'), data: { confirm: 'とっぷぺーじの「よくある しつもん」へ いどうします。よろしいですか？' } do %>
+              <i class="fa-solid fa-circle-question fa-lg fa-fw" alt="Good yen! 説明欄へのリンク"></i>
+            <% end %><br>
+            <span class="under-line" id="insert_point">いい おかねの つかいかた でしたか？</span>
+            <div id="radio_button">
+              <%= f.radio_button :select_yen, true %>
+              <%= f.label :select_yen, 'はい！', value: true %>
+              <%= f.radio_button :select_yen, false %>
+              <%= f.label :select_yen, 'あといっぽ', value: false %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <%= f.button class: 'btn btn-default btn-outline-success', name: "submit" do %>
+              <i class="fa-solid fa-calculator fa-lg fa-fw" aria-hidden="true"></i>ほぞんする
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

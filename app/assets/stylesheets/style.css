@@ -280,7 +280,7 @@ table {
 }
 
 .form_set_width {
-  width: 60px;
+  width: 70px;
 }
 
 .form_set_width_search {
@@ -429,10 +429,14 @@ h5 {
   font-size: 0.9rem;
 }
 
+.margin_kana{
+  margin-right: 12px;
+}
+
 /* スマホ表示 */
 @media (max-width: 599px) {
   .container {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .index_align_center {

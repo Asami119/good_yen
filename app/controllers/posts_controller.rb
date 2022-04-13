@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     set_list
+    return render :kana_new if request.referer.include?("kana") 
   end
 
   def create
@@ -16,6 +17,7 @@ class PostsController < ApplicationController
     set_list
     if @post.save
       flash[:notice] = '1件の記録を「保存」しました。'
+      return redirect_to new_post_path(type: 'kana') if request.referer.include?("kana") 
       redirect_to new_post_path
     else
       render :new
@@ -62,6 +64,8 @@ class PostsController < ApplicationController
       end
     elsif params[:export_csv]
       send_posts_csv(posts)
+    elsif request.referer.include?("kana") 
+      render :kana_search
     else
       render :search
     end

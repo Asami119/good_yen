@@ -1,1 +1,21 @@
-ひらがな　です
+<div class="container">
+  <div class="contents">
+    <div class='flash-message'><%= notice %></div>
+    <div class='kana'>
+      <%= link_to 'きろくする', new_post_path(type: 'kana'), class: 'margin_kana' %>
+      <%= link_to 'ふりかえる', search_posts_path(type: 'kana') %>
+    </div>
+    <div class="heading-name">
+      <h5 class="align_center">ひらがなに しました。</h5>
+    </div>
+    <ul class="messages">
+      <li class="heading-name-line"><li>
+    </ul>
+    <div class="align_center">
+      <br>
+      ・もとに もどしたい ときは ひだりうえの<br>あいこんを おしてください。<br><br>
+      ・ひらがなに なるのは <br>「きろくする」と 「ふりかえる」の<br>ぺーじ だけです。<br><br>
+      ・かんじの ままの ぶぶんも あります。
+    </div>
+  </div>
+</div>
