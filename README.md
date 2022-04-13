@@ -1,5 +1,5 @@
 # アプリケーション名
-かんたん支出管理 yen!
+yen! かんたん支出管理
 <br><br>
 
 # アプリケーション概要
@@ -78,7 +78,7 @@ https://good-yen.herokuapp.com/
 
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/ebb88026c1ab4fe4255b3e778befafa6.jpg)](https://gyazo.com/ebb88026c1ab4fe4255b3e778befafa6)
-＊ハイライトした主要2ページのみ、お子様のご利用を想定した「ひらがな表記」ページを設けております。
+<br>＊ハイライトした主要2ページのみ、お子様のご利用を想定した「ひらがな表記」ページを設けております。
 <br><br>
 
 # 開発環境
@@ -108,11 +108,20 @@ https://good-yen.herokuapp.com/
 <br><br>
 
 # ローカルでの動作方法
-以下のコマンドを順に実行してください。<br>
-% git clone https://good-yen.herokuapp.com/<br>
-% cd xxxxxx（＊任意のディレクトリ名をご指定ください）<br>
-% bundle install<br>
-% yarn install<br>
+以下のコマンドを順に実行してください。<br><br>
+任意のディレクトリに移動<br>
+% cd xxxxxx<br>
+アプリケーションをクローン<br>
+% git clone https://github.com/Asami119/good_yen
+
+クローンしたアプリに移動<br>
+% cd good_yen
+
+Gemをインストール<br>
+% bundle install
+
+JavaScriptのパッケージをインストール<br>
+% yarn install
 <br><br>
 
 # 工夫したポイント
