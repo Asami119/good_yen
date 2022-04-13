@@ -77,7 +77,7 @@ https://good-yen.herokuapp.com/
 <br><br>
 
 # 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/ebb88026c1ab4fe4255b3e778befafa6.jpg)](https://gyazo.com/ebb88026c1ab4fe4255b3e778befafa6)
+[![Image from Gyazo](https://i.gyazo.com/c311a3e8a5ec9b807b8930393458481c.jpg)](https://gyazo.com/c311a3e8a5ec9b807b8930393458481c)
 <br>＊ハイライトした主要2ページのみ、お子様のご利用を想定した「ひらがな表記」ページを設けております。
 <br><br>
 
