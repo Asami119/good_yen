@@ -1,0 +1,17 @@
+<div class="heading-name">
+  <h5><%= current_user.nickname %>さんの きろく</h5>
+</div>
+<ul class="messages">
+  <li class="heading-name-line"><li>
+</ul>
+<div class="align_center">
+  <% if period.present? %>
+    つづいた きかん：<%= period[:day] %>にち<br>（<%= period[:first_post] %> 〜 <%= period[:last_post] %>）<br>
+  <% end %>
+  <div class="form_post form_query">
+    <i class="fa-solid fa-magnifying-glass fa-lg fa-fw" aria-hidden="true"></i>けんさく じょうけん<br>
+    <% querys.each do |query| %>
+      <%= query %><br>
+    <% end %>
+  </div>
+</div>

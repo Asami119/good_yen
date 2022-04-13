@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'select'
+      get 'kana'
     end
   end
 end

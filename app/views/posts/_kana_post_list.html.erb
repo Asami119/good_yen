@@ -1,0 +1,31 @@
+<tr>
+  <td rowspan="2" class="set-width-logo table-border">
+    <% if post.select_yen %>
+      <%= image_tag 'yen-logo.png', alt: "Good yen!", class: "yen-logo-list" %>
+    <% end %>
+  </td>
+  <td class="nowrap">
+    <%= post.date_of_post %>(<%= %w(にち げつ か すい もく きん ど)[post.date_of_post.wday] %>)
+  </td>
+  <td class="nowrap align-right"><%= post.price.to_s(:delimited) %>えん</td>
+  <td rowspan="2" class="set-width table-border align-right">
+    <%= link_to edit_post_path(post.id) do %>
+      <i class="fa-solid fa-pen fa-lg fa-fw" alt="編集のマーク"></i>
+    <% end %>
+    <%= link_to  post_path(post.id), method: :delete, data: { confirm: 'さくじょして いいですか? このそうさは もとに もどせません。' } do %>
+      <i class="fa-solid fa-trash fa-lg" alt="削除のマーク"></i>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td class="post-list-memo table-border">
+    <% if post.memo1.present? %>
+      <%= safe_join(post.memo1.split("\n"),tag(:br)) %>
+    <% end %>
+  </td>
+  <td class="post-list-memo table-border">
+    <% if post.memo2.present? %>
+      <%= safe_join(post.memo2.split("\n"),tag(:br)) %>
+    <% end %>
+  </td>
+</tr>
