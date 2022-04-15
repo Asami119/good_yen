@@ -8,7 +8,7 @@ function reset (){
     const price2 = document.getElementById("price2");
     const memo1 = document.getElementById("memo1");
     const memo2 = document.getElementById("memo2");
-    const selectYen = document.getElementById("select_yen");
+    const selectYen = document.getElementById("q_select_yen_eq_");
     date1.value="";
     date2.value="";
     price1.value="";
