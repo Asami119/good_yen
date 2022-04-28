@@ -85,7 +85,7 @@ https://good-yen.herokuapp.com/
 フロントエンド
 - HTML/CSS
 - JavaScript
-- chart.js
+- Chartkick/Highcharts
 
 バックエンド
 - Ruby（2.6.5）
