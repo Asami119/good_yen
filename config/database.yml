@@ -10,15 +10,20 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
+#  adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+#  username: root
+#  password:
+#  socket: /tmp/mysql.sock
 
 development:
   <<: *default
+#  database: good_yen_development
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
   database: good_yen_development
 
 # Warning: The database defined as "test" will be erased and
@@ -26,6 +31,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
   database: good_yen_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -49,6 +58,8 @@ test:
 #
 production:
   <<: *default
-  database: good_yen_production
-  username: good_yen
-  password: <%= ENV['GOOD_YEN_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
+#  database: good_yen_production
+#  username: good_yen
+#  password: <%= ENV['GOOD_YEN_DATABASE_PASSWORD'] %>
