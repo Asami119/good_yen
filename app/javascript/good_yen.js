@@ -5,7 +5,7 @@ function good_yen (){
   radioButton.addEventListener('change', () => {
     if (radioButtonTrue.checked) {
       const insertPoint = document.getElementById('insert_point');
-      const messages = ['Good yen!', 'Good yen!', 'Good yen!', 'ありがとう！', 'いいね！', 'ステキ！', 'さすがです！', '最高！'];
+      const messages = ['Good yen!', 'Good yen!', 'Good yen!', 'ありがとう！', 'いいね！', 'すてき！', 'さすがです！', 'すばらしい！'];
       const messageNo = Math.floor(Math.random() * messages.length);
       const html = `
         <div id="id_balloon">
