@@ -63,6 +63,8 @@ gem 'ransack'
 gem 'chartkick'
 gem 'pagy', '~> 5.10'
 gem 'rails-i18n'
+gem 'resend'
+
 group :production do
   gem 'pg'
 end
