@@ -113,14 +113,16 @@ Rails.application.configure do
   config.action_mailer.perform_caching = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { protocol: 'https', host: 'good-yen.herokuapp.com' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => 'smtp.gmail.com',
-    :user_name => ENV["GOOGLE_MAIL_ADDRESS"],
-    :password => ENV["GOOGLE_MAILER_PASSWORD"],
-    :authentication => 'login'
-  }
+#  config.action_mailer.delivery_method = :smtp
+#  config.action_mailer.smtp_settings = {
+#    :enable_starttls_auto => true,
+#    :address => "smtp.gmail.com",
+#    :port => 587,
+#    :domain => 'smtp.gmail.com',
+#   :user_name => ENV["GOOGLE_MAIL_ADDRESS"],
+#    :password => ENV["GOOGLE_MAILER_PASSWORD"],
+#    :authentication => 'login'
+# }
+
+  config.action_mailer.delivery_method = :resend
 end
