@@ -452,3 +452,7 @@ h5 {
     border-radius: 15px;
   }
 }
+
+a:hover {
+      text-decoration: none;
+}
