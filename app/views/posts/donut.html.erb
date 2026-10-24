@@ -3,7 +3,7 @@
     <div class="chart_content content" id="post_list">
       <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
       <% if @posts.present? %>
-        <%= pie_chart @price_sums, options = {
+        <%= pie_chart @price_sums, **{
           donut: true,
           colors: ["#ACFF40", "#FFF33F"],
           thousands: ",", 

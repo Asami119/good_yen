@@ -4,7 +4,7 @@
       <%= render partial: 'query', locals: { period: @period, querys: @querys } %>
       <% if @posts.present? %>
         <div class="chart_set_margin">
-          <%= bar_chart  @monthly_price_sums, options = {
+          <%= bar_chart  @monthly_price_sums, **{
             stacked: true,
             max_width: '100vw',
             max_height: '80vh',
