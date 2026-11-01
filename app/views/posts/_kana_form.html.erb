@@ -10,7 +10,7 @@
           <td class="form_set_width"><%= f.label :date_of_post, 'ひにち' %></td>
           <td class="form_align_left">
             <% if controller.action_name == 'new' %>
-              <%= f.date_field :date_of_post, value: Date.today %>
+              <%= f.date_field :date_of_post, value: Time.zone.today %>
             <% else %>
               <%= f.date_field :date_of_post %>
             <% end %>
